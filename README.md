@@ -1,5 +1,13 @@
-# Project Name
-Put here a short paragraph describing your project. 
+# Point of Sale System
+Point of Sale System or (POS) is a computer system where customer makes payment for
+goods or service that are offered by your company. It is widely used in the restaurant industries
+making restauranteurs and employees much easier in sending orders to the kitchen staffs
+improving the workflow. It is also capable of tracking restaurant inventory as well as showing
+how the restaurant is performing over a specific period of time. The servers can easily create an
+order ticket through the main computer and send it to each designated station allowing the
+kitchen staffs to work efficiently.
+
+
 Adding an screenshot or a mockup of your application in action would be nice.  
 
 ![This is a screenshot.](images.png)
