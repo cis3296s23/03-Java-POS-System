@@ -2,6 +2,7 @@ import java.time.LocalTime;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -30,6 +31,65 @@ public class Main {
                 System.out.println("Please enter your choice");
                 int choice = scanner.nextInt();
                 switch(choice){
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        System.out.println("Invalid choice!");
+                        break;
+                }
+            }
+            else {
+                System.out.println("1. Clock-in to start working");
+                System.out.println("2. Create Order");
+                System.out.println("3. View Menu");
+                System.out.println("Enter your selection: ");
+                int choice = scanner.nextInt();
+                scanner.nextLine();
+                switch (choice) {
+                    case 1:
+                        HashMap<String, LocalTime> empClockIns = new HashMap<>();
+                        HashMap<String, LocalTime> employeeClockOuts = new HashMap<>();
+                        System.out.println("Please enter your 4 digits employee number: ");
+                        String empInfo = scanner.nextLine();
+
+                        if (empClockIns.containsKey(empInfo)) {
+                            System.out.println("You've already clocked in today at " + empClockIns.get(empInfo) + ".");
+                            System.out.println("Enter 'out' to clock out: ");
+                            String cOut = scanner.nextLine();
+                            if (cOut.equalsIgnoreCase("out")) {
+                                LocalTime currentTime = LocalTime.now();
+                                employeeClockOuts.put(empInfo, currentTime);
+                                Duration totalHours = Duration.between(empClockIns.get(empInfo), employeeClockOuts.get(empInfo));
+                                long hours = totalHours.toHours();
+                                long minutes = totalHours.toMinutes() % 60;
+                                System.out.println("You have worked " + hours + " hours and " + minutes + " minutes today.");
+                            }
+                        } else {
+                            // Record employee clock-in time
+                            LocalTime currentTime = LocalTime.now();
+                            empClockIns.put(empInfo, currentTime);
+                            System.out.println("You have clocked in at " + currentTime + ".");
+                        }
+                        break;//employee can clock-in
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        System.out.println("Invalid choice!");
+                        break;
+                }
+=======
                     case 1:break;//do sth;
                     case 2:break;
                     case 3:break;
@@ -82,11 +142,6 @@ public class Main {
         }
         else{
             System.out.println("\n******LOGIN FAILED******\n");
-        }
-
-
-
-
-
+     }
     }
 }
