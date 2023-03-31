@@ -5,7 +5,6 @@ sending orders to the kitchen staff and improving the workflow. It is also capab
 well as showing how the restaurant is performing over a specific period of time. The servers can easily create an order 
 ticket through the main computer and send it to each designated station allowing the kitchen staff to work efficiently.
 
-
 Adding an screenshot or a mockup of your application in action would be nice.  
 
 ![This is a screenshot.](images.png)
