@@ -28,13 +28,13 @@ tar -xzf
 Follow this project board to know the latest status of the project: [https://github.com/orgs/cis3296s23/projects/69/views/1](https://github.com/orgs/cis3296s23/projects/69/views/1)  
 
 ### How to build
-- Need to clone this github repository
+- Need to clone this Github repository
 - Configure the database credentials
 - From the database, use SQL to import the data
-- Run the project through NetBean IDE ot the command prompts
+- Run the project through InteliJ 11 IDE ot the command prompts
 - Specify what branch to use for a more stable release or for cutting edge development.  
 - Use InteliJ 11
-- 
+
 - Specify additional library to download if needed 
 - What file and target to compile and run. 
 - What is expected to happen when the app start. 
