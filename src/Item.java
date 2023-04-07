@@ -11,9 +11,9 @@ public class Item{
 public Item(){
 }
 
-public Item(int itemID, String item, double itemPrice, int itemQty, double amount){
+public Item(int itemID, String itemName, double itemPrice, int itemQty, double amount){
     this.itemID = itemID;
-    this.item = item;
+    this.itemName = itemName;
     this.itemPrice = itemPrice;
     this.itemQty = itemQty;
     this.amount = amount;
@@ -27,12 +27,12 @@ public void setItemID(int itemID){
     this.itemID = itemID;
 }
 
-public String getItem(){
-    return item;
+public String getItemName(){
+    return itemName;
 }
 
-public void setItem(String item){
-    this.item = item;
+public void setItemName(String itemName){
+    this.itemName = itemName;
 }
 
 public double getItemPrice(){
