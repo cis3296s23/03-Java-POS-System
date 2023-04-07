@@ -70,4 +70,16 @@ public class Order {
     public void clearItems() {
         this.items.clear();
     }
+
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "customerName='" + customerName + '\'' +
+                ", items=" + items +
+                ", orderTime=" + orderTime +
+                ", totalPrice=" + totalPrice +
+                ", paymentMethod='" + paymentMethod + '\'' +
+                '}';
+    }
 }
