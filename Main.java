@@ -1,5 +1,6 @@
-import java.time.LocalTime;
 import java.time.Duration;
+import java.time.LocalTime;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -37,16 +38,19 @@ public class Main {
                     case 1:
                         break;
                     case 2:
+                        System.out.println("***********CREATE ORDER***********");
                         System.out.println("Enter customer name: ");
                         String customerName = scanner.nextLine();
                         System.out.println("Enter order details: ");
-                        String orderDetails = scanner.nextLine();
+                        String items = scanner.nextLine();
                         System.out.println("Enter total price: ");
                         double totalPrice = scanner.nextDouble();
                         scanner.nextLine();
                         System.out.println("Enter payment method: ");
                         String paymentMethod = scanner.nextLine();
+                        Order order = new Order(customerName, Collections.singletonList(items), totalPrice, paymentMethod);
                         System.out.println("Order created successfully!");
+                        System.out.println("***********CREATE ORDER***********");
                         break;
                     case 3:
                         System.out.println("***********TIMECARDS***********");
@@ -95,6 +99,7 @@ public class Main {
 
                     switch (choice) {
                         case 1:
+                            System.out.println("***********CLOCK-IN***********");
                             System.out.println("Please enter your 4 digits employee number: ");
                             String empInfo = scanner.nextLine();
                             System.out.println("1. Clock-in to start working");
@@ -129,16 +134,19 @@ public class Main {
                             }
                             break;
                         case 2:
+                            System.out.println("***********CREATE ORDER***********");
                             System.out.println("Enter customer name: ");
                             String customerName = scanner.nextLine();
                             System.out.println("Enter order details: ");
-                            String orderDetails = scanner.nextLine();
+                            String items = scanner.nextLine();
                             System.out.println("Enter total price: ");
                             double totalPrice = scanner.nextDouble();
                             scanner.nextLine();
                             System.out.println("Enter payment method: ");
                             String paymentMethod = scanner.nextLine();
+                            Order order = new Order(customerName, Collections.singletonList(items), totalPrice, paymentMethod);
                             System.out.println("Order created successfully!");
+                            System.out.println("***********CREATE ORDER***********");
                             break;
                         case 3:
                             System.out.println("***********MENU***********");
@@ -148,6 +156,7 @@ public class Main {
                             System.out.println("4. French Fries - $4.99");
                             System.out.println("5. Soft Drink - $1.99");
                             System.out.println("6. Milkshake - $5.99");
+                            System.out.println("***********MENU***********");
                             break;
                         case 4:
                             continueWorking = false;
