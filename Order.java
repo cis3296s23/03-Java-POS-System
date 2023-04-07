@@ -31,4 +31,43 @@ public class Order {
     public void setItems(List<String> items) {
         this.items = items;
     }
+
+
+    public LocalDateTime getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(LocalDateTime orderTime) {
+        this.orderTime = orderTime;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+
+
+    public void addItem(String item) {
+        this.items.add(item);
+    }
+
+    public void removeItem(String item) {
+        this.items.remove(item);
+    }
+
+    public void clearItems() {
+        this.items.clear();
+    }
 }
