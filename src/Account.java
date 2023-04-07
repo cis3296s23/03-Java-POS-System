@@ -2,12 +2,12 @@ public class Account {
     private String name;
     private String pass;
     private String empNum;
-    private int empID;
+    private Employees empID;
 }
 
 public Account(){}
 
-public Account(String name, String pass, String empNum, int empID){
+public Account(String name, String pass, String empNum, Employees empID){
     this.name =name;
     this.pass = pass;
     this.empNum = empNum;
@@ -38,7 +38,7 @@ public void setEmpNum(String empNum){
     this.empNum =empNum;
 }
 
-public int getEmpID(){
+public Employees getEmpID(){
     return empID;
 }
 

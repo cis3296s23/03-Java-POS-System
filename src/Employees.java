@@ -1,4 +1,4 @@
-public class Employees {
+abstract class Employees {
     private int empID;
     private String empName;
     private double empSal;
