@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
+    private static HashMap<String, LocalTime> empClockIns = new HashMap<>();
+    private static HashMap<String, LocalTime> empClockOuts = new HashMap<>();
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -75,28 +77,27 @@ public class Main {
                 scanner.nextLine();
                 switch (choice) {
                     case 1:
-                        HashMap<String, LocalTime> empClockIns = new HashMap<>();
-                        HashMap<String, LocalTime> employeeClockOuts = new HashMap<>();
                         System.out.println("Please enter your 4 digits employee number: ");
                         String empInfo = scanner.nextLine();
 
                         if (empClockIns.containsKey(empInfo)) {
-                            System.out.println("You've already clocked in today at " + empClockIns.get(empInfo) + ".");
-                            System.out.println("Enter 'out' to clock out: ");
-                            String cOut = scanner.nextLine();
-                            if (cOut.equalsIgnoreCase("out")) {
-                                LocalTime currentTime = LocalTime.now();
-                                employeeClockOuts.put(empInfo, currentTime);
-                                Duration totalHours = Duration.between(empClockIns.get(empInfo), employeeClockOuts.get(empInfo));
+                            LocalTime clockInTime = empClockIns.get(empInfo);
+                            LocalTime clockOutTime = empClockOuts.get(empInfo);
+                            if (clockOutTime == null) {
+                                Duration totalHours = Duration.between(clockInTime, LocalTime.now());
                                 long hours = totalHours.toHours();
                                 long minutes = totalHours.toMinutes() % 60;
                                 System.out.println("You have worked " + hours + " hours and " + minutes + " minutes today.");
+                                System.out.println("You clocked in at " + clockInTime + ".");
+                            } else {
+                                Duration totalHours = Duration.between(clockInTime, clockOutTime);
+                                long hours = totalHours.toHours();
+                                long minutes = totalHours.toMinutes() % 60;
+                                System.out.println("You worked " + hours + " hours and " + minutes + " minutes on your last shift.");
+                                System.out.println("You clocked in at " + clockInTime + " and clocked out at " + clockOutTime + ".");
                             }
                         } else {
-                            // Record employee clock-in time
-                            LocalTime currentTime = LocalTime.now();
-                            empClockIns.put(empInfo, currentTime);
-                            System.out.println("You have clocked in at " + currentTime + ".");
+                            System.out.println("You have not clocked in today.");
                         }
                         break;
                     case 2:
