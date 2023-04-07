@@ -16,4 +16,19 @@ public class Order {
         this.paymentMethod = paymentMethod;
         this.orderTime = LocalDateTime.now();
     }
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public List<String> getItems() {
+        return items;
+    }
+
+    public void setItems(List<String> items) {
+        this.items = items;
+    }
 }
