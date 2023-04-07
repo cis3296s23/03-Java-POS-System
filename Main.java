@@ -91,6 +91,13 @@ public class Main {
                         System.out.println("Order created successfully!");
                         break;
                     case 3:
+                        System.out.println("***********MENU***********");
+                        System.out.println("1. Beef Burger - $11.99");
+                        System.out.println("2. Cheeseburger - $9.99");
+                        System.out.println("3. Hamburger - $8.99");
+                        System.out.println("4. French Fries - $4.99");
+                        System.out.println("5. Soft Drink - $1.99");
+                        System.out.println("6. Milkshake - $5.99");
                         break;
                     case 0:
                         break;
