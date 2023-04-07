@@ -79,6 +79,16 @@ public class Main {
                         }
                         break;
                     case 2:
+                        System.out.println("Enter customer name: ");
+                        String customerName = scanner.nextLine();
+                        System.out.println("Enter order details: ");
+                        String orderDetails = scanner.nextLine();
+                        System.out.println("Enter total price: ");
+                        double totalPrice = scanner.nextDouble();
+                        scanner.nextLine();
+                        System.out.println("Enter payment method: ");
+                        String paymentMethod = scanner.nextLine();
+                        System.out.println("Order created successfully!");
                         break;
                     case 3:
                         break;
