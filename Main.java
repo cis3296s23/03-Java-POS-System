@@ -48,6 +48,17 @@ public class Main {
                     case 3:
                         break;
                     case 4:
+                        HashMap<String, Integer> inventory = new HashMap<>();
+                        inventory.put("Beef Burger", 50);
+                        inventory.put("Cheeseburger", 75);
+                        inventory.put("Hamburger", 100);
+                        inventory.put("French Fries", 200);
+                        inventory.put("Soft Drink", 300);
+                        inventory.put("Milkshake", 100);
+                        System.out.println("Current Inventory:");
+                        for (String item : inventory.keySet()) {
+                            System.out.println(item + ": " + inventory.get(item));
+                        }
                         break;
                     case 0:
                         break;
