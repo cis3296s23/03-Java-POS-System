@@ -48,6 +48,19 @@ public class Main {
                         System.out.println("Order created successfully!");
                         break;
                     case 3:
+                        System.out.println("***********TIMECARDS***********");
+                        for (String empId : empClockIns.keySet()) {
+                            System.out.print("Employee " + empId + ":\nClock in time: " + empClockIns.get(empId));
+                            if (empClockOuts.containsKey(empId)) {
+                                System.out.print("\nClock out time: " + empClockOuts.get(empId));
+                                Duration totalHours = Duration.between(empClockIns.get(empId), empClockOuts.get(empId));
+                                long hours = totalHours.toHours();
+                                long minutes = totalHours.toMinutes() % 60;
+                                System.out.println("\nTotal work hours: " + hours + " hours and " + minutes + " minutes.");
+                            } else {
+                                System.out.println("\nStatus: On shift.");
+                            }
+                        }
                         break;
                     case 4:
                         HashMap<String, Integer> inventory = new HashMap<>();
@@ -77,9 +90,18 @@ public class Main {
                 scanner.nextLine();
                 switch (choice) {
                     case 1:
+                        System.out.println("1. Clock-in to start working");
+                        System.out.println("2. Clock-out to finish working");
                         System.out.println("Please enter your 4 digits employee number: ");
                         String empInfo = scanner.nextLine();
-
+                        int choice2 = scanner.nextInt();
+                        if (choice2 == 1) {
+                            empClockIns.put(empInfo, LocalTime.now());
+                            System.out.println("You have successfully clocked-in.");
+                        } else if (choice2 == 2) {
+                            empClockOuts.put(empInfo, LocalTime.now());
+                            System.out.println("You have successfully clocked-out.");
+                        }
                         if (empClockIns.containsKey(empInfo)) {
                             LocalTime clockInTime = empClockIns.get(empInfo);
                             LocalTime clockOutTime = empClockOuts.get(empInfo);
