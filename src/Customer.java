@@ -4,7 +4,7 @@ public class Customer {
     private int cusNumber;
 
     private String cusName;
-}
+
 
     public Customer(){
 
@@ -23,3 +23,4 @@ public class Customer {
     return cusName;
     }
 
+}

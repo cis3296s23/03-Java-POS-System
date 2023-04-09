@@ -3,7 +3,7 @@ package src;
 public class Cashiers extends Account{
     private int cashierID;
     private String cashierName;
-}
+
 
     public Cashiers(){
 
@@ -17,3 +17,4 @@ public class Cashiers extends Account{
     public int getCashierID(){
     return cashierID;
     }
+}

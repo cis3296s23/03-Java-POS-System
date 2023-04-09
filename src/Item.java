@@ -2,11 +2,11 @@ package src;
 
 public class Item{
     private int itemID;
-    private String item;
+    private String itemName;
     private double itemPrice;
     private int itemQty;
     private double amount;
-}
+
 
 public Item(){
 }
@@ -57,4 +57,6 @@ public double getAmount(){
 
 public void setAmount(double amount){
     this.amount = amount;
+}
+
 }

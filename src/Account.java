@@ -5,7 +5,7 @@ public class Account {
     private String pass;
     private String empNum;
     private Employees empID;
-}
+
 
 public Account(){}
 
@@ -46,4 +46,5 @@ public Employees getEmpID(){
 
 public void createEmpID(){
 
+}
 }

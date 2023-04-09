@@ -3,7 +3,7 @@ package src;
 public class Chefs {
     private int chefID;
     private String chefName;
-}
+
 
     public Chefs(){
 
@@ -22,3 +22,5 @@ public class Chefs {
   public void restockItems(){
 
   }
+
+}

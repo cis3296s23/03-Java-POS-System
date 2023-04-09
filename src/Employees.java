@@ -6,7 +6,7 @@ abstract class Employees {
     private double empSal;
     private double empHour;
     private String empRole;
-}
+
 
 public Employees(){
 }
@@ -37,4 +37,5 @@ public double getEmpHour(){
 
 public String  getEmpRole(){
     return empRole;
+}
 }

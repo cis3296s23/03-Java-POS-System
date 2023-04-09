@@ -5,35 +5,32 @@ public class Menu {
     private Item itemName;
     private String itemDetail;
     private String itemType;
-}
 
-public Menu(){
 
-}
+    public Menu() {
 
-public Menu(Item itemID, Item itemName, String itemDetail, String itemType){
-    this.itemID = itemID;
-    this.itemName = itemName;
-    this.itemDetail = itemDetail;
-    this.itemType = itemType;
-}
+    }
 
-public Item getItemID(){
-    return itemID;
-}
+    public Menu(Item itemID, Item itemName, String itemDetail, String itemType) {
+        this.itemID = itemID;
+        this.itemName = itemName;
+        this.itemDetail = itemDetail;
+        this.itemType = itemType;
+    }
 
-public Item getItemName(){
-    return itemName;
-}
+    public Item getItemID() {
+        return itemID;
+    }
 
-public String getItemDetail(){
-    return itemDetail;
-}
+    public Item getItemName() {
+        return itemName;
+    }
 
-public String getItemType(){
-    return getItemType();
-}
+    public String getItemDetail() {
+        return itemDetail;
+    }
 
-public void viewMenuDetail(){
-
+    public String getItemType() {
+        return getItemType();
+    }
 }
