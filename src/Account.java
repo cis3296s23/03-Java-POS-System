@@ -1,9 +1,11 @@
+package src;
+
 public class Account {
     private String name;
     private String pass;
     private String empNum;
     private Employees empID;
-}
+
 
 public Account(){}
 
@@ -44,4 +46,5 @@ public Employees getEmpID(){
 
 public void createEmpID(){
 
+}
 }
