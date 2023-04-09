@@ -1,5 +1,6 @@
-import java.util.*;
-public class Manager extends Account {
+package src;
+
+public class Manager {
     private int managerID;
     private String managerName;
 }

@@ -1,5 +1,6 @@
-import java.util.*;
-public class Cashier extends Account {
+package src;
+
+public class Cashiers extends Account{
     private int cashierID;
     private String cashierName;
 }
@@ -13,11 +14,6 @@ public class Cashier extends Account {
         this.cashierName = cashierName;
     }
 
-    public void takeOrder(){
-
+    public int getCashierID(){
+    return cashierID;
     }
-
-    public void getReceipt(){
-
-    }
-

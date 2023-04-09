@@ -1,15 +1,16 @@
-import java.util.*;
-public class Customers {
+package src;
+
+public class Customer {
     private int cusNumber;
 
     private String cusName;
 }
 
-    public Manager(){
+    public Customer(){
 
     }
 
-    public Manager(int cusNumber, String cusName){
+    public Customer(int cusNumber, String cusName){
         this.cusNumber = cusNumber;
         this.cusName = cusName;
     }
@@ -22,10 +23,3 @@ public class Customers {
     return cusName;
     }
 
-    public void makeSelection(){
-
-    }
-
-    public void makePayment(){
-
-    }

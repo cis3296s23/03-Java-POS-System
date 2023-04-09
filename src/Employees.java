@@ -1,3 +1,5 @@
+package src;
+
 abstract class Employees {
     private int empID;
     private String empName;
@@ -33,6 +35,6 @@ public double getEmpHour(){
     return empHour;
 }
 
-public String getEmpRole(){
+public String  getEmpRole(){
     return empRole;
 }

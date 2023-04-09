@@ -1,5 +1,6 @@
-import java.util.*;
-public class Chefs extends Account {
+package src;
+
+public class Chefs {
     private int chefID;
     private String chefName;
 }
