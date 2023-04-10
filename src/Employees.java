@@ -4,35 +4,36 @@ abstract class Employees {
     private double empSal;
     private double empHour;
     private String empRole;
-}
 
-public Employees(){
-}
 
-public Employees(int empID, String empName, double empSal, double empHour, String empRole){
-    this.empID =empID;
-    this.empName = empName;
-    this.empSal = empSal;
-    this.empHour = empHour;
-    this.empRole = empRole;
-}
+    public Employees() {
+    }
 
-public int getEmpID(){
-    return empID;
-}
+    public Employees(int empID, String empName, double empSal, double empHour, String empRole) {
+        this.empID = empID;
+        this.empName = empName;
+        this.empSal = empSal;
+        this.empHour = empHour;
+        this.empRole = empRole;
+    }
 
-public String getEmpName(){
-    return empName;
-}
+    public int getEmpID() {
+        return empID;
+    }
 
-public double getEmpSal(){
-    return empSal;
-}
+    public String getEmpName() {
+        return empName;
+    }
 
-public double getEmpHour(){
-    return empHour;
-}
+    public double getEmpSal() {
+        return empSal;
+    }
 
-public String getEmpRole(){
-    return empRole;
+    public double getEmpHour() {
+        return empHour;
+    }
+
+    public String getEmpRole() {
+        return empRole;
+    }
 }
