@@ -295,5 +295,17 @@ public class Main extends Application {
         return login;
     }
 
+    public Scene menuPage() {
+
+        /* make an order and menu type
+        * populate menu object with item objects gotten from database, order by type (loop)
+        * make as many labels and buttons as there are menu items (loop)
+        * buttons update order with the selected item and refresh the page
+        * make as many labels as there are ordered items + 1 on the right side
+        * last item is the total of the order
+        * return a scene with the labels and buttons */
+    }
+
+
 }
 
