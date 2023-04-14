@@ -4,9 +4,8 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,10 +13,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
@@ -45,12 +41,8 @@ public class Main extends Application {
     creates the login page for the first login required of the user
      */
     public Scene firstLogin(Stage primaryStage) {
-
-        //change the username and password for easier test
-        String rest1Name = "a";
-        String pass1 = "1";
-        String adminName = "admin";
-        String adminPass = "admin123";
+        User users = new User("a", "1");
+        User admin = new User("admin", "admin123");
 
         //make new grid where labels, fields, buttons, etc. are placed (login page)
         GridPane grid = new GridPane();
@@ -158,7 +150,7 @@ public class Main extends Application {
         loginButton.setOnAction(event -> {
             // clear any leftover text in error
             error.setText("");
-            if (name.getText().equals(rest1Name) && password.getText().equals(pass1)) {
+            if (name.getText().equals(users.getUsername()) && password.getText().equals(users.getPassword())) {
                 // clear leftover name and password text
                 name.clear();
                 password.clear();
@@ -167,7 +159,7 @@ public class Main extends Application {
                 primaryStage.setScene(success);
                 primaryStage.show();
 
-            }else if(name.getText().equals(adminName) && password.getText().equals(adminPass)) {
+            }else if(name.getText().equals(admin.getUsername()) && password.getText().equals(admin.getPassword())) {
                 name.clear();
                 password.clear();
 
@@ -213,6 +205,9 @@ public class Main extends Application {
             clockInButton.setOnAction(event1 -> {
                 //get current time
                 LocalDateTime currentTime = LocalDateTime.now();
+                Timecard timecard = new Timecard(currentTime, null);
+                // get the user object and add the new timecard to their list of timecards
+                users.getTimecards().add(timecard);
                 //display message
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Clock In");
@@ -223,13 +218,18 @@ public class Main extends Application {
 
             //when clockOutButton is pressed, show the alert message
             clockOutButton.setOnAction(event1 -> {
-                //get current time
-                LocalDateTime currentTime = LocalDateTime.now();
+                // get the most recent timecard
+                List<Timecard> timecards = users.getTimecards();
+                Timecard mostRecentTimecard = timecards.get(timecards.size() - 1);
+
+                // update the clockOutTime field with the current time
+                mostRecentTimecard.setClockOutTime(LocalDateTime.now());
+
                 //display message
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Clock Out");
                 alert.setHeaderText(null);
-                alert.setContentText("You have clocked out at " + currentTime.format(DateTimeFormatter.ofPattern("hh:mm:ss a")));
+                alert.setContentText("You have clocked out at " + mostRecentTimecard.getClockOutTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a")));
                 //set onHidden event handler to go back to login scene and reset name and password fields
                 alert.setOnHidden(e -> {
                     name.clear();
@@ -239,6 +239,7 @@ public class Main extends Application {
                 });
                 alert.showAndWait();
             });
+
 
             //when clockBackButton is pressed, this happens
             clockBackButton.setOnAction(event1 -> {
@@ -261,16 +262,38 @@ public class Main extends Application {
 
         //when viewTimecardButton is pressed, show the alert message and when the user click ok, back to login page
         viewTimecardButton.setOnAction(event -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("View Timecard");
-            alert.setHeaderText(null);
-            alert.setContentText("You do not have any timecards to view.");
-            //set onHidden event handler to go back to login scene and reset name and password fields
-            alert.setOnHidden(e -> {
-                name.clear();
-                password.clear();
-            });
-            alert.showAndWait();
+            // create a dialog to select the user
+            ChoiceDialog<User> dialog = new ChoiceDialog<>(null, users);
+            dialog.setTitle("View Timecard");
+            dialog.setHeaderText(null);
+            dialog.setContentText("Select a user:");
+            Optional<User> result = dialog.showAndWait();
+
+            if (result.isPresent()) {
+                User user = result.get();
+                List<Timecard> timecards = user.getTimecards();
+                if (timecards.isEmpty()) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("View Timecard");
+                    alert.setHeaderText(null);
+                    alert.setContentText("This user does not have any timecards to view.");
+                    alert.showAndWait();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("View Timecard");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Timecard information for " + user.getUsername() + ":\n\n");
+
+                    // add the timecard information to the alert message
+                    for (Timecard timecard : timecards) {
+                        String clockInTime = timecard.getClockInTime().format(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a"));
+                        String clockOutTime = timecard.getClockOutTime() == null ? "N/A" : timecard.getClockOutTime().format(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a"));
+                        alert.setContentText(alert.getContentText() + "Clock In: " + clockInTime + "\nClock Out: " + clockOutTime + "\n\n");
+                    }
+
+                    alert.showAndWait();
+                }
+            }
         });
 
         return login;
