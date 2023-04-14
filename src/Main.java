@@ -135,6 +135,25 @@ public class Main extends Application {
         GridPane.setConstraints(back, 0, 5);
         successGrid.getChildren().add(back);
 
+        //make view timecard button for admin page
+        final Button viewTimecardButton = new Button();
+        viewTimecardButton.setText("View Timecard");
+        GridPane.setConstraints(viewTimecardButton, 1, 1);
+        GridPane.setColumnSpan(viewTimecardButton, 2);
+
+        //create a new grid for the admin page
+        GridPane adminGrid = new GridPane();
+        adminGrid.setPadding(new Insets(10, 10, 10, 10));
+        adminGrid.setMinSize(100, 100);
+        adminGrid.setVgap(5);
+        adminGrid.setHgap(5);
+
+        //add the view timecard button to the admin grid
+        adminGrid.getChildren().add(viewTimecardButton);
+
+        //create a new scene for the admin page
+        Scene adminScene = new Scene(adminGrid);
+
         //when loginButton is pressed, this happens
         loginButton.setOnAction(event -> {
             // clear any leftover text in error
@@ -148,6 +167,13 @@ public class Main extends Application {
                 primaryStage.setScene(success);
                 primaryStage.show();
 
+            }else if(name.getText().equals(adminName) && password.getText().equals(adminPass)) {
+                name.clear();
+                password.clear();
+
+                // switch to admin scene
+                primaryStage.setScene(adminScene);
+                primaryStage.show();
             }else {
                 error.setText("Incorrect credentials.");
             }
@@ -231,6 +257,20 @@ public class Main extends Application {
         back.setOnAction(event -> {
             primaryStage.setScene(login);
             primaryStage.show();
+        });
+
+        //when viewTimecardButton is pressed, show the alert message and when the user click ok, back to login page
+        viewTimecardButton.setOnAction(event -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("View Timecard");
+            alert.setHeaderText(null);
+            alert.setContentText("You do not have any timecards to view.");
+            //set onHidden event handler to go back to login scene and reset name and password fields
+            alert.setOnHidden(e -> {
+                name.clear();
+                password.clear();
+            });
+            alert.showAndWait();
         });
 
         return login;
