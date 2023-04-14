@@ -30,7 +30,10 @@ public class Main extends Application {
     creates the login page for the first login required of the user
      */
     public Scene firstLogin(Stage primaryStage) {
+        //create a new user and add to the User object
         User users = new User("a", "1");
+        User userB = new User("b", "2");
+
         User admin = new User("admin", "admin123");
 
         //make new grid where labels, fields, buttons, etc. are placed (login page)
@@ -139,26 +142,40 @@ public class Main extends Application {
         loginButton.setOnAction(event -> {
             // clear any leftover text in error
             error.setText("");
+
             if (name.getText().equals(users.getUsername()) && password.getText().equals(users.getPassword())) {
                 // clear leftover name and password text
                 name.clear();
                 password.clear();
 
-                // switch to success scene
+                // switch to success scene for user A
                 primaryStage.setScene(success);
                 primaryStage.show();
 
-            }else if(name.getText().equals(admin.getUsername()) && password.getText().equals(admin.getPassword())) {
+            } else if (name.getText().equals(userB.getUsername()) && password.getText().equals(userB.getPassword())) {
+                // clear leftover name and password text
+                name.clear();
+                password.clear();
+
+                // switch to success scene for user B
+                primaryStage.setScene(success);
+                primaryStage.show();
+
+            } else if (name.getText().equals(admin.getUsername()) && password.getText().equals(admin.getPassword())) {
+                // clear leftover name and password text
                 name.clear();
                 password.clear();
 
                 // switch to admin scene
                 primaryStage.setScene(adminScene);
                 primaryStage.show();
-            }else {
+
+            } else {
+                // display error message for incorrect credentials
                 error.setText("Incorrect credentials.");
             }
         });
+
 
         //when continueButton is pressed, this happens
         continueButton.setOnAction(event -> {
@@ -197,6 +214,7 @@ public class Main extends Application {
                 Timecard timecard = new Timecard(currentTime, null);
                 // get the user object and add the new timecard to their list of timecards
                 users.getTimecards().add(timecard);
+                userB.getTimecards().add(timecard);
                 //display message
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Clock In");
@@ -209,10 +227,13 @@ public class Main extends Application {
             clockOutButton.setOnAction(event1 -> {
                 // get the most recent timecard
                 List<Timecard> timecards = users.getTimecards();
+                List<Timecard> timecards2 = userB.getTimecards();
                 Timecard mostRecentTimecard = timecards.get(timecards.size() - 1);
+                Timecard mostRecentTimecard2 = timecards2.get(timecards2.size() - 1);
 
                 // update the clockOutTime field with the current time
                 mostRecentTimecard.setClockOutTime(LocalDateTime.now());
+                mostRecentTimecard2.setClockOutTime(LocalDateTime.now());
 
                 //display message
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -249,44 +270,60 @@ public class Main extends Application {
             primaryStage.show();
         });
 
-        //when viewTimecardButton is pressed, show the alert message and when the user click ok, back to login page
+        //when view Time card Button is pressed, show the alert message and when the user click ok, back to login page
         viewTimecardButton.setOnAction(event -> {
-            // create a dialog to select the user
-            ChoiceDialog<User> dialog = new ChoiceDialog<>(null, users);
-            dialog.setTitle("View Timecard");
-            dialog.setHeaderText(null);
-            dialog.setContentText("Select a user:");
-            Optional<User> result = dialog.showAndWait();
+            User selectedUser = null;
 
-            if (result.isPresent()) {
-                User user = result.get();
-                List<Timecard> timecards = user.getTimecards();
-                if (timecards.isEmpty()) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("View Timecard");
-                    alert.setHeaderText(null);
-                    alert.setContentText("This user does not have any timecards to view.");
-                    alert.showAndWait();
+            if (users.getTimecards().isEmpty() && userB.getTimecards().isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("View Timecard");
+                alert.setHeaderText(null);
+                alert.setContentText("There are no timecards to view.");
+                alert.showAndWait();
+                return;
+            } else if (users.getTimecards().isEmpty()) {
+                selectedUser = userB;
+            } else if (userB.getTimecards().isEmpty()) {
+                selectedUser = users;
+            } else {
+                // create a dialog to select the user
+                ChoiceDialog<User> dialog = new ChoiceDialog<>(null, users, userB);
+                dialog.setTitle("View Timecard");
+                dialog.setHeaderText(null);
+                dialog.setContentText("Select a user:");
+
+                // filter the list of users to only show those who have timecards
+                dialog.getItems().removeIf(user -> user.getTimecards().isEmpty());
+
+                Optional<User> result = dialog.showAndWait();
+
+                if (result.isPresent()) {
+                    selectedUser = result.get();
                 } else {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("View Timecard");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Timecard information for " + user.getUsername() + ":\n\n");
-
-                    // add the timecard information to the alert message
-                    for (Timecard timecard : timecards) {
-                        String clockInTime = timecard.getClockInTime().format(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a"));
-                        String clockOutTime = timecard.getClockOutTime() == null ? "N/A" : timecard.getClockOutTime().format(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a"));
-                        alert.setContentText(alert.getContentText() + "Clock In: " + clockInTime + "\nClock Out: " + clockOutTime + "\n\n");
-                    }
-
-                    alert.showAndWait();
+                    return;
                 }
             }
+
+            List<Timecard> timecards = selectedUser.getTimecards();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("View Timecard");
+            alert.setHeaderText(null);
+            alert.setContentText("Timecard information for " + selectedUser.getUsername() + ":\n\n");
+
+            // add the timecard information to the alert message
+            for (Timecard timecard : timecards) {
+                String clockInTime = timecard.getClockInTime().format(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a"));
+                String clockOutTime = timecard.getClockOutTime() == null ? "N/A" : timecard.getClockOutTime().format(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a"));
+                alert.setContentText(alert.getContentText() + "Clock In: " + clockInTime + "\nClock Out: " + clockOutTime + "\n\n");
+            }
+
+            alert.showAndWait();
         });
+
+
+
 
         return login;
     }
 
 }
-

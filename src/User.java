@@ -25,7 +25,6 @@ public class User {
     public List<Timecard> getTimecards() {
         return timecards;
     }
-
     @Override
     public String toString() {
         return username;
