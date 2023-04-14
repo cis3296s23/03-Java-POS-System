@@ -1,7 +1,9 @@
 package src;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -10,7 +12,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -23,8 +27,6 @@ import javafx.stage.Stage;
 
 //extends application for JavaFX
 public class Main extends Application {
-    private static HashMap<String, LocalTime> empClockIns = new HashMap<>();
-    private static HashMap<String, LocalTime> empClockOuts = new HashMap<>();
     public static void main(String[] args) {
         //for start()
         launch(args);
@@ -57,11 +59,11 @@ public class Main extends Application {
         grid.setHgap(5);
 
         //make new grid (success page)
-        GridPane grid2 = new GridPane();
-        grid2.setPadding(new Insets(10, 10, 10, 10));
-        grid2.setMinSize(100,100);
-        grid2.setVgap(5);
-        grid2.setHgap(5);
+        GridPane successGrid = new GridPane();
+        successGrid.setPadding(new Insets(10, 10, 10, 10));
+        successGrid.setMinSize(100, 100);
+        successGrid.setVgap(5);
+        successGrid.setHgap(5);
 
         //make Log In label
         final Label loginLabel = new Label();
@@ -106,7 +108,7 @@ public class Main extends Application {
 
         //create the scenes where the grids will appear
         Scene login = new Scene(grid);
-        Scene success = new Scene(grid2);
+        Scene success = new Scene(successGrid);
 
         //create an error label for login errors
         final Label error = new Label();
@@ -119,25 +121,19 @@ public class Main extends Application {
         welcome.setText("Welcome! You've successfully logged in.");
         GridPane.setConstraints(welcome, 0, 3);
         GridPane.setColumnSpan(welcome, 2);
-        grid2.getChildren().add(welcome);
+        successGrid.getChildren().add(welcome);
+
+        //make continue button for success page
+        final Button continueButton = new Button();
+        continueButton.setText("Continue");
+        GridPane.setConstraints(continueButton, 1, 4);
+        successGrid.getChildren().add(continueButton);
 
         //create a back button
         final Button back = new Button();
         back.setText("<-");
         GridPane.setConstraints(back, 0, 5);
-        grid2.getChildren().add(back);
-
-        // create a clock-in button
-        final Button clockIn = new Button();
-        clockIn.setText("Clock In");
-        GridPane.setConstraints(clockIn, 0, 4);
-        grid2.getChildren().add(clockIn);
-
-        // create a clock-out button
-        final Button clockOut = new Button();
-        clockOut.setText("Clock Out");
-        GridPane.setConstraints(clockOut, 1, 4);
-        grid2.getChildren().add(clockOut);
+        successGrid.getChildren().add(back);
 
         //when loginButton is pressed, this happens
         loginButton.setOnAction(event -> {
@@ -147,46 +143,85 @@ public class Main extends Application {
                 // clear leftover name and password text
                 name.clear();
                 password.clear();
+
                 // switch to success scene
                 primaryStage.setScene(success);
                 primaryStage.show();
-                // run the rest of the program
-                // restaurant(rest1Name, pass1);
 
-            } else {
+            }else {
                 error.setText("Incorrect credentials.");
             }
         });
 
-        // handler for clock-in button
-        clockIn.setOnAction(event -> {
-            // get the current time
-            LocalTime now = LocalTime.now();
-            // get the employee's username
-            String username = name.getText();
-            // add the current time to the empClockIns HashMap for this employee
-            empClockIns.put(username, now);
-            // display a message to the user that they have clocked in
-            welcome.setText("You have clocked in at " + now.toString());
-        });
+        //when continueButton is pressed, this happens
+        continueButton.setOnAction(event -> {
+            //create a new grid for the clock-in/out page
+            GridPane clockGrid = new GridPane();
+            clockGrid.setPadding(new Insets(10, 10, 10, 10));
+            clockGrid.setMinSize(100, 100);
+            clockGrid.setVgap(5);
+            clockGrid.setHgap(5);
 
-        // handler for clock-out button
-        clockOut.setOnAction(event -> {
-            // get the current time
-            LocalTime now = LocalTime.now();
-            // get the employee's username
-            String username = name.getText();
-            // add the current time to the empClockOuts HashMap for this employee
-            empClockOuts.put(username, now);
-            // display a message to the user that they have clocked out
-            welcome.setText("You have clocked out at " + now.toString());
-            primaryStage.setScene(login);
+            //make clock-in button
+            final Button clockInButton = new Button();
+            clockInButton.setText("Clock In");
+            GridPane.setConstraints(clockInButton, 1, 1);
+            clockGrid.getChildren().add(clockInButton);
+
+            //make clock-out button
+            final Button clockOutButton = new Button();
+            clockOutButton.setText("Clock Out");
+            GridPane.setConstraints(clockOutButton, 2, 1);
+            clockGrid.getChildren().add(clockOutButton);
+
+            //make back button to return to the success page
+            final Button clockBackButton = new Button();
+            clockBackButton.setText("Back");
+            GridPane.setConstraints(clockBackButton, 0, 2);
+            clockGrid.getChildren().add(clockBackButton);
+
+            //create a new scene for the clock-in/out page
+            Scene clockScene = new Scene(clockGrid);
+
+            //when clockInButton is pressed, this happens
+            clockInButton.setOnAction(event1 -> {
+                //get current time
+                LocalDateTime currentTime = LocalDateTime.now();
+                //display message
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Clock In");
+                alert.setHeaderText(null);
+                alert.setContentText("You have clocked in at " + currentTime.format(DateTimeFormatter.ofPattern("hh:mm:ss a")));
+                alert.showAndWait();
+            });
+
+            //when clockOutButton is pressed, this happens
+            clockOutButton.setOnAction(event1 -> {
+                //get current time
+                LocalDateTime currentTime = LocalDateTime.now();
+                //display message
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Clock Out");
+                alert.setHeaderText(null);
+                alert.setContentText("You have clocked out at " + currentTime.format(DateTimeFormatter.ofPattern("hh:mm:ss a")));
+                alert.showAndWait();
+            });
+
+            //when clockBackButton is pressed, this happens
+            clockBackButton.setOnAction(event1 -> {
+                // go back to the success page
+                primaryStage.setScene(success);
+                primaryStage.show();
+            });
+
+            // switch to the clock-in/out scene
+            primaryStage.setScene(clockScene);
             primaryStage.show();
         });
 
+
         // handler for back button on success scene (back should have a more specific name)
         back.setOnAction(event -> {
-            // show the login scene
             primaryStage.setScene(login);
             primaryStage.show();
         });
