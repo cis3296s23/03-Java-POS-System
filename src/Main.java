@@ -195,7 +195,7 @@ public class Main extends Application {
                 alert.showAndWait();
             });
 
-            //when clockOutButton is pressed, this happens
+            //when clockOutButton is pressed, show the alert message
             clockOutButton.setOnAction(event1 -> {
                 //get current time
                 LocalDateTime currentTime = LocalDateTime.now();
@@ -204,6 +204,13 @@ public class Main extends Application {
                 alert.setTitle("Clock Out");
                 alert.setHeaderText(null);
                 alert.setContentText("You have clocked out at " + currentTime.format(DateTimeFormatter.ofPattern("hh:mm:ss a")));
+                //set onHidden event handler to go back to login scene and reset name and password fields
+                alert.setOnHidden(e -> {
+                    name.clear();
+                    password.clear();
+                    primaryStage.setScene(login);
+                    primaryStage.show();
+                });
                 alert.showAndWait();
             });
 
