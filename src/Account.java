@@ -3,45 +3,47 @@ public class Account {
     private String pass;
     private String empNum;
     private Employees empID;
-}
 
-public Account(){}
 
-public Account(String name, String pass, String empNum, Employees empID){
-    this.name =name;
-    this.pass = pass;
-    this.empNum = empNum;
-    this.empID = empID;
-}
+    public Account() {
+    }
 
-public String getName(){
-    return name;
-}
+    public Account(String name, String pass, String empNum, Employees empID) {
+        this.name = name;
+        this.pass = pass;
+        this.empNum = empNum;
+        this.empID = empID;
+    }
 
-public void setName(String name){
-    this.name = name;
-}
+    public String getName() {
+        return name;
+    }
 
-public String getPass(){
-    return pass;
-}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-public void setPass(String pass){
-    this.pass = pass;
-}
+    public String getPass() {
+        return pass;
+    }
 
-public String getEmpNum(){
-    return empNum;
-}
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
 
-public void setEmpNum(String empNum){
-    this.empNum =empNum;
-}
+    public String getEmpNum() {
+        return empNum;
+    }
 
-public Employees getEmpID(){
-    return empID;
-}
+    public void setEmpNum(String empNum) {
+        this.empNum = empNum;
+    }
 
-public void createEmpID(){
+    public Employees getEmpID() {
+        return empID;
+    }
 
+    public void createEmpID() {
+
+    }
 }

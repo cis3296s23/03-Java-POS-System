@@ -304,6 +304,9 @@ public class Main extends Application {
         * make as many labels as there are ordered items + 1 on the right side
         * last item is the total of the order
         * return a scene with the labels and buttons */
+        GridPane g = new GridPane();
+        Scene s = new Scene(g);
+        return s;
     }
 
 
