@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
@@ -30,5 +31,14 @@ public class AddPayment extends Application{
         Parent root = FXMLLoader.load(getClass().getResource("paymentMethod.fxml"));
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+    }
+
+    public static void main(String[] args){
+        launch(args);
+    }
+
+    private AnchorPane createPaymentMethodPane(){
+
+        return null;
     }
 }
