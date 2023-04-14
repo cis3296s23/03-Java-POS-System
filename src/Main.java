@@ -1,29 +1,17 @@
 package src;
 
-import java.time.Duration;
-import java.time.LocalTime;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 //extends application for JavaFX
 public class Main extends Application {
-    private static HashMap<String, LocalTime> empClockIns = new HashMap<>();
-    private static HashMap<String, LocalTime> empClockOuts = new HashMap<>();
     public static void main(String[] args) {
         //for start()
         launch(args);
@@ -37,261 +25,264 @@ public class Main extends Application {
         primaryStage.setScene(login);
         primaryStage.show();
     }
-    /*
-    Runs the rest of the program for now
-    @param They don't do anything right now, but they're here just in case
-     */
-    public void restaurant(String rest1Name, String pass1) {
 
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("\n******LOGIN SUCCESSFUL*****\n");
-        System.out.println("WELCOME TO DAVE'S BURGER");
-        System.out.println("Enter Username: ");
-        String user = scanner.nextLine();
-        System.out.println("Enter Password: ");
-        String pass = scanner.nextLine();
-
-        if (user.equals("admin") && pass.equals("admin123")) {
-            System.out.println("1. View Sale Report");
-            System.out.println("2. Take Order");
-            System.out.println("3. View Timecards");
-            System.out.println("4. Inventory");
-            System.out.println("Please enter your choice");
-            int choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    break;
-                case 2:
-                    System.out.println("***********CREATE ORDER***********");
-                    System.out.println("Enter customer name: ");
-                    String customerName = scanner.nextLine();
-                    System.out.println("Enter order details: ");
-                    String items = scanner.nextLine();
-                    System.out.println("Enter total price: ");
-                    double totalPrice = scanner.nextDouble();
-                    scanner.nextLine();
-                    System.out.println("Enter payment method: ");
-                    String paymentMethod = scanner.nextLine();
-                    Order order = new Order(customerName, Collections.singletonList(items), totalPrice, paymentMethod);
-                    System.out.println("Order created successfully!");
-                    System.out.println("***********CREATE ORDER***********");
-                    break;
-                case 3:
-                    System.out.println("***********TIMECARDS***********");
-                    for (String empId : empClockIns.keySet()) {
-                        System.out.print("Employee " + empId + ":\nClock in time: " + empClockIns.get(empId));
-                        if (empClockOuts.containsKey(empId)) {
-                            System.out.print("\nClock out time: " + empClockOuts.get(empId));
-                            Duration totalHours = Duration.between(empClockIns.get(empId), empClockOuts.get(empId));
-                            long hours = totalHours.toHours();
-                            long minutes = totalHours.toMinutes() % 60;
-                            System.out.println("\nTotal work hours: " + hours + " hours and " + minutes + " minutes.");
-                        } else {
-                            System.out.println("\nStatus: On shift.");
-                        }
-                    }
-                    break;
-                case 4:
-                    HashMap<String, Integer> inventory = new HashMap<>();
-                    inventory.put("Beef Burger", 50);
-                    inventory.put("Cheeseburger", 75);
-                    inventory.put("Hamburger", 100);
-                    inventory.put("French Fries", 200);
-                    inventory.put("Soft Drink", 300);
-                    inventory.put("Milkshake", 100);
-                    System.out.println("Current Inventory:");
-                    for (String item : inventory.keySet()) {
-                        System.out.println(item + ": " + inventory.get(item));
-                    }
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("Invalid choice!");
-                    break;
-            }
-        } else {
-            boolean continueWorking = true;
-            while (continueWorking) {
-                System.out.println("1. Clock-in to start working");
-                System.out.println("2. Create Order");
-                System.out.println("3. View Menu");
-                System.out.println("4. Log Out");
-                System.out.println("Enter your selection: ");
-                int choice = scanner.nextInt();
-                scanner.nextLine();
-
-                switch (choice) {
-                    case 1:
-                        System.out.println("***********CLOCK-IN***********");
-                        System.out.println("Please enter your 4 digits employee number: ");
-                        String empInfo = scanner.nextLine();
-                        System.out.println("1. Clock-in to start working");
-                        System.out.println("2. Clock-out to finish working");
-                        System.out.println("Enter your selection: ");
-                        int choice2 = scanner.nextInt();
-                        if (choice2 == 1) {
-                            empClockIns.put(empInfo, LocalTime.now());
-                            System.out.println("You have successfully clocked-in.");
-                        } else if (choice2 == 2) {
-                            empClockOuts.put(empInfo, LocalTime.now());
-                            System.out.println("You have successfully clocked-out.");
-                        }
-                        if (empClockIns.containsKey(empInfo)) {
-                            LocalTime clockInTime = empClockIns.get(empInfo);
-                            LocalTime clockOutTime = empClockOuts.get(empInfo);
-                            if (clockOutTime == null) {
-                                Duration totalHours = Duration.between(clockInTime, LocalTime.now());
-                                long hours = totalHours.toHours();
-                                long minutes = totalHours.toMinutes() % 60;
-                                System.out.println("You have worked " + hours + " hours and " + minutes + " minutes today.");
-                                System.out.println("You clocked in at " + clockInTime + ".");
-                            } else {
-                                Duration totalHours = Duration.between(clockInTime, clockOutTime);
-                                long hours = totalHours.toHours();
-                                long minutes = totalHours.toMinutes() % 60;
-                                System.out.println("You worked " + hours + " hours and " + minutes + " minutes on your last shift.");
-                                System.out.println("You clocked in at " + clockInTime + " and clocked out at " + clockOutTime + ".");
-                            }
-                        } else {
-                            System.out.println("You have not clocked in today.");
-                        }
-                        break;
-                    case 2:
-                        System.out.println("***********CREATE ORDER***********");
-                        System.out.println("Enter customer name: ");
-                        String customerName = scanner.nextLine();
-                        System.out.println("Enter order details: ");
-                        String items = scanner.nextLine();
-                        System.out.println("Enter total price: ");
-                        double totalPrice = scanner.nextDouble();
-                        scanner.nextLine();
-                        System.out.println("Enter payment method: ");
-                        String paymentMethod = scanner.nextLine();
-                        Order order = new Order(customerName, Collections.singletonList(items), totalPrice, paymentMethod);
-                        System.out.println("Order created successfully!");
-                        System.out.println("***********CREATE ORDER***********");
-                        break;
-                    case 3:
-                        System.out.println("***********MENU***********");
-                        System.out.println("1. Beef Burger - $11.99");
-                        System.out.println("2. Cheeseburger - $9.99");
-                        System.out.println("3. Hamburger - $8.99");
-                        System.out.println("4. French Fries - $4.99");
-                        System.out.println("5. Soft Drink - $1.99");
-                        System.out.println("6. Milkshake - $5.99");
-                        System.out.println("***********MENU***********");
-                        break;
-                    case 4:
-                        continueWorking = false;
-                        break;
-                    case 0:
-                        break;
-                    default:
-                        System.out.println("Invalid choice!");
-                        break;
-                }
-            }
-        }
-    }
     /*
     creates the login page for the first login required of the user
      */
     public Scene firstLogin(Stage primaryStage) {
+        User users = new User("a", "1");
+        User admin = new User("admin", "admin123");
 
-        //change the username and password for easier test
-        String rest1Name = "a";
-        String pass1 = "1";
         //make new grid where labels, fields, buttons, etc. are placed (login page)
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(5);
         grid.setHgap(5);
+
         //make new grid (success page)
-        GridPane grid2 = new GridPane();
-        grid2.setPadding(new Insets(10, 10, 10, 10));
-        grid2.setMinSize(100,100);
-        grid2.setVgap(5);
-        grid2.setHgap(5);
+        GridPane successGrid = new GridPane();
+        successGrid.setPadding(new Insets(10, 10, 10, 10));
+        successGrid.setMinSize(100, 100);
+        successGrid.setVgap(5);
+        successGrid.setHgap(5);
+
         //make Log In label
         final Label loginLabel = new Label();
         loginLabel.setText("Log In");
         GridPane.setConstraints(loginLabel, 0, 0);
         GridPane.setColumnSpan(loginLabel, 2);
         grid.getChildren().add(loginLabel);
+
         //make username label
         final Label userLabel = new Label();
         userLabel.setText("Username");
         GridPane.setConstraints(userLabel, 1, 1);
         GridPane.setColumnSpan(userLabel, 2);
         grid.getChildren().add(userLabel);
+
         //make username text field for input
         final TextField name = new TextField();
         name.setPromptText("Enter your username.");
         name.getText();
         GridPane.setConstraints(name, 1, 2);
         grid.getChildren().add(name);
+
         //make password label
         final Label passLabel = new Label();
         passLabel.setText("Password");
         GridPane.setConstraints(passLabel, 1, 3);
         GridPane.setColumnSpan(passLabel, 2);
         grid.getChildren().add(passLabel);
+
         //make password text field
         final TextField password = new TextField();
         password.setPromptText("Enter your password.");
         GridPane.setConstraints(password, 1, 4);
         grid.getChildren().add(password);
         password.getText();
+
         //make button to submit login info
         final Button loginButton = new Button();
         loginButton.setText("Log In");
         GridPane.setConstraints(loginButton, 1, 5);
         grid.getChildren().add(loginButton);
+
         //create the scenes where the grids will appear
         Scene login = new Scene(grid);
-        Scene success = new Scene(grid2);
+        Scene success = new Scene(successGrid);
+
         //create an error label for login errors
         final Label error = new Label();
         GridPane.setConstraints(error, 1, 6);
         GridPane.setColumnSpan(error, 2);
         grid.getChildren().add(error);
+
         //create a welcome label for the success scene
         final Label welcome = new Label();
         welcome.setText("Welcome! You've successfully logged in.");
         GridPane.setConstraints(welcome, 0, 3);
         GridPane.setColumnSpan(welcome, 2);
-        grid2.getChildren().add(welcome);
+        successGrid.getChildren().add(welcome);
+
+        //make continue button for success page
+        final Button continueButton = new Button();
+        continueButton.setText("Continue");
+        GridPane.setConstraints(continueButton, 1, 4);
+        successGrid.getChildren().add(continueButton);
+
         //create a back button
         final Button back = new Button();
         back.setText("<-");
         GridPane.setConstraints(back, 0, 5);
-        grid2.getChildren().add(back);
+        successGrid.getChildren().add(back);
+
+        //make view timecard button for admin page
+        final Button viewTimecardButton = new Button();
+        viewTimecardButton.setText("View Timecard");
+        GridPane.setConstraints(viewTimecardButton, 1, 1);
+        GridPane.setColumnSpan(viewTimecardButton, 2);
+
+        //create a new grid for the admin page
+        GridPane adminGrid = new GridPane();
+        adminGrid.setPadding(new Insets(10, 10, 10, 10));
+        adminGrid.setMinSize(100, 100);
+        adminGrid.setVgap(5);
+        adminGrid.setHgap(5);
+
+        //add the view timecard button to the admin grid
+        adminGrid.getChildren().add(viewTimecardButton);
+
+        //create a new scene for the admin page
+        Scene adminScene = new Scene(adminGrid);
+
         //when loginButton is pressed, this happens
         loginButton.setOnAction(event -> {
             // clear any leftover text in error
             error.setText("");
-            if (name.getText().equals(rest1Name) && password.getText().equals(pass1)) {
+            if (name.getText().equals(users.getUsername()) && password.getText().equals(users.getPassword())) {
                 // clear leftover name and password text
                 name.clear();
                 password.clear();
+
                 // switch to success scene
                 primaryStage.setScene(success);
                 primaryStage.show();
-                // run the rest of the program
-                restaurant(rest1Name, pass1);
 
-            } else {
+            }else if(name.getText().equals(admin.getUsername()) && password.getText().equals(admin.getPassword())) {
+                name.clear();
+                password.clear();
+
+                // switch to admin scene
+                primaryStage.setScene(adminScene);
+                primaryStage.show();
+            }else {
                 error.setText("Incorrect credentials.");
             }
         });
 
+        //when continueButton is pressed, this happens
+        continueButton.setOnAction(event -> {
+            //create a new grid for the clock-in/out page
+            GridPane clockGrid = new GridPane();
+            clockGrid.setPadding(new Insets(10, 10, 10, 10));
+            clockGrid.setMinSize(100, 100);
+            clockGrid.setVgap(5);
+            clockGrid.setHgap(5);
+
+            //make clock-in button
+            final Button clockInButton = new Button();
+            clockInButton.setText("Clock In");
+            GridPane.setConstraints(clockInButton, 1, 1);
+            clockGrid.getChildren().add(clockInButton);
+
+            //make clock-out button
+            final Button clockOutButton = new Button();
+            clockOutButton.setText("Clock Out");
+            GridPane.setConstraints(clockOutButton, 2, 1);
+            clockGrid.getChildren().add(clockOutButton);
+
+            //make back button to return to the success page
+            final Button clockBackButton = new Button();
+            clockBackButton.setText("Back");
+            GridPane.setConstraints(clockBackButton, 0, 2);
+            clockGrid.getChildren().add(clockBackButton);
+
+            //create a new scene for the clock-in/out page
+            Scene clockScene = new Scene(clockGrid);
+
+            //when clockInButton is pressed, this happens
+            clockInButton.setOnAction(event1 -> {
+                //get current time
+                LocalDateTime currentTime = LocalDateTime.now();
+                Timecard timecard = new Timecard(currentTime, null);
+                // get the user object and add the new timecard to their list of timecards
+                users.getTimecards().add(timecard);
+                //display message
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Clock In");
+                alert.setHeaderText(null);
+                alert.setContentText("You have clocked in at " + currentTime.format(DateTimeFormatter.ofPattern("hh:mm:ss a")));
+                alert.showAndWait();
+            });
+
+            //when clockOutButton is pressed, show the alert message
+            clockOutButton.setOnAction(event1 -> {
+                // get the most recent timecard
+                List<Timecard> timecards = users.getTimecards();
+                Timecard mostRecentTimecard = timecards.get(timecards.size() - 1);
+
+                // update the clockOutTime field with the current time
+                mostRecentTimecard.setClockOutTime(LocalDateTime.now());
+
+                //display message
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Clock Out");
+                alert.setHeaderText(null);
+                alert.setContentText("You have clocked out at " + mostRecentTimecard.getClockOutTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a")));
+                //set onHidden event handler to go back to log in scene and reset name and password fields
+                alert.setOnHidden(e -> {
+                    name.clear();
+                    password.clear();
+                    primaryStage.setScene(login);
+                    primaryStage.show();
+                });
+                alert.showAndWait();
+            });
+
+
+            //when clockBackButton is pressed, this happens
+            clockBackButton.setOnAction(event1 -> {
+                // go back to the success page
+                primaryStage.setScene(success);
+                primaryStage.show();
+            });
+
+            // switch to the clock-in/out scene
+            primaryStage.setScene(clockScene);
+            primaryStage.show();
+        });
+
+
         // handler for back button on success scene (back should have a more specific name)
         back.setOnAction(event -> {
-            // show the login scene
             primaryStage.setScene(login);
             primaryStage.show();
+        });
+
+        //when viewTimecardButton is pressed, show the alert message and when the user click ok, back to login page
+        viewTimecardButton.setOnAction(event -> {
+            // create a dialog to select the user
+            ChoiceDialog<User> dialog = new ChoiceDialog<>(null, users);
+            dialog.setTitle("View Timecard");
+            dialog.setHeaderText(null);
+            dialog.setContentText("Select a user:");
+            Optional<User> result = dialog.showAndWait();
+
+            if (result.isPresent()) {
+                User user = result.get();
+                List<Timecard> timecards = user.getTimecards();
+                if (timecards.isEmpty()) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("View Timecard");
+                    alert.setHeaderText(null);
+                    alert.setContentText("This user does not have any timecards to view.");
+                    alert.showAndWait();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("View Timecard");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Timecard information for " + user.getUsername() + ":\n\n");
+
+                    // add the timecard information to the alert message
+                    for (Timecard timecard : timecards) {
+                        String clockInTime = timecard.getClockInTime().format(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a"));
+                        String clockOutTime = timecard.getClockOutTime() == null ? "N/A" : timecard.getClockOutTime().format(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a"));
+                        alert.setContentText(alert.getContentText() + "Clock In: " + clockInTime + "\nClock Out: " + clockOutTime + "\n\n");
+                    }
+
+                    alert.showAndWait();
+                }
+            }
         });
 
         return login;
