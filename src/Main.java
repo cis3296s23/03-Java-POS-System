@@ -219,7 +219,7 @@ public class Main extends Application {
                 alert.setTitle("Clock Out");
                 alert.setHeaderText(null);
                 alert.setContentText("You have clocked out at " + mostRecentTimecard.getClockOutTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a")));
-                //set onHidden event handler to go back to login scene and reset name and password fields
+                //set onHidden event handler to go back to log in scene and reset name and password fields
                 alert.setOnHidden(e -> {
                     name.clear();
                     password.clear();
