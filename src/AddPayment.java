@@ -38,7 +38,7 @@ public class AddPayment implements Initializable {
     private RadioButton cashRadioBtn, cardRadioBtn;
 
     @FXML
-    private Button nextButton;
+    private Button nextButton, backButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
