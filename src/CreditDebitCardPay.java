@@ -64,7 +64,7 @@ public class CreditDebitCardPay implements Initializable {
         String rightPositionCSS = "-fx-alignment: CENTER-RIGHT;";
         String centerPostionCSS = "-fx-alignment: CENTER;";
 
-        TableColumn<Item, String>
+        //TableColumn<Item, String>
 
     }
 }
