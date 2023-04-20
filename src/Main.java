@@ -6,9 +6,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -100,7 +105,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         Scene login = firstLogin(primaryStage);
         // show the initial login window
         primaryStage.setScene(login);
@@ -111,72 +115,70 @@ public class Main extends Application {
     creates the login page for the first login required of the user
      */
     public Scene firstLogin(Stage primaryStage) {
-
         User admin = new User("admin", "admin123");
 
         // make new grid where labels, fields, buttons, etc. are placed (login page)
         GridPane grid = new GridPane();
-        grid.setPadding(new Insets(10, 10, 10, 10));
-        grid.setVgap(5);
-        grid.setHgap(5);
+        grid.setPadding(new Insets(20));
+        grid.setVgap(20);
+        grid.setHgap(20);
 
-        // make new grid (dashboard page)
+        // set column constraints for the grid
+        ColumnConstraints column1 = new ColumnConstraints();
+        column1.setPercentWidth(30);
+        ColumnConstraints column2 = new ColumnConstraints();
+        column2.setPercentWidth(70);
+        grid.getColumnConstraints().addAll(column1, column2);
+
+        // create the scenes where the grids will appear
+        Scene login = new Scene(grid);
         GridPane dashboardGrid = new GridPane();
-        dashboardGrid.setPadding(new Insets(10, 10, 10, 10));
-        dashboardGrid.setMinSize(100, 100);
-        dashboardGrid.setVgap(5);
-        dashboardGrid.setHgap(5);
+        Scene dashboard = new Scene(dashboardGrid);
 
         // make Log In label
         final Label loginLabel = new Label();
         loginLabel.setText("Log In");
-        GridPane.setConstraints(loginLabel, 0, 0);
-        GridPane.setColumnSpan(loginLabel, 2);
+        loginLabel.setStyle("-fx-font-size: 30px; -fx-font-weight: bold;");
+        GridPane.setConstraints(loginLabel, 0, 0, 2, 1, HPos.CENTER, VPos.CENTER);
         grid.getChildren().add(loginLabel);
 
         // make admin name label
         final Label adminNameLabel = new Label();
-        adminNameLabel.setText("Admin Name");
-        GridPane.setConstraints(adminNameLabel, 1, 1);
-        GridPane.setColumnSpan(adminNameLabel, 2);
+        adminNameLabel.setText("Admin");
+        GridPane.setConstraints(adminNameLabel, 0, 1, 1, 1, HPos.RIGHT, VPos.CENTER);
         grid.getChildren().add(adminNameLabel);
 
         // make admin name text field for input
         final TextField adminName = new TextField();
         adminName.setPromptText("Enter admin name.");
-        adminName.getText();
-        GridPane.setConstraints(adminName, 1, 2);
+        GridPane.setConstraints(adminName, 1, 1, 1, 1, HPos.LEFT, VPos.CENTER);
         grid.getChildren().add(adminName);
 
         // make password label
         final Label passLabel = new Label();
         passLabel.setText("Password");
-        GridPane.setConstraints(passLabel, 1, 3);
-        GridPane.setColumnSpan(passLabel, 2);
+        GridPane.setConstraints(passLabel, 0, 2, 1, 1, HPos.RIGHT, VPos.CENTER);
         grid.getChildren().add(passLabel);
 
         // make password text field
-        final TextField password = new TextField();
+        final PasswordField password = new PasswordField();
         password.setPromptText("Enter your password.");
-        GridPane.setConstraints(password, 1, 4);
+        GridPane.setConstraints(password, 1, 2, 1, 1, HPos.LEFT, VPos.CENTER);
         grid.getChildren().add(password);
-        password.getText();
 
         // make button to submit login info
         final Button loginButton = new Button();
         loginButton.setText("Log In");
-        GridPane.setConstraints(loginButton, 1, 5);
+        loginButton.setStyle("-fx-font-size: 16px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
+        GridPane.setConstraints(loginButton, 1, 3, 1, 1, HPos.RIGHT, VPos.CENTER);
         grid.getChildren().add(loginButton);
 
         // make button to go to dashboard
         final Button dashboardButton = new Button();
         dashboardButton.setText("Dashboard");
-        GridPane.setConstraints(dashboardButton, 2, 5);
+        dashboardButton.setStyle("-fx-font-size: 16px; -fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;");
+        GridPane.setConstraints(dashboardButton, 1, 3, 1, 1, HPos.LEFT, VPos.CENTER);
         grid.getChildren().add(dashboardButton);
-
-        // create the scenes where the grids will appear
-        Scene login = new Scene(grid);
-        Scene dashboard = new Scene(dashboardGrid);
 
         // create an error label for login errors
         final Label error = new Label();
@@ -187,22 +189,18 @@ public class Main extends Application {
         // create a welcome label for the dashboard scene
         final Label welcome = new Label();
         welcome.setText("Welcome to the dashboard!");
-        GridPane.setConstraints(welcome, 0, 0);
-        GridPane.setColumnSpan(welcome, 2);
+        welcome.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
+        GridPane.setConstraints(welcome, 0, 0, 3, 1); // set the welcome label to span three columns
         dashboardGrid.getChildren().add(welcome);
-
-        // make view timecard button for dashboard page
-//        final Button viewTimecardButton = new Button();
-//        viewTimecardButton.setText("View Timecard");
-//        GridPane.setConstraints(viewTimecardButton, 1, 1);
-//        GridPane.setColumnSpan(viewTimecardButton, 2);
-//        dashboardGrid.getChildren().add(viewTimecardButton);
 
         // make logout button for dashboard page
         final Button logoutButton = new Button();
         logoutButton.setText("Logout");
         GridPane.setConstraints(logoutButton, 2, 5);
         dashboardGrid.getChildren().add(logoutButton);
+
+        // set the grid background color to light gray
+        grid.setStyle("-fx-background-color: #f5f5f5;");
 
         //when loginButton is pressed, this happens
         loginButton.setOnAction(event -> {
@@ -220,7 +218,7 @@ public class Main extends Application {
 
             } else {
                 // display error message for incorrect credentials
-                error.setText("Incorrect credentials.");
+                error.setText("Incorrect credentials. Please try again.");
             }
         });
 
