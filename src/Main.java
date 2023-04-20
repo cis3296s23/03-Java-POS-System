@@ -131,9 +131,9 @@ public class Main extends Application {
         grid.getColumnConstraints().addAll(column1, column2);
 
         // create the scenes where the grids will appear
-        Scene login = new Scene(grid);
+        Scene login = new Scene(grid, 400, 400);
         GridPane dashboardGrid = new GridPane();
-        Scene dashboard = new Scene(dashboardGrid);
+        Scene dashboard = new Scene(dashboardGrid, 800, 600);
 
         // make Log In label
         final Label loginLabel = new Label();
