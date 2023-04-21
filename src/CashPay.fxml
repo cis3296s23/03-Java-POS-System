@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="486.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.CashPay">
    <children>
       <Label id="DBLabel" layoutX="210.0" layoutY="26.0" text="Dave's Burger">
@@ -18,7 +17,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button id="backButton" layoutX="27.0" layoutY="23.0" mnemonicParsing="false" text="Back" />
+      <Button id="backButton" layoutX="27.0" layoutY="23.0" mnemonicParsing="false" onAction="#switchBackToPaymentMethod" text="Back" />
       <SplitPane dividerPositions="0.49283667621776506" layoutY="105.0" prefHeight="382.0" prefWidth="700.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">

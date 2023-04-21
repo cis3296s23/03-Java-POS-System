@@ -74,6 +74,6 @@
          <font>
             <Font size="36.0" />
          </font></Label>
-      <Button id="backButton" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" text="Back" />
+      <Button id="backButton" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchBackToPaymentMethod" text="Back" />
    </children>
 </AnchorPane>
