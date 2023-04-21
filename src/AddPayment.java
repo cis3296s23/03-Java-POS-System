@@ -1,5 +1,6 @@
 package src;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
 import java.time.LocalTime;
@@ -15,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,18 +32,41 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 //extends application for JavaFX
 
-public class AddPayment implements Initializable {
-    @FXML
+//public class AddPayment implements Initializable {
+public class AddPayment  {
+   /* @FXML
     private Label davesBurgerLabel, paymentMethodLabel;
 
     @FXML
-    private RadioButton cashRadioBtn, cardRadioBtn;
+    private Button cashPayButton, cardPayButton;
 
     @FXML
-    private Button nextButton, backButton;
+    private Button backButton;
 
+    private Stage stage;
+    private Scene scene;
+    private  Parent root;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    }
+*/
+    private Stage stage;
+    private Scene scene;
+    private  Parent root;
+    public void switchToCashPay(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("CashPay.fxml"));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToCardPay(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("CreditDebitCardPay.fxml"));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
