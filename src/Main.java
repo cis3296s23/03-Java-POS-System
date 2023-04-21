@@ -1,11 +1,14 @@
 package src;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -104,6 +107,20 @@ public class Main extends Application {
         // show the initial login window
         primaryStage.setScene(login);
         primaryStage.show();
+
+
+    }
+
+    public Scene dashScene(Stage primaryStage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("dashPage.fxml"));
+        //scene.getStylesheets().add(getClass().getResource());
+        Scene scene = new Scene(root);
+        primaryStage.setTitle("Dashboard");
+        //String css = this.getClass().getResource("dashStyle.css").toExternalForm();
+        //scene.getStylesheets().add(css);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        return scene;
     }
 
     /*

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.DashboardController">
+    <children>
+        <Button fx:id="menu" layoutY="82.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Menu" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" />
+            </font></Button>
+        <Button fx:id="clockIn" layoutY="146.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="146.0" text="Clock-in/out" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" />
+            </font></Button>
+        <Button fx:id="setting" layoutY="265.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="146.0" text="Setting" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" />
+            </font></Button>
+        <Button fx:id="transaction" layoutY="208.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="146.0" text="Transaction" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" />
+            </font></Button>
+        <Button layoutX="526.0" layoutY="360.0" mnemonicParsing="false" text="Logout" />
+        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Admin Acess" />
+    </children>
+</AnchorPane>
