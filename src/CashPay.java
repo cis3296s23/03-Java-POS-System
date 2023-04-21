@@ -1,5 +1,6 @@
 package src;
 
+
 import java.net.URL;
 import java.time.Duration;
 import java.time.LocalTime;
@@ -17,10 +18,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -28,18 +26,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import javax.swing.table.TableColumn;
+
+import static javafx.application.Application.launch;
 //extends application for JavaFX
 
-public class AddPayment implements Initializable {
-    @FXML
-    private Label davesBurgerLabel, paymentMethodLabel;
-
-    @FXML
-    private RadioButton cashRadioBtn, cardRadioBtn;
-
-    @FXML
-    private Button nextButton, backButton;
-
+public class CashPay implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

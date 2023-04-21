@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="468.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.CreditDebitCardPay">
    <children>
@@ -15,24 +16,35 @@
         <items>
           <AnchorPane maxWidth="500.0" minHeight="0.0" minWidth="0.0" prefHeight="328.0" prefWidth="204.0">
                <children>
-                  <Label id="nameLabel" layoutX="28.0" layoutY="44.0" text="Name:" />
-                  <TextField id="nameTextField" layoutX="152.0" layoutY="40.0" />
-                  <Label id="PayInfoLabel" layoutX="13.0" layoutY="14.0" text="Payment Information:" />
-                  <Label id="mobileNumLabel" layoutX="20.0" layoutY="98.0" text="Mobile Number:" />
-                  <TextField id="MobileNumTextField" layoutX="151.0" layoutY="94.0" />
-                  <Label id="cardInfoLabel" layoutX="12.0" layoutY="197.0" text="Credit / Debit Card Information:" />
-                  <Label id="cardNumLabel" layoutX="13.0" layoutY="241.0" text="Card Number:" />
-                  <TextField id="cardNumTextField" layoutX="101.0" layoutY="237.0" prefHeight="26.0" prefWidth="211.0" />
-                  <Label id="ExpDateLabel" layoutX="11.0" layoutY="279.0" text="Exp. Date:" />
-                  <TextField id="ExpDateTextField" layoutX="96.0" layoutY="274.0" prefHeight="27.0" prefWidth="89.0" text="MM/YYYY" />
-                  <Label id="CVVLabel" layoutX="201.0" layoutY="279.0" text="CVV: " />
-                  <TextField id="CVVTextField" layoutX="242.0" layoutY="274.0" prefHeight="27.0" prefWidth="67.0" />
-                  <Label id="rewardsLabels" layoutX="13.0" layoutY="342.0" text="Rewards/ Coupons:" />
+                  <Label id="nameLabel" layoutX="33.0" layoutY="72.0" text="Name:" />
+                  <TextField id="nameTextField" layoutX="121.0" layoutY="67.0" prefHeight="26.0" prefWidth="191.0" />
+                  <Label id="PayInfoLabel" layoutX="9.0" layoutY="14.0" text="Payment Information:">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label id="mobileNumLabel" layoutX="19.0" layoutY="127.0" text="Mobile Number:" />
+                  <TextField id="MobileNumTextField" layoutX="121.0" layoutY="122.0" prefHeight="26.0" prefWidth="191.0" />
+                  <Label id="cardInfoLabel" layoutX="13.0" layoutY="185.0" text="Credit / Debit Card Information:">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label id="cardNumLabel" layoutX="13.0" layoutY="263.0" text="Card Number:" />
+                  <TextField id="cardNumTextField" layoutX="115.0" layoutY="258.0" prefHeight="26.0" prefWidth="198.0" text=" #### #### #### ####" />
+                  <Label id="ExpDateLabel" layoutX="24.0" layoutY="306.0" text="Exp. Date:" />
+                  <TextField id="ExpDateTextField" layoutX="112.0" layoutY="301.0" prefHeight="27.0" prefWidth="87.0" text="MM/YYYY" />
+                  <Label id="CVVLabel" layoutX="210.0" layoutY="306.0" text="CVV: " />
+                  <TextField id="CVVTextField" layoutX="257.0" layoutY="301.0" prefHeight="27.0" prefWidth="55.0" text="***" />
+                  <Label id="rewardsLabels" layoutX="13.0" layoutY="342.0" text="Rewards/ Coupons:">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                   <RadioButton id="tenPercentOffRadioBtn" layoutX="18.0" layoutY="379.0" mnemonicParsing="false" text="10% off " />
                   <RadioButton id="fifteenPercentOffRadioBtn" layoutX="106.0" layoutY="379.0" mnemonicParsing="false" text="15 % off" />
                   <RadioButton id="twentyPercentOffRadioBtn" layoutX="196.0" layoutY="379.0" mnemonicParsing="false" text="20% off" />
                   <Button id="customButton" layoutX="275.0" layoutY="375.0" mnemonicParsing="false" text="Custom" />
                   <Button id="saveButton" layoutX="140.0" layoutY="448.0" mnemonicParsing="false" text="Save" />
+                  <TextField id="cardNameTextField" layoutX="115.0" layoutY="217.0" prefHeight="26.0" prefWidth="198.0" />
+                  <Label id="cardNameLabel" layoutX="12.0" layoutY="222.0" text="Name on Card:" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0">
@@ -42,10 +54,13 @@
                   <Label id="totalLabel" layoutX="20.0" layoutY="402.0" text="Total:" />
                   <TextField id="totalTextField" layoutX="102.0" layoutY="397.0" text="Total: " />
                   <Button id="processPaymentButton" layoutX="219.0" layoutY="450.0" mnemonicParsing="false" text="Process Payment" />
-                  <Label id="yourOrderLabel" layoutX="14.0" layoutY="14.0" text="Your Order: " />
+                  <Label id="yourOrderLabel" layoutX="14.0" layoutY="14.0" text="Your Order: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                   <Label id="subTotalLabel" layoutX="20.0" layoutY="314.0" text="SubTotal: " />
                   <Label id="discountLabel" layoutX="21.0" layoutY="353.0" text="Discount:" />
-                  <TableView id="yourOrderTableView" layoutX="8.0" layoutY="51.0" prefHeight="212.0" prefWidth="288.0">
+                  <TableView id="yourOrderTableView" layoutX="8.0" layoutY="51.0" prefHeight="212.0" prefWidth="323.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="C1" />
                       <TableColumn prefWidth="75.0" text="C2" />
@@ -55,7 +70,10 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <Label layoutX="335.0" layoutY="25.0" text="Dave's Burger" />
+      <Label layoutX="257.0" layoutY="25.0" text="Dave's Burger">
+         <font>
+            <Font size="36.0" />
+         </font></Label>
       <Button id="backButton" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" text="Back" />
    </children>
 </AnchorPane>
