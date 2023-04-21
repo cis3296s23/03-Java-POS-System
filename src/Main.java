@@ -1,6 +1,6 @@
 package src;
 
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -13,12 +13,19 @@ import javafx.geometry.VPos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 //extends application for JavaFX
 public class Main extends Application {
+
+    static String driver = "com.mysql.cj.jdbc.Driver";
+    static String url = "jdbc:mysql://localhost:3306";
+    //make sure your local server is on and username and password are the according to this below
+    static String user = "root";
+    static String passwordDB = "Yellow6936Tail!";
     public static void main(String[] args) {
         //an array of string to hold the menu data
         String[][] menuItems = {
@@ -75,17 +82,17 @@ public class Main extends Application {
 
         System.out.println("\tDATABASE CREATION");
 
-        String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost";
+       /* String driver = "com.mysql.cj.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306";
         //make sure your local server is on and username and password are the according to this below
         String user = "root";
-        String password = "root1234";
+        String passwordDB = "Yellow6936Tail!"; */
 
         //create an instance for Database class
         Database database = null;
 
         try {
-            database = new Database(url, user, password, menuItems, employees);
+            database = new Database(url, user, passwordDB, menuItems, employees);
             database.createDatabase();
             System.out.println("***************************************");
         } catch (SQLException e) {
@@ -229,7 +236,7 @@ public class Main extends Application {
             password.clear();
 
             // switch to dashboard scene
-            primaryStage.setScene(dashboard);
+            primaryStage.setScene(menuPage(url, user, passwordDB));
             primaryStage.show();
         });
 
@@ -242,4 +249,60 @@ public class Main extends Application {
 
         return login;
     }
+
+    public Scene menuPage(String url, String username, String pass) {
+        AnchorPane anchor = new AnchorPane();
+        GridPane grid = new GridPane();
+        ScrollPane scroll = new ScrollPane();
+        String getMenu = "SELECT item_id, item_name, item_price, category FROM menu ORDER BY category";
+        try {
+
+            Connection conn = DriverManager.getConnection(url+"/data", username, pass);
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(getMenu);
+            int offset = 1;
+            String lastCat = "";
+            while (rs.next()) {
+                String cat = rs.getString("category");
+                if (!lastCat.equals(cat) || offset == 1) {
+
+                    Label category = new Label(cat);
+                    grid.add(category, 1, offset);
+                    offset++;
+                }
+                lastCat = cat;
+                Label itemID = new Label("(" + rs.getString("item_id") + ") ");
+                Label name = new Label(rs.getString("item_name"));
+                Label item_price = new Label(rs.getString("item_price") + " ");
+                Button add = new Button("Add");
+                grid.add(itemID, 2, offset);
+                grid.add(name, 3, offset);
+                grid.add(item_price, 4, offset);
+                grid.add(add, 5, offset);
+
+                offset++;
+
+
+
+
+            }
+
+            scroll.setContent(grid);
+            scroll.setPrefViewportHeight(400);
+            scroll.setPrefViewportWidth(300);
+            AnchorPane.setTopAnchor(grid, 120.0);
+            AnchorPane.setLeftAnchor(grid, 10.0);
+            AnchorPane.setRightAnchor(grid, 230.0);
+            AnchorPane.setBottomAnchor(grid, 120.0);
+
+            anchor.getChildren().add(scroll);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        Scene j = new Scene(anchor);
+
+        return j;
+    }
+
+
 }
