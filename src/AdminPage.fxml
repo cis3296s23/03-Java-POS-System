@@ -20,7 +20,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -50,7 +49,7 @@
                               <Button layoutX="2.0" layoutY="237.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Reports" />
                               <Button layoutX="3.0" layoutY="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="204.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Team" />
                               <Button layoutX="3.0" layoutY="361.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Balance" />
-                              <Button layoutX="74.0" layoutY="560.0" mnemonicParsing="false" styleClass="logout" stylesheets="@adminDesign.css" text="Log Out" textFill="#fcf6f6" />
+                              <Button layoutX="74.0" layoutY="560.0" mnemonicParsing="false" styleClass="red" stylesheets="@adminDesign.css" text="Log Out" textFill="#fcf6f6" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -139,7 +138,7 @@
                               <Separator layoutX="9.0" layoutY="221.0" prefHeight="4.0" prefWidth="865.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="13.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="43.0" layoutY="92.0" prefHeight="600.0" prefWidth="887.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutX="43.0" layoutY="92.0" prefHeight="600.0" prefWidth="887.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Separator prefHeight="3.0" prefWidth="840.0" AnchorPane.bottomAnchor="305.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="292.0" />
                               <AnchorPane prefHeight="251.0" prefWidth="845.0" stylesheets="@adminDesign.css" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="20.0">
@@ -306,7 +305,7 @@
                               <Separator layoutX="25.0" layoutY="286.0" prefHeight="3.0" prefWidth="840.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="22.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="64.0" layoutY="121.0" prefHeight="600.0" prefWidth="887.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutX="64.0" layoutY="121.0" prefHeight="600.0" prefWidth="887.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="24.0" layoutY="306.0" prefHeight="273.0" prefWidth="840.0" stylesheets="@adminDesign.css" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="23.0">
                                  <styleClass>

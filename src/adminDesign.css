@@ -72,3 +72,31 @@
 .btn:hover{
     -fx-background-color: linear-gradient(to bottom right, #0fb565, #399a8f);
 }
+.but{
+    -fx-text-fill: white;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+.but:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+.red{
+
+    -fx-background-color: linear-gradient(#ff5400,#be1d00);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+
+}
+
+.red:hover{
+
+    -fx-background-color: linear-gradient(#be1d00,#ff5400);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+
+}
