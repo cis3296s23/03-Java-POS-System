@@ -20,9 +20,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.AdminPageController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane fx:id="mainForm" prefHeight="200.0" prefWidth="200.0">
          <children>
             <BorderPane layoutX="149.0" layoutY="52.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <left>
@@ -40,16 +40,16 @@
                                  </children>
                               </AnchorPane>
                               <Label layoutX="27.0" layoutY="94.0" text="Welcome," textFill="#eeeeee" />
-                              <Label layoutX="96.0" layoutY="94.0" prefHeight="18.0" prefWidth="81.0" text="POS Team" textFill="#f2f4f5">
+                              <Label fx:id="name_label" layoutX="96.0" layoutY="94.0" prefHeight="18.0" prefWidth="81.0" text="POS TEAM" textFill="#f2f4f5">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="2.0" layoutY="174.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Menu Update" />
-                              <Button layoutX="2.0" layoutY="237.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Reports" />
-                              <Button layoutX="3.0" layoutY="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="204.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Team" />
-                              <Button layoutX="3.0" layoutY="361.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Balance" />
-                              <Button layoutX="74.0" layoutY="560.0" mnemonicParsing="false" styleClass="red" stylesheets="@adminDesign.css" text="Log Out" textFill="#fcf6f6" />
+                              <Button fx:id="menu_btn" layoutX="2.0" layoutY="174.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Menu Update" />
+                              <Button fx:id="report_btn" layoutX="2.0" layoutY="237.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Reports" />
+                              <Button fx:id="team_btn" layoutX="3.0" layoutY="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="204.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Team" />
+                              <Button fx:id="balance_btn" layoutX="3.0" layoutY="361.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Balance" />
+                              <Button fx:id="logout_btn" layoutX="74.0" layoutY="560.0" mnemonicParsing="false" onAction="#logout_btn" styleClass="red" stylesheets="@adminDesign.css" text="Log Out" textFill="#fcf6f6" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -58,7 +58,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="108.0" layoutY="71.0" prefHeight="600.0" prefWidth="887.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="balance_scene" layoutX="108.0" layoutY="71.0" prefHeight="600.0" prefWidth="887.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="9.0" layoutY="14.0" prefHeight="200.0" prefWidth="869.0" stylesheets="@adminDesign.css" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="0.0">
                                  <styleClass>
@@ -66,7 +66,7 @@
                                     <String fx:value="radius" />
                                  </styleClass>
                                  <children>
-                                    <AnchorPane layoutX="29.0" layoutY="20.0" prefHeight="161.0" prefWidth="254.0" styleClass="nav-form" stylesheets="@adminDesign.css">
+                                    <AnchorPane fx:id="todayDate" layoutX="29.0" layoutY="20.0" prefHeight="161.0" prefWidth="254.0" styleClass="nav-form" stylesheets="@adminDesign.css">
                                        <children>
                                           <Label layoutX="67.0" layoutY="31.0" prefHeight="31.0" prefWidth="101.0" text="Today's Date" textFill="#eee8e8">
                                              <font>
@@ -80,7 +80,7 @@
                                           </Label>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane layoutX="308.0" layoutY="20.0" prefHeight="161.0" prefWidth="254.0" styleClass="nav-form" stylesheets="@adminDesign.css">
+                                    <AnchorPane fx:id="todaySale" layoutX="308.0" layoutY="20.0" prefHeight="161.0" prefWidth="254.0" styleClass="nav-form" stylesheets="@adminDesign.css">
                                        <children>
                                           <Label alignment="CENTER" layoutX="67.0" layoutY="31.0" prefHeight="31.0" prefWidth="101.0" text="Sale's Today" textFill="#eee8e8">
                                              <font>
@@ -94,7 +94,7 @@
                                           </Label>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane layoutX="593.0" layoutY="20.0" prefHeight="161.0" prefWidth="254.0" styleClass="nav-form" stylesheets="@adminDesign.css">
+                                    <AnchorPane fx:id="orderVol" layoutX="593.0" layoutY="20.0" prefHeight="161.0" prefWidth="254.0" styleClass="nav-form" stylesheets="@adminDesign.css">
                                        <children>
                                           <Label alignment="CENTER" layoutX="96.0" layoutY="30.0" prefHeight="31.0" prefWidth="61.0" text="Orders" textFill="#eee8e8">
                                              <font>
@@ -123,7 +123,7 @@
                                           <String fx:value="radius" />
                                        </styleClass>
                                        <children>
-                                          <AreaChart layoutX="62.0" layoutY="-4.0" prefHeight="307.0" prefWidth="822.0" title="Sales This Week" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-4.0">
+                                          <AreaChart fx:id="saleThisWeek_line" layoutX="62.0" layoutY="-4.0" prefHeight="307.0" prefWidth="822.0" title="Sales This Week" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-4.0">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -138,7 +138,7 @@
                               <Separator layoutX="9.0" layoutY="221.0" prefHeight="4.0" prefWidth="865.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="13.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="43.0" layoutY="92.0" prefHeight="600.0" prefWidth="887.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="menuUpdate_scene" layoutX="43.0" layoutY="92.0" prefHeight="600.0" prefWidth="887.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Separator prefHeight="3.0" prefWidth="840.0" AnchorPane.bottomAnchor="305.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="292.0" />
                               <AnchorPane prefHeight="251.0" prefWidth="845.0" stylesheets="@adminDesign.css" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="20.0">
@@ -172,17 +172,17 @@
                                        </font>
                                     </Label>
                                     <ComboBox layoutX="432.0" layoutY="39.0" prefWidth="150.0" />
-                                    <Button layoutX="57.0" layoutY="194.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="85.0" styleClass="btn" stylesheets="@adminDesign.css" text="Add" AnchorPane.bottomAnchor="28.0">
+                                    <Button fx:id="menuAdd_btn" layoutX="57.0" layoutY="194.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="85.0" styleClass="btn" stylesheets="@adminDesign.css" text="Add" AnchorPane.bottomAnchor="28.0">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="284.0" layoutY="194.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" styleClass="btn" stylesheets="@adminDesign.css" text="Remove" AnchorPane.bottomAnchor="28.0">
+                                    <Button fx:id="menuRemove_btn" layoutX="284.0" layoutY="194.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="84.0" styleClass="btn" stylesheets="@adminDesign.css" text="Remove" AnchorPane.bottomAnchor="28.0">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="171.0" layoutY="194.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="85.0" styleClass="btn" stylesheets="@adminDesign.css" text="Edit" AnchorPane.bottomAnchor="28.0">
+                                    <Button fx:id="menuEdit_btn" layoutX="171.0" layoutY="194.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="85.0" styleClass="btn" stylesheets="@adminDesign.css" text="Edit" AnchorPane.bottomAnchor="28.0">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -196,12 +196,12 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <TableView layoutX="20.0" layoutY="14.0" prefHeight="200.0" prefWidth="804.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="14.0">
+                                    <TableView fx:id="menuData" layoutX="20.0" layoutY="14.0" prefHeight="200.0" prefWidth="804.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="14.0">
                                       <columns>
-                                        <TableColumn prefWidth="87.0" text="Item ID" />
-                                        <TableColumn prefWidth="111.0" text="Item Name" />
-                                          <TableColumn prefWidth="93.0" text="Item Price" />
-                                          <TableColumn prefWidth="113.0" text="Category" />
+                                        <TableColumn fx:id="itemID_col" prefWidth="87.0" text="Item ID" />
+                                        <TableColumn fx:id="itemName_col" prefWidth="111.0" text="Item Name" />
+                                          <TableColumn fx:id="itemPrice_col" prefWidth="93.0" text="Item Price" />
+                                          <TableColumn fx:id="category_col" prefWidth="113.0" text="Category" />
                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -211,7 +211,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutY="122.0" prefHeight="600.0" prefWidth="887.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="team_scene" layoutY="122.0" prefHeight="600.0" prefWidth="887.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="24.0" layoutY="25.0" prefHeight="244.0" prefWidth="841.0" stylesheets="@adminDesign.css" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="25.0">
                                  <styleClass>
@@ -220,13 +220,13 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <TableView layoutX="23.0" layoutY="22.0" prefHeight="200.0" prefWidth="804.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="22.0">
+                                    <TableView fx:id="empData" layoutX="23.0" layoutY="22.0" prefHeight="200.0" prefWidth="804.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="22.0">
                                       <columns>
-                                        <TableColumn prefWidth="114.0" text="Employees ID" />
-                                        <TableColumn prefWidth="149.0" text="Employees Name" />
-                                          <TableColumn prefWidth="149.0" text="Position" />
-                                          <TableColumn prefWidth="149.0" text="Salary" />
-                                          <TableColumn prefWidth="149.0" text="Total Hours This Week" />
+                                        <TableColumn fx:id="empID_col" prefWidth="114.0" text="Employees ID" />
+                                        <TableColumn fx:id="empName_col" prefWidth="149.0" text="Employees Name" />
+                                          <TableColumn fx:id="empPos_col" prefWidth="149.0" text="Position" />
+                                          <TableColumn fx:id="empSal_col" prefWidth="149.0" text="Salary" />
+                                          <TableColumn fx:id="totalHour_col" prefWidth="149.0" text="Total Hours This Week" />
                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -267,12 +267,12 @@
                                              </font>
                                           </Label>
                                           <ChoiceBox layoutX="67.0" layoutY="136.0" prefHeight="26.0" prefWidth="96.0" />
-                                          <Button layoutX="21.0" layoutY="179.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="86.0" styleClass="btn" stylesheets="@adminDesign.css" text="Add">
+                                          <Button fx:id="empAdd_btn" layoutX="21.0" layoutY="179.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="86.0" styleClass="btn" stylesheets="@adminDesign.css" text="Add">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Button>
-                                          <Button layoutX="129.0" layoutY="179.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="86.0" styleClass="btn" stylesheets="@adminDesign.css" text="Remove">
+                                          <Button fx:id="empRemove_btn" layoutX="129.0" layoutY="179.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="86.0" styleClass="btn" stylesheets="@adminDesign.css" text="Remove">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -293,7 +293,7 @@
                                              </font>
                                           </Label>
                                           <TextField layoutX="75.0" layoutY="69.0" />
-                                          <Button layoutX="91.0" layoutY="111.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="161.0" styleClass="btn" stylesheets="@adminDesign.css" text="View Timecards">
+                                          <Button fx:id="timecard_btn" layoutX="91.0" layoutY="111.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="161.0" styleClass="btn" stylesheets="@adminDesign.css" text="View Timecards">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -305,7 +305,7 @@
                               <Separator layoutX="25.0" layoutY="286.0" prefHeight="3.0" prefWidth="840.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="22.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="64.0" layoutY="121.0" prefHeight="600.0" prefWidth="887.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="report_scene" layoutX="64.0" layoutY="121.0" prefHeight="600.0" prefWidth="887.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="24.0" layoutY="306.0" prefHeight="273.0" prefWidth="840.0" stylesheets="@adminDesign.css" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="23.0">
                                  <styleClass>
@@ -316,7 +316,7 @@
                                  <children>
                                     <AnchorPane layoutX="14.0" layoutY="12.0" prefHeight="250.0" prefWidth="439.0">
                                        <children>
-                                          <AreaChart layoutX="-75.0" layoutY="-112.0" prefHeight="288.0" prefWidth="439.0" title="Sales Data" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <AreaChart fx:id="saleDataLine" layoutX="-75.0" layoutY="-112.0" prefHeight="288.0" prefWidth="439.0" title="Sales Data" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -328,7 +328,7 @@
                                     </AnchorPane>
                                     <AnchorPane layoutX="466.0" layoutY="13.0" prefHeight="246.0" prefWidth="352.0">
                                        <children>
-                                          <PieChart layoutX="-49.0" layoutY="-103.0" prefHeight="297.0" prefWidth="451.0" title="Category Sales" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <PieChart fx:id="category_pie" layoutX="-49.0" layoutY="-103.0" prefHeight="297.0" prefWidth="451.0" title="Category Sales" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -342,7 +342,7 @@
                                  <children>
                                     <AnchorPane layoutX="420.0" layoutY="12.0" prefHeight="231.0" prefWidth="407.0">
                                        <children>
-                                          <BarChart layoutX="-209.0" layoutY="-99.0" prefHeight="301.0" prefWidth="407.0" title="Order Volume" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <BarChart fx:id="orderVolBar" layoutX="-209.0" layoutY="-99.0" prefHeight="301.0" prefWidth="407.0" title="Order Volume" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -358,7 +358,7 @@
                                           <DatePicker layoutX="99.0" layoutY="87.0" />
                                           <Label layoutX="33.0" layoutY="51.0" text="From: " />
                                           <Label layoutX="33.0" layoutY="92.0" text="To:" />
-                                          <Button layoutX="132.0" layoutY="137.0" mnemonicParsing="false" styleClass="btn" stylesheets="@adminDesign.css" text="Generate Data">
+                                          <Button fx:id="generate_btn" layoutX="132.0" layoutY="137.0" mnemonicParsing="false" styleClass="btn" stylesheets="@adminDesign.css" text="Generate Data">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
