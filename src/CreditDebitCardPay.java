@@ -93,7 +93,7 @@ public class CreditDebitCardPay implements Initializable {
         root = loader.load();
 
         CardReciept cardReciept = loader.getController();
-        cardReciept.displayReciept(custName);
+        //cardReciept.displayReciept(custName);
 
         //root = FXMLLoader.load(getClass().getResource("PaymentMethod.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
