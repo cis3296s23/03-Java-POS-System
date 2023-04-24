@@ -47,7 +47,7 @@
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button layoutX="152.0" layoutY="137.0" mnemonicParsing="false" onAction="#switchToCardPay" prefHeight="35.0" prefWidth="150.0" styleClass="btn" stylesheets="@PaymentMethod.css" text="Credit / Debit Card">
+                  <Button layoutX="138.0" layoutY="137.0" mnemonicParsing="false" onAction="#switchToCardPay" prefHeight="35.0" prefWidth="150.0" styleClass="btn" stylesheets="@PaymentMethod.css" text="Credit / Debit Card">
                      <font>
                         <Font size="15.0" />
                      </font>
