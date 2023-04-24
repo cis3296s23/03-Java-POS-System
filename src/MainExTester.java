@@ -12,7 +12,8 @@ import java.util.Objects;
 public class MainExTester extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("PaymentMethod.fxml"));
+       //Parent root = FXMLLoader.load(getClass().getResource("PaymentMethod.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("PayMethod.fxml"));
         Scene paymentMethodScene = new Scene(root);
 
         stage.setScene(paymentMethodScene);

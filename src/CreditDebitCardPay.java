@@ -74,7 +74,7 @@ public class CreditDebitCardPay implements Initializable {
 
     // Implemented the back button to return back to the Payment Page
     public void switchBackToPaymentMethod(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("PaymentMethod.fxml"));
+        root = FXMLLoader.load(getClass().getResource("PayMethod.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -83,7 +83,7 @@ public class CreditDebitCardPay implements Initializable {
 
 
 
-
+/*
     // Implemented the proceed payment button to return to the Card Reciept Page
     // Get receipt when proceed to payment
     public void getReciept(ActionEvent event) throws IOException {
@@ -101,4 +101,5 @@ public class CreditDebitCardPay implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    */
 }
