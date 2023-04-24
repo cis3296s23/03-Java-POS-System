@@ -18,7 +18,9 @@ public class MenuPage {
             primaryStage.setScene(menuPage);
             primaryStage.show();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            System.out.println(e);
+
         }
     }
 }
