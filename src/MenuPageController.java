@@ -113,8 +113,7 @@ public class MenuPageController implements Initializable {
 
     public void back() {
 
-        grid.getChildren().clear();
-        orderGrid.getChildren().clear();
+        clearPage();
         Scene menuPage = grid.getScene();
         Window menuPageWindow = menuPage.getWindow();
         Stage primaryStage = (Stage) menuPageWindow;
