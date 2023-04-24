@@ -1,17 +1,19 @@
 package src;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Order {
     private String customerName;
-    private List<String> items = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
     private LocalDateTime orderTime;
     private double totalPrice;
     private String paymentMethod;
 
-    public Order(String customerName, List<String> items, double totalPrice, String paymentMethod) {
+    public Order() {
+
+    }
+    public Order(String customerName, List<Item> items, double totalPrice, String paymentMethod) {
         this.customerName = customerName;
         this.items = items;
         this.totalPrice = totalPrice;
@@ -26,11 +28,11 @@ public class Order {
         this.customerName = customerName;
     }
 
-    public List<String> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 
-    public void setItems(List<String> items) {
+    public void setItems(List<Item> items) {
         this.items = items;
     }
 
@@ -44,12 +46,18 @@ public class Order {
     }
 
     public double getTotalPrice() {
+
+        ListIterator<Item> itemList = items.listIterator();
+        totalPrice = 0;
+        while (itemList.hasNext()) {
+            Item currItem = itemList.next();
+            totalPrice = totalPrice + currItem.getItemPrice();
+        }
+
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
+
 
     public String getPaymentMethod() {
         return paymentMethod;
@@ -61,7 +69,8 @@ public class Order {
 
 
 
-    public void addItem(String item) {
+    public void addItem(Item item) {
+
         this.items.add(item);
     }
 
