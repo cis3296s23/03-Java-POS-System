@@ -1,5 +1,4 @@
 package src;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
@@ -32,30 +31,18 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 //extends application for JavaFX
 
-//public class AddPayment implements Initializable {
-public class AddPayment  {
-   /* @FXML
-    private Label davesBurgerLabel, paymentMethodLabel;
+public class PayMethod implements Initializable {
 
-    @FXML
-    private Button cashPayButton, cardPayButton;
-
-    @FXML
-    private Button backButton;
-
-    private Stage stage;
-    private Scene scene;
-    private  Parent root;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-*/
+
     private Stage stage;
     private Scene scene;
     private  Parent root;
     public void switchToCashPay(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("CashPay.fxml"));
+        root = FXMLLoader.load(getClass().getResource("CashPay.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -63,7 +50,7 @@ public class AddPayment  {
     }
 
     public void switchToCardPay(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("CreditDebitCardPay.fxml"));
+        root = FXMLLoader.load(getClass().getResource("CreditDebitCardPay.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

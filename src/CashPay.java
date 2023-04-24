@@ -47,7 +47,7 @@ public class CashPay implements Initializable{
 
     // Implemented the back button to return back to the Payment Page
     public void switchBackToPaymentMethod(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("PaymentMethod.fxml"));
+        root = FXMLLoader.load(getClass().getResource("PayMethod.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
