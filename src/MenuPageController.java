@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.*;
@@ -92,7 +93,7 @@ public class MenuPageController implements Initializable {
         }
     }
 
-    public void checkout() {
+    public void checkout() throws IOException {
 
         List<Item> itemList = order.getItems();
         checkoutError.setText("");
@@ -101,27 +102,16 @@ public class MenuPageController implements Initializable {
             checkoutError.setText("There are currently no items in this order.");
         } else {
             // temporarily only goes to the login page
-            Scene menuPage = grid.getScene();
-            Window menuPageWindow = menuPage.getWindow();
-            Stage primaryStage = (Stage) menuPageWindow;
-            LoginPage loginPage = new LoginPage();
-            Scene nextStage = loginPage.firstLogin(primaryStage);
-            primaryStage.setScene(nextStage);
-            primaryStage.show();
+            Main main = new Main();
+            main.changeScene("PaymentMethod.fxml", "Dave's Burger");
         }
     }
 
-    public void back() {
+    public void back() throws IOException {
 
         clearPage();
-        Scene menuPage = grid.getScene();
-        Window menuPageWindow = menuPage.getWindow();
-        Stage primaryStage = (Stage) menuPageWindow;
-        LoginPage loginPage = new LoginPage();
-
-        Scene nextStage = loginPage.firstLogin(primaryStage);
-        primaryStage.setScene(nextStage);
-        primaryStage.show();
+        Main main = new Main();
+        main.changeScene("DashPage.fxml", "Dave's Burger");
 
     }
 
