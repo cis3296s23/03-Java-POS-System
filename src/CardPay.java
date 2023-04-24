@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import javafx.application.Application;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -28,13 +29,14 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.TableColumn;
 
 import static javafx.application.Application.launch;
 //extends application for JavaFX
 
-
-public class CreditDebitCardPay implements Initializable {
+public class CardPay implements Initializable{
     @FXML
     private Label nameLabel, PayInfoLabel, mobileNumLabel, cardNumLabel, ExpDateLabel, CVVLabel, rewardsLabels;
 
@@ -61,13 +63,6 @@ public class CreditDebitCardPay implements Initializable {
 
     @FXML
     private Button backButton;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        String rightPositionCSS = "-fx-alignment: CENTER-RIGHT;";
-        String centerPostionCSS = "-fx-alignment: CENTER;";
-    }
-
     private Stage stage;
     private Scene scene;
     private  Parent root;
@@ -80,10 +75,7 @@ public class CreditDebitCardPay implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
-
-
-/*
+    /*
     // Implemented the proceed payment button to return to the Card Reciept Page
     // Get receipt when proceed to payment
     public void getReciept(ActionEvent event) throws IOException {
@@ -102,4 +94,17 @@ public class CreditDebitCardPay implements Initializable {
         stage.show();
     }
     */
+
+    //validate card inputs when the Save button is pressed
+    public void SaveBtnAction(ActionEvent event){
+        boolean cardNumValidator = DataValidator.cardNumFormat(cardNumTextField, cardNumLabel,"Format must be XXXX-XXXX-XXXX-XXXX from 0-9");
+        boolean cardCVV_Validator = DataValidator.cardCVVFormat(CVVTextField, CVVLabel, "Format must be *** from 0-9");
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+
 }
