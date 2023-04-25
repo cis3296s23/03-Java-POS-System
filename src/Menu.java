@@ -1,36 +1,36 @@
 package src;
 
 public class Menu {
-    private Item itemID;
-    private Item itemName;
-    private String itemDetail;
-    private String itemType;
+    private int itemID;
+    private String itemName;
+    private String category;
+    private double price;
 
 
     public Menu() {
 
     }
 
-    public Menu(Item itemID, Item itemName, String itemDetail, String itemType) {
+    public Menu(int itemID, String itemName, String category, double price) {
         this.itemID = itemID;
         this.itemName = itemName;
-        this.itemDetail = itemDetail;
-        this.itemType = itemType;
+        this.category = category;
+        this.price = price;
     }
 
-    public Item getItemID() {
+    public int getItemID() {
         return itemID;
     }
 
-    public Item getItemName() {
+    public String getItemName() {
         return itemName;
     }
 
-    public String getItemDetail() {
-        return itemDetail;
+    public String getCategory() {
+        return category;
     }
 
-    public String getItemType() {
-        return getItemType();
+    public double getPrice() {
+        return price;
     }
 }
