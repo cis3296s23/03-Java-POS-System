@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class Order {
+    private int orderID;
     private String customerName;
     private List<Item> items = new ArrayList<>();
     private LocalDateTime orderTime;
@@ -19,6 +20,14 @@ public class Order {
         this.totalPrice = totalPrice;
         this.paymentMethod = paymentMethod;
         this.orderTime = LocalDateTime.now();
+    }
+
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
     }
     public String getCustomerName() {
         return customerName;
