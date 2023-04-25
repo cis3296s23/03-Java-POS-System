@@ -16,6 +16,9 @@ public class LoginController implements Initializable {
     private Button login_btn;
 
     @FXML
+    private Button dashboardBtn;
+
+    @FXML
     private PasswordField password_txt;
 
     @FXML
@@ -28,13 +31,7 @@ public class LoginController implements Initializable {
 
     public void loginBt() throws IOException {
 
-        if (username_txt.getText().isEmpty() || password_txt.getText().isEmpty()) {
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Message");
-            alert.setHeaderText(null);
-            alert.setContentText("Incorrect Username/Password");
-            alert.showAndWait();
-        } else if (username_txt.getText().equals(user) && password_txt.getText().equals(pass)){
+        if (username_txt.getText().equals(user) && password_txt.getText().equals(pass)){
             main.changeScene("AdminPage.fxml", "Admin Access");
         }
         else{
@@ -49,6 +46,7 @@ public class LoginController implements Initializable {
     public void dashboardBtn() throws IOException {
         main.changeScene("DashPage.fxml", "Dashboard");
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

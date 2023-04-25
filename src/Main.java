@@ -104,6 +104,7 @@ public class Main extends Application {
         primaryStage.show();
     }
     //change scene as needed
+
     public void changeScene(String fxml, String title) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Parent root = loader.load();
