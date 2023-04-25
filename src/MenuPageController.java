@@ -13,6 +13,7 @@ import javafx.stage.Window;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class MenuPageController implements Initializable {
@@ -104,7 +105,7 @@ public class MenuPageController implements Initializable {
 
             checkoutError.setText("There are currently no items in this order.");
         } else {
-            // temporarily only goes to the login page
+            writeOrder();
             Main main = new Main();
             main.changeScene("PaymentMethod.fxml", "Dave's Burger");
         }
@@ -159,5 +160,55 @@ public class MenuPageController implements Initializable {
 
         checkoutError.setText("");
         orderGrid.getChildren().clear();
+    }
+
+    public void writeOrder() {
+        String makeOrderTable = "CREATE TABLE orders (" +
+                                "orderID int AUTO_INCREMENT," +
+                                "orderTime varchar(100)," +
+                                "customerName varchar(200)," +
+                                "paymentMethod varchar(20)," +
+                                "PRIMARY KEY (orderID));";
+        String makeItemTable = "CREATE TABLE orderedItems (" +
+                                "orderID int NOT NULL," +
+                                "itemID int NOT NULL," +
+                                "FOREIGN KEY (orderID) REFERENCES orders (orderID)," +
+                                "FOREIGN KEY (itemID) REFERENCES menu (item_id));";
+        LocalDateTime curr = LocalDateTime.now();
+        String timeString = curr.toString();
+        String writeOrder = "INSERT INTO orders (orderTime) VALUES ('" + timeString + "');";
+
+        List <Item> orderItems = order.getItems();
+
+        ListIterator<Item> iterator = orderItems.listIterator();
+
+        Connection conn;
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306" + "/data", "root", "root1234");
+            Statement st, st2, st3, st4;
+            st = conn.createStatement();
+            st.executeUpdate(makeOrderTable);
+            st2 = conn.createStatement();
+            st2.executeUpdate(makeItemTable);
+            st3 = conn.createStatement();
+            st3.executeUpdate(writeOrder);
+            st4 = conn.createStatement();
+
+            ResultSet rs = st4.executeQuery("SELECT orderID FROM orders WHERE orderTime='" + timeString + "';");
+            rs.next();
+            order.setOrderID(rs.getInt("orderID"));
+            while (iterator.hasNext()) {
+                Item item = iterator.next();
+                String writeItem = "INSERT INTO orderedItems (orderID, itemID) VALUES ("
+                        + order.getOrderID() + ", " + item.getItemID() + ");";
+                st.executeUpdate(writeItem);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+
     }
 }
