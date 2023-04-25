@@ -56,4 +56,14 @@ public class PayMethod implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void goBack(ActionEvent event) throws IOException {
+
+        root = FXMLLoader.load(getClass().getResource("MenuPage.fxml"));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

@@ -107,7 +107,7 @@ public class MenuPageController implements Initializable {
         } else {
             writeOrder();
             Main main = new Main();
-            main.changeScene("PaymentMethod.fxml", "Dave's Burger");
+            main.changeScene("PayMethod.fxml", "Dave's Burger");
         }
     }
 

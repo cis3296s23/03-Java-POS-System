@@ -25,7 +25,7 @@
                               </AnchorPane>
                               <Label layoutX="24.0" layoutY="89.0" text="Welcome," textFill="WHITE" />
                               <Label layoutX="123.0" layoutY="89.0" text="POS Team" textFill="WHITE" />
-                              <Button layoutX="4.0" layoutY="274.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@PaymentMethod.css" text="Back" />
+                              <Button fx:id="back" layoutX="4.0" layoutY="274.0" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@PaymentMethod.css" text="Back" />
                            </children>
                         </AnchorPane>
                      </children>
