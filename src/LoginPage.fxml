@@ -28,14 +28,15 @@
             </AnchorPane>
             <AnchorPane layoutX="300.0" prefHeight="405.0" prefWidth="300.0">
                <children>
-                  <Label layoutX="70.0" layoutY="76.0" styleClass="head-label"  text="Login Account" textFill="#399a8f">
+                  <Label layoutX="70.0" layoutY="76.0" styleClass="head-label" text="Login Account" textFill="#399a8f">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="username_txt" layoutX="49.0" layoutY="148.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield"  />
-                  <PasswordField fx:id="password_txt" layoutX="49.0" layoutY="188.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield"  />
-                  <Button fx:id="login_btn" layoutX="49.0" layoutY="255.0" mnemonicParsing="false" onAction="#loginBt" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn"  text="Login" />
+                  <TextField fx:id="username_txt" layoutX="49.0" layoutY="148.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" />
+                  <PasswordField fx:id="password_txt" layoutX="49.0" layoutY="188.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield"/>
+                  <Button fx:id="login_btn" layoutX="49.0" layoutY="242.0" mnemonicParsing="false" onAction="#loginBt" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" text="Login" />
+                  <Button fx:id="dashboardBtn" layoutX="49.0" layoutY="306.0" mnemonicParsing="false" onAction="#dashboardBtn" prefHeight="40.0" prefWidth="220.0" styleClass="dashboard-btn" text="DashBoard" />
                </children>
             </AnchorPane>
          </children>

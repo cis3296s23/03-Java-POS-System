@@ -120,9 +120,10 @@ public class AdminPageController implements Initializable {
     @FXML
     private TableColumn<?, ?> totalHour_col;
 
+
     public void logout_btn() throws IOException {
         Main main = new Main();
-        main.changeScene("Dashpage.fxml", "Dashboard");
+        main.changeScene("LoginPage.fxml", "LoginPage");
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
