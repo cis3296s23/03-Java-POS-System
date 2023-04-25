@@ -40,7 +40,7 @@
                                  </children>
                               </AnchorPane>
                               <Label layoutX="27.0" layoutY="94.0" text="Welcome," textFill="#eeeeee" />
-                              <Label fx:id="name_label" layoutX="96.0" layoutY="94.0" prefHeight="18.0" prefWidth="81.0" text="POS Team" textFill="#f2f4f5">
+                              <Label fx:id="name_label" layoutX="96.0" layoutY="94.0" prefHeight="18.0" prefWidth="81.0" text="POS TEAM" textFill="#f2f4f5">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

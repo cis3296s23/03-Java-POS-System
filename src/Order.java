@@ -1,33 +1,24 @@
 package src;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
-    private int orderID;
     private String customerName;
-    private List<Item> items = new ArrayList<>();
+    private List<String> items = new ArrayList<>();
     private LocalDateTime orderTime;
     private double totalPrice;
     private String paymentMethod;
 
-    public Order() {
-
-    }
-    public Order(String customerName, List<Item> items, double totalPrice, String paymentMethod) {
+    public Order(String customerName, List<String> items, double totalPrice, String paymentMethod) {
         this.customerName = customerName;
         this.items = items;
         this.totalPrice = totalPrice;
         this.paymentMethod = paymentMethod;
         this.orderTime = LocalDateTime.now();
-    }
-
-    public int getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
     }
     public String getCustomerName() {
         return customerName;
@@ -37,70 +28,35 @@ public class Order {
         this.customerName = customerName;
     }
 
-    public List<Item> getItems() {
+    public List<String> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(List<String> items) {
         this.items = items;
     }
 
 
-    public LocalDateTime getOrderTime() {
-        return orderTime;
+    public Order(int order_id, String order_name,
+                 double order_total, String payment_type, String card_ending, Time time_ordered) {
+        this.order_id = order_id;
+        this.order_name = order_name;
+        this.order_total = order_total;
+        this.payment_type = payment_type;
+        this.card_ending = card_ending;
+        this.time_ordered = time_ordered;
     }
 
-    public void setOrderTime(LocalDateTime orderTime) {
-        this.orderTime = orderTime;
+    public Order(int orderId, String customerName, double orderTotal, String position) {
     }
 
-    public double getTotalPrice() {
-
-        ListIterator<Item> itemList = items.listIterator();
-        totalPrice = 0;
-        while (itemList.hasNext()) {
-            Item currItem = itemList.next();
-            totalPrice = totalPrice + currItem.getItemPrice();
-        }
-
-        return totalPrice;
+    public int getOrder_id() {
+        return order_id;
     }
-
-
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-
-
-    public void addItem(Item item) {
-
-        this.items.add(item);
-    }
-
-    public void removeItem(String item) {
-        this.items.remove(item);
-    }
-
-    public void clearItems() {
-        this.items.clear();
-    }
-
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "customerName='" + customerName + '\'' +
-                ", items=" + items +
-                ", orderTime=" + orderTime +
-                ", totalPrice=" + totalPrice +
-                ", paymentMethod='" + paymentMethod + '\'' +
-                '}';
-    }
+    public String getOrder_name(){return order_name;}
+    public double getOrder_total(){return order_total;}
+    public String getPayment_type(){return payment_type;}
+    public String card_ending(){return card_ending;}
+    public Time getTime_ordered(){return time_ordered;}
 }
 
