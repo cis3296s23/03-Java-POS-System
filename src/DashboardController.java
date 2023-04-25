@@ -79,6 +79,12 @@ public class DashboardController implements Initializable {
         alert("Clock out time");
     }
 
+    public void menu_btn() throws IOException {
+
+        Main main = new Main();
+        main.changeScene("MenuPage.fxml", "Dave's Burger");
+    }
+
     public void alert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Clock In/Out");
