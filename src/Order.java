@@ -7,11 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
+
     private String customerName;
     private List<String> items = new ArrayList<>();
     private LocalDateTime orderTime;
     private double totalPrice;
     private String paymentMethod;
+
+    //Leapheng's version
+    private int order_id;
+    private String order_name;
+    private double order_total;
+    private String payment_type;
+    private String card_ending;
+    private Time time_ordered;
 
     public Order(String customerName, List<String> items, double totalPrice, String paymentMethod) {
         this.customerName = customerName;
@@ -37,6 +46,7 @@ public class Order {
     }
 
 
+    //Leapheng's version
     public Order(int order_id, String order_name,
                  double order_total, String payment_type, String card_ending, Time time_ordered) {
         this.order_id = order_id;
