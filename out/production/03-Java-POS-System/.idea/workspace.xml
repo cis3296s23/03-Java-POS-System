@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eede9be9-33aa-48df-b2c4-a8c4dfec14bf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/CashReciept.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CashReciept.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/03-Java-POS-System/src/CardReciept.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/03-Java-POS-System/src/CardReciept.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/03-Java-POS-System/src/CardReciept.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/03-Java-POS-System/src/CashPay.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/03-Java-POS-System/src/CashPay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/03-Java-POS-System/src/CashPay.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/03-Java-POS-System/src/MainExTester.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CardPay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardPay.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CardPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardPay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CardReciept.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardReciept.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CashPay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashPay.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CashPay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CashPay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainExTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainExTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MenuPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PayMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PayMethod.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Realtime db Rule File" />
+        <option value="module-info" />
+        <option value="Class" />
+        <option value="FxmlFile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2OXGt2P36a9r0YGvPzC0JbTIj1N" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.Main" />
+      <module name="03-Java-POS-System" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainExTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.MainExTester" />
+      <module name="03-Java-POS-System" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.MainExTester" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eede9be9-33aa-48df-b2c4-a8c4dfec14bf" name="Changes" comment="" />
+      <created>1681699723492</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681699723492</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Implemented a back button for Payment Method">
+      <created>1681699876541</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681699876541</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Created the class and fxml for CashPay. Edited the paymentMethod class and the card Payment. Created a secondary tester main">
+      <created>1682050990742</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682050990742</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Implemented the switch scene for the cash or card payment in the addPayment class">
+      <created>1682054688070</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1682054688070</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Implemented the switch scene for going back to the payment method page in the cardPay and cashPay class">
+      <created>1682055152731</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1682055152731</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Implemented the communication between controllers for the cardPay and the CardReciept">
+      <created>1682087696463</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682087696463</updated>
+    </task>
+    <task id="LOCAL-00006" summary="debugging merge issue">
+      <created>1682282745557</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1682282745557</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Updated some of the design pages to be more functional">
+      <created>1682304127778</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1682304127778</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Updated the payment method page to math the login and admin page">
+      <created>1682309472779</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1682309472779</updated>
+    </task>
+    <task id="LOCAL-00009" summary="updated the correct files for payment pages">
+      <created>1682309930216</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1682309930216</updated>
+    </task>
+    <task id="LOCAL-00010" summary="implemented a restriction for the card inputs for cardpay page. updated the design of the pages to match the other pages">
+      <created>1682320418858</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1682320418858</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implemented a back button for Payment Method" />
+    <MESSAGE value="Created the class and fxml for CashPay. Edited the paymentMethod class and the card Payment. Created a secondary tester main" />
+    <MESSAGE value="Implemented the switch scene for the cash or card payment in the addPayment class" />
+    <MESSAGE value="Implemented the switch scene for going back to the payment method page in the cardPay and cashPay class" />
+    <MESSAGE value="Implemented the communication between controllers for the cardPay and the CardReciept" />
+    <MESSAGE value="debugging merge issue" />
+    <MESSAGE value="Updated some of the design pages to be more functional" />
+    <MESSAGE value="Updated the payment method page to math the login and admin page" />
+    <MESSAGE value="updated the correct files for payment pages" />
+    <MESSAGE value="implemented a restriction for the card inputs for cardpay page. updated the design of the pages to match the other pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented a restriction for the card inputs for cardpay page. updated the design of the pages to match the other pages" />
+  </component>
+</project>

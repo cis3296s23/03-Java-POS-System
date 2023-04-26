@@ -1,0 +1,58 @@
+Index: src/CreditDebitCardPay.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package src;\n\nimport java.io.IOException;\nimport java.net.URL;\nimport java.time.Duration;\nimport java.time.LocalTime;\nimport java.util.Collections;\nimport java.util.HashMap;\nimport java.util.ResourceBundle;\nimport java.util.Scanner;\nimport javafx.application.Application;\nimport javafx.event.ActionEvent;\nimport javafx.event.EventHandler;\nimport javafx.fxml.FXML;\nimport javafx.fxml.FXMLLoader;\nimport javafx.fxml.Initializable;\nimport javafx.geometry.Insets;\nimport javafx.geometry.Pos;\nimport javafx.scene.Node;\nimport javafx.scene.Parent;\nimport javafx.scene.Scene;\nimport javafx.scene.control.*;\nimport javafx.scene.layout.AnchorPane;\nimport javafx.scene.layout.GridPane;\nimport javafx.scene.layout.StackPane;\nimport javafx.scene.text.Font;\nimport javafx.scene.text.FontWeight;\nimport javafx.scene.text.Text;\nimport javafx.stage.Stage;\n\nimport javax.swing.table.TableColumn;\n\nimport static javafx.application.Application.launch;\n//extends application for JavaFX\n\n\npublic class CreditDebitCardPay implements Initializable {\n    @FXML\n    private Label nameLabel, PayInfoLabel, mobileNumLabel, cardNumLabel, ExpDateLabel, CVVLabel, rewardsLabels;\n\n    @FXML\n    private TextField nameTextField, mobileNumTextField, cardNumTextField, ExpDateTextField, CVVTextField;\n\n    @FXML\n    private RadioButton tenPercentOffRadioBtn, fifteenPercentOffRadioBtn,twentyPercentOffRadioBtn;\n\n    @FXML\n    private Button customButton, saveButton;\n\n    @FXML\n    private TableView<Item> yourOrderTableView;\n\n    @FXML\n    private TextField subTotalTextField, discountTextField, totalTextField;\n\n    @FXML\n    private Label totalLabel, yourOrderLabel, subTotalLabel, discountLabel;\n\n    @FXML\n    private Button processPaymentButton;\n\n    @FXML\n    private Button backButton;\n\n    @Override\n    public void initialize(URL location, ResourceBundle resources) {\n        String rightPositionCSS = \"-fx-alignment: CENTER-RIGHT;\";\n        String centerPostionCSS = \"-fx-alignment: CENTER;\";\n    }\n\n    private Stage stage;\n    private Scene scene;\n    private  Parent root;\n\n    // Implemented the back button to return back to the Payment Page\n    public void switchBackToPaymentMethod(ActionEvent event) throws IOException {\n        root = FXMLLoader.load(getClass().getResource(\"PaymentMethod.fxml\"));\n        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();\n        scene = new Scene(root);\n        stage.setScene(scene);\n        stage.show();\n    }\n\n\n\n\n    // Implemented the proceed payment button to return to the Card Reciept Page\n    // Get receipt when proceed to payment\n    public void getReciept(ActionEvent event) throws IOException {\n        String custName = nameTextField.getText();\n\n        FXMLLoader loader = new FXMLLoader(getClass().getResource(\"CardReciept.fxml\"));\n        root = loader.load();\n\n        CardReciept cardReciept = loader.getController();\n        cardReciept.displayReciept(custName);\n\n        //root = FXMLLoader.load(getClass().getResource(\"PaymentMethod.fxml\"));\n        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();\n        scene = new Scene(root);\n        stage.setScene(scene);\n        stage.show();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/CreditDebitCardPay.java b/src/CreditDebitCardPay.java
+--- a/src/CreditDebitCardPay.java	(revision 6fb49dbbb78c77c30ef1a4822551562134a86953)
++++ b/src/CreditDebitCardPay.java	(date 1682186707456)
+@@ -93,7 +93,7 @@
+         root = loader.load();
+ 
+         CardReciept cardReciept = loader.getController();
+-        cardReciept.displayReciept(custName);
++        //cardReciept.displayReciept(custName);
+ 
+         //root = FXMLLoader.load(getClass().getResource("PaymentMethod.fxml"));
+         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+Index: src/CashReciept.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/CashReciept.java b/src/CashReciept.java
+new file mode 100644
+--- /dev/null	(date 1682186707464)
++++ b/src/CashReciept.java	(date 1682186707464)
+@@ -0,0 +1,5 @@
++package src;
++
++public class CashReciept
++{
++}
+Index: src/CashReciept.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/CashReciept.fxml b/src/CashReciept.fxml
+new file mode 100644
+--- /dev/null	(date 1682186707470)
++++ b/src/CashReciept.fxml	(date 1682186707470)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<?import java.lang.*?>
++<?import java.util.*?>
++<?import javafx.scene.*?>
++<?import javafx.scene.control.*?>
++<?import javafx.scene.layout.*?>
++
++<AnchorPane xmlns="http://javafx.com/javafx"
++            xmlns:fx="http://javafx.com/fxml"
++            fx:controller="src.CashReciept"
++            prefHeight="400.0" prefWidth="600.0">
++
++</AnchorPane>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.CardPay">
+    <children>
+        <SplitPane dividerPositions="0.48861566484517305" layoutY="134.0" prefHeight="500.0" prefWidth="1100.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="485.0">
+                    <children>
+                        <Label id="totalLabel" layoutX="55.0" layoutY="397.0" text="Total:" />
+                        <Label id="yourOrderLabel" layoutX="14.0" layoutY="14.0" text="Your Order: " textFill="#399a8f">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                  </Label>
+                        <Label id="subTotalLabel" layoutX="32.0" layoutY="333.0" text="SubTotal: " />
+                        <Label id="discountLabel" layoutX="34.0" layoutY="364.0" text="Discount:" />
+                        <TableView id="yourOrderTableView" layoutX="58.0" layoutY="55.0" prefHeight="265.0" prefWidth="413.0">
+                            <columns>
+                                <TableColumn prefWidth="75.0" text="Qty" />
+                                <TableColumn prefWidth="273.0" text="Order" />
+                            </columns>
+                        </TableView>
+                  <Button id="editButton" layoutX="239.0" layoutY="444.0" mnemonicParsing="false" onAction="#switchBackToMenuPage" prefHeight="30.0" prefWidth="75.0" styleClass="btn" stylesheets="@CardCashPay.css" text="Edit" />
+                  <Label id="subTotalAmntLabel" layoutX="133.0" layoutY="333.0" text="\$30.89" />
+                  <Label id="discountAmntLabel" layoutX="131.0" layoutY="364.0" text="\$3.09" />
+                  <Label id="totalAmntLabel" layoutX="131.0" layoutY="397.0" text="\$27.80" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane maxWidth="558.0" minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="555.0">
+                    <children>
+                        <Label id="nameLabel" layoutX="43.0" layoutY="72.0" text="Name:" />
+                        <TextField id="nameTextField" alignment="CENTER" layoutX="167.0" layoutY="68.0" prefHeight="26.0" prefWidth="276.0" text="John Rogers" />
+                        <Label id="PayInfoLabel" layoutX="9.0" layoutY="14.0" text="Payment Information:" textFill="#399a8f">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label id="mobileNumLabel" layoutX="19.0" layoutY="127.0" text="Mobile Number:" />
+                        <TextField id="MobileNumTextField" alignment="CENTER" layoutX="164.0" layoutY="123.0" prefHeight="26.0" prefWidth="276.0" text="(215) 731 - 0085" />
+                        <Label id="cardInfoLabel" layoutX="13.0" layoutY="185.0" text="Credit / Debit Card Information:" textFill="#399a8f">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label id="cardNumLabel" layoutX="14.0" layoutY="263.0" text="Card Number:" />
+                        <TextField id="cardNumTextField" alignment="CENTER" layoutX="163.0" layoutY="259.0" prefHeight="26.0" prefWidth="276.0" text="1111-2222-3333-4444" />
+                        <Label id="ExpDateLabel" layoutX="12.0" layoutY="306.0" text="Exp. Date (MM / YYYY):" />
+                        <Label id="CVVLabel" layoutX="340.0" layoutY="306.0" text="CVV: " />
+                        <TextField id="CVVTextField" alignment="CENTER" layoutX="386.0" layoutY="299.0" prefHeight="27.0" prefWidth="55.0" text="123" />
+                        <Label id="rewardsLabels" layoutX="13.0" layoutY="361.0" text="Rewards/ Coupons:" textFill="#399a8f">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <RadioButton id="tenPercentOffRadioBtn" fx:id="tenPercentOffRadioBtn" layoutX="19.0" layoutY="399.0" mnemonicParsing="false" onAction="#getDiscount" selected="true" text="10% off ">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="discount10" />
+                     </toggleGroup></RadioButton>
+                        <RadioButton id="fifteenPercentOffRadioBtn" fx:id="fifteenPercentOffRadioBtn" layoutX="110.0" layoutY="399.0" mnemonicParsing="false" onAction="#getDiscount" text="15 % off">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="discount15" />
+                     </toggleGroup></RadioButton>
+                        <RadioButton id="twentyPercentOffRadioBtn" fx:id="twentyPercentOffRadioBtn" layoutX="209.0" layoutY="399.0" mnemonicParsing="false" onAction="#getDiscount" text="20% off">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="discount20" />
+                     </toggleGroup></RadioButton>
+                        <TextField id="cardNameTextField" alignment="CENTER" layoutX="163.0" layoutY="218.0" prefHeight="26.0" prefWidth="276.0" text="John Rogers" />
+                        <Label id="cardNameLabel" layoutX="12.0" layoutY="222.0" text="Name on Card:" />
+                  <ChoiceBox id="monthCB" layoutX="166.0" layoutY="299.0" prefHeight="27.0" prefWidth="52.0" />
+                  <Label layoutX="228.0" layoutY="304.0" prefHeight="17.0" prefWidth="11.0" text="/" />
+                  <ChoiceBox id="yearCB" layoutX="246.0" layoutY="299.0" prefHeight="27.0" prefWidth="67.0" />
+                        <Button id="processPaymentButton" layoutX="402.0" layoutY="443.0" mnemonicParsing="false" styleClass="btn" stylesheets="@CardCashPay.css" text="Process Payment" />
+                  <Label layoutX="301.0" layoutY="399.0" text="Custom:" />
+                  <TextField alignment="CENTER" layoutX="356.0" layoutY="395.0" prefHeight="26.0" prefWidth="87.0" />
+                  <Button id="saveButton" layoutX="334.0" layoutY="444.0" mnemonicParsing="false" text="Save" />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+        <Label layoutX="469.0" layoutY="39.0" text="Dave's Burger" textFill="#171717">
+            <font>
+                <Font size="36.0" />
+            </font></Label>
+        <Button id="backButton" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchBackToPaymentMethod" styleClass="btn" stylesheets="@CardCashPay.css" text="Back" />
+    </children>
+</AnchorPane>

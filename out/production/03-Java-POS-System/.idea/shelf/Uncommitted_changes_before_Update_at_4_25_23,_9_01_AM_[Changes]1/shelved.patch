@@ -1,0 +1,670 @@
+Index: src/MainExTester.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/MainExTester.java b/src/MainExTester.java
+--- a/src/MainExTester.java	
++++ b/src/MainExTester.java	
+@@ -13,6 +13,7 @@
+     @Override
+     public void start(Stage stage) throws Exception {
+         Parent root = FXMLLoader.load(getClass().getResource("PayMethod.fxml"));
++        //Parent root = FXMLLoader.load(getClass().getResource("MenuPage.fxml"));
+         Scene paymentMethodScene = new Scene(root);
+ 
+         stage.setScene(paymentMethodScene);
+Index: src/CashPay.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/CashPay.java b/src/CashPay.java
+--- a/src/CashPay.java	
++++ b/src/CashPay.java	
+@@ -35,6 +35,7 @@
+ //extends application for JavaFX
+ 
+ public class CashPay implements Initializable{
++
+     @Override
+     public void initialize(URL location, ResourceBundle resources) {
+ 
+@@ -54,12 +55,23 @@
+         stage.show();
+     }
+ 
++    // Implemented the back button to return back to the Menu Page
++    public void switchBackToMenuPage(ActionEvent event) throws IOException {
++        root = FXMLLoader.load(getClass().getResource("MenuPage.fxml"));
++        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
++        scene = new Scene(root);
++        stage.setScene(scene);
++        stage.show();
++    }
++
+     // Get receipt when proceed to payment
+     public void getReciept(ActionEvent event) throws IOException {
+-        //root = FXMLLoader.load(getClass().getResource("PaymentMethod.fxml"));
++        root = FXMLLoader.load(getClass().getResource("CashReciept.fxml"));
+         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+         scene = new Scene(root);
+         stage.setScene(scene);
+         stage.show();
+     }
++
++
+ }
+Index: src/CashPay.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/CashPay.fxml b/src/CashPay.fxml
+--- a/src/CashPay.fxml	
++++ b/src/CashPay.fxml	
+@@ -10,63 +10,69 @@
+ <?import javafx.scene.layout.AnchorPane?>
+ <?import javafx.scene.text.Font?>
+ 
+-<AnchorPane prefHeight="486.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.CashPay">
++<AnchorPane prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.CashPay">
+    <children>
+-      <Label id="DBLabel" layoutX="244.0" layoutY="28.0" text="Dave's Burger">
++      <Label id="DBLabel" layoutX="444.0" layoutY="28.0" text="Dave's Burger">
+          <font>
+             <Font size="36.0" />
+          </font>
+       </Label>
+-      <Button id="backButton" layoutX="27.0" layoutY="23.0" mnemonicParsing="false" onAction="#switchBackToPaymentMethod" styleClass="btn" stylesheets="@CardCashPay.css" text="Back" />
+-      <SplitPane dividerPositions="0.49283667621776506" layoutY="105.0" prefHeight="382.0" prefWidth="700.0">
++      <Button id="backButton" layoutX="27.0" layoutY="23.0" mnemonicParsing="false" onAction="#switchBackToPaymentMethod" prefHeight="30.0" styleClass="btn" stylesheets="@CardCashPay.css" text="Back" />
++      <SplitPane dividerPositions="0.5" layoutY="105.0" prefHeight="500.0" prefWidth="1100.0">
+         <items>
+-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
++          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="500.0">
+                <children>
+-                  <Label id="paymentInfoLabel" layoutX="13.0" layoutY="14.0" text="Payment Information:" textFill="#399a8f">
++                  <Label id="yourOrderLabel" layoutX="14.0" layoutY="14.0" text="Your Order:" textFill="#399a8f">
+                      <font>
+                         <Font size="18.0" />
+                      </font>
+                   </Label>
+-                  <Label layoutX="24.0" layoutY="76.0" text="Name:" />
+-                  <TextField layoutX="121.0" layoutY="72.0" prefHeight="25.0" prefWidth="202.0" />
+-                  <Label layoutX="17.0" layoutY="114.0" text="Mobile Number:" />
+-                  <TextField layoutX="121.0" layoutY="110.0" prefHeight="25.0" prefWidth="202.0" />
+-                  <Label layoutX="9.0" layoutY="167.0" text="Pay In Cash:" textFill="#399a8f">
++                  <TreeTableView layoutX="51.0" layoutY="60.0" prefHeight="243.0" prefWidth="445.0">
++                    <columns>
++                      <TreeTableColumn prefWidth="75.0" text="Qty" />
++                      <TreeTableColumn id="orderTableView" prefWidth="369.0" text="Order" />
++                    </columns>
++                  </TreeTableView>
++                  <Label id="subTotalLabel" layoutX="44.0" layoutY="335.0" text="SubTotal: " />
++                  <Label layoutX="46.0" layoutY="370.0" text="Discount:" />
++                  <Label layoutX="47.0" layoutY="404.0" text="Total:" />
++                  <Button id="editButtton" layoutX="236.0" layoutY="437.0" mnemonicParsing="false" onAction="#switchBackToMenuPage" prefHeight="30.0" prefWidth="75.0" styleClass="btn" stylesheets="@CardCashPay.css" text="Edit" />
++                  <Label id="subTotalAmntLabel" layoutX="145.0" layoutY="335.0" text="\$30.89" />
++                  <Label id="discountLabel" layoutX="149.0" layoutY="370.0" text="\$4.63" />
++                  <Label id="totalAmntLabel" layoutX="147.0" layoutY="404.0" text="\$26.26" />
++               </children>
++            </AnchorPane>
++          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="558.0">
++               <children>
++                  <Label id="paymentInfoLabel" layoutX="13.0" layoutY="14.0" text="Payment Information:" textFill="#399a8f">
+                      <font>
+                         <Font size="18.0" />
+                      </font>
+                   </Label>
+-                  <Label layoutX="17.0" layoutY="210.0" text="Enter Cash Amount:" />
+-                  <TextField layoutX="230.0" layoutY="206.0" prefHeight="25.0" prefWidth="93.0" />
+-                  <Label layoutX="9.0" layoutY="262.0" text="Rewards / Coupons:" textFill="#399a8f">
++                  <Label layoutX="43.0" layoutY="77.0" text="Name:" />
++                  <TextField alignment="CENTER" layoutX="189.0" layoutY="72.0" prefHeight="26.0" prefWidth="290.0" text="Jane Rogers" />
++                  <Label layoutX="28.0" layoutY="123.0" text="Mobile Number:" />
++                  <TextField alignment="CENTER" layoutX="190.0" layoutY="118.0" prefHeight="26.0" prefWidth="290.0" text="(267) 456 - 1188" />
++                  <Label layoutX="15.0" layoutY="179.0" text="Pay In Cash:" textFill="#399a8f">
+                      <font>
+                         <Font size="18.0" />
+                      </font>
+                   </Label>
+-                  <RadioButton layoutX="10.0" layoutY="300.0" mnemonicParsing="false" text="10% off" />
+-                  <RadioButton layoutX="93.0" layoutY="300.0" mnemonicParsing="false" text="15% off" />
+-                  <RadioButton layoutX="176.0" layoutY="300.0" mnemonicParsing="false" text="20% off" />
+-                  <Button layoutX="261.0" layoutY="297.0" mnemonicParsing="false" text="Custom" />
+-                  <Button layoutX="132.0" layoutY="341.0" mnemonicParsing="false" styleClass="btn" stylesheets="@CardCashPay.css" text="Save" />
+-               </children>
+-            </AnchorPane>
+-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="321.0" prefWidth="309.0">
+-               <children>
+-                  <Label id="yourOrderLabel" layoutX="14.0" layoutY="14.0" text="Your Order:" textFill="#399a8f">
++                  <Label layoutX="39.0" layoutY="227.0" text="Enter Cash Amount:" />
++                  <TextField alignment="CENTER" layoutX="325.0" layoutY="214.0" prefHeight="26.0" prefWidth="145.0" text="30.00" />
++                  <Label layoutX="18.0" layoutY="290.0" text="Rewards / Coupons:" textFill="#399a8f">
+                      <font>
+                         <Font size="18.0" />
+                      </font>
+                   </Label>
+-                  <TreeTableView layoutX="8.0" layoutY="49.0" prefHeight="185.0" prefWidth="334.0">
+-                    <columns>
+-                      <TreeTableColumn prefWidth="75.0" text="C1" />
+-                      <TreeTableColumn id="orderTableView" prefWidth="75.0" text="C2" />
+-                    </columns>
+-                  </TreeTableView>
+-                  <Label id="subTotalLabel" layoutX="13.0" layoutY="247.0" text="SubTotal: " />
+-                  <Label layoutX="15.0" layoutY="280.0" text="Discount:" />
+-                  <Label layoutX="26.0" layoutY="314.0" text="Total:" />
+-                  <Button layoutX="222.0" layoutY="344.0" mnemonicParsing="false" styleClass="btn" stylesheets="@CardCashPay.css" text="Process Payment" />
++                  <RadioButton layoutX="11.0" layoutY="337.0" mnemonicParsing="false" text="10% off" />
++                  <RadioButton layoutX="115.0" layoutY="337.0" mnemonicParsing="false" selected="true" text="15% off" />
++                  <RadioButton layoutX="209.0" layoutY="337.0" mnemonicParsing="false" text="20% off" />
++                  <Button layoutX="386.0" layoutY="445.0" mnemonicParsing="false" onAction="#getReciept" prefHeight="30.0" styleClass="btn" stylesheets="@CardCashPay.css" text="Process Payment" />
++                  <Label id="customLabel" layoutX="315.0" layoutY="337.0" text="Custom:" />
++                  <TextField id="customTextField" alignment="CENTER" layoutX="378.0" layoutY="333.0" prefHeight="26.0" prefWidth="109.0" promptText="0.00" />
++                  <Label layoutX="309.0" layoutY="219.0" prefHeight="17.0" prefWidth="9.0" text="\$" />
++                  <Button layoutX="325.0" layoutY="447.0" mnemonicParsing="false" text="Save" />
+                </children>
+             </AnchorPane>
+         </items>
+Index: src/CardPay.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/CardPay.fxml b/src/CardPay.fxml
+--- a/src/CardPay.fxml	
++++ b/src/CardPay.fxml	
+@@ -8,69 +8,85 @@
+ <?import javafx.scene.control.TableColumn?>
+ <?import javafx.scene.control.TableView?>
+ <?import javafx.scene.control.TextField?>
++<?import javafx.scene.control.ToggleGroup?>
+ <?import javafx.scene.layout.AnchorPane?>
+ <?import javafx.scene.text.Font?>
+ 
+-<AnchorPane prefHeight="468.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.CardPay">
++<AnchorPane prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.CardPay">
+     <children>
+-        <SplitPane dividerPositions="0.5" layoutY="134.0" prefHeight="500.0" prefWidth="700.0">
++        <SplitPane dividerPositions="0.48861566484517305" layoutY="134.0" prefHeight="500.0" prefWidth="1100.0">
+             <items>
+-                <AnchorPane maxWidth="500.0" minHeight="0.0" minWidth="0.0" prefHeight="328.0" prefWidth="204.0">
++                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="485.0">
++                    <children>
++                        <Label id="totalLabel" layoutX="55.0" layoutY="397.0" text="Total:" />
++                        <Label id="yourOrderLabel" layoutX="14.0" layoutY="14.0" text="Your Order: " textFill="#399a8f">
++                            <font>
++                                <Font size="18.0" />
++                            </font>
++                  </Label>
++                        <Label id="subTotalLabel" layoutX="32.0" layoutY="333.0" text="SubTotal: " />
++                        <Label id="discountLabel" layoutX="34.0" layoutY="364.0" text="Discount:" />
++                        <TableView id="yourOrderTableView" layoutX="58.0" layoutY="55.0" prefHeight="265.0" prefWidth="413.0">
++                            <columns>
++                                <TableColumn prefWidth="75.0" text="Qty" />
++                                <TableColumn prefWidth="273.0" text="Order" />
++                            </columns>
++                        </TableView>
++                  <Button id="editButton" layoutX="239.0" layoutY="444.0" mnemonicParsing="false" onAction="#switchBackToMenuPage" prefHeight="30.0" prefWidth="75.0" styleClass="btn" stylesheets="@CardCashPay.css" text="Edit" />
++                  <Label id="subTotalAmntLabel" layoutX="133.0" layoutY="333.0" text="\$30.89" />
++                  <Label id="discountAmntLabel" layoutX="131.0" layoutY="364.0" text="\$3.09" />
++                  <Label id="totalAmntLabel" layoutX="131.0" layoutY="397.0" text="\$27.80" />
++                    </children>
++                </AnchorPane>
++                <AnchorPane maxWidth="558.0" minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="555.0">
+                     <children>
+                         <Label id="nameLabel" layoutX="43.0" layoutY="72.0" text="Name:" />
+-                        <TextField id="nameTextField" layoutX="121.0" layoutY="67.0" prefHeight="26.0" prefWidth="191.0" />
++                        <TextField id="nameTextField" alignment="CENTER" layoutX="167.0" layoutY="68.0" prefHeight="26.0" prefWidth="276.0" text="John Rogers" />
+                         <Label id="PayInfoLabel" layoutX="9.0" layoutY="14.0" text="Payment Information:" textFill="#399a8f">
+                             <font>
+                                 <Font size="18.0" />
+                             </font></Label>
+                         <Label id="mobileNumLabel" layoutX="19.0" layoutY="127.0" text="Mobile Number:" />
+-                        <TextField id="MobileNumTextField" layoutX="121.0" layoutY="122.0" prefHeight="26.0" prefWidth="191.0" text="(###)" />
++                        <TextField id="MobileNumTextField" alignment="CENTER" layoutX="164.0" layoutY="123.0" prefHeight="26.0" prefWidth="276.0" text="(215) 731 - 0085" />
+                         <Label id="cardInfoLabel" layoutX="13.0" layoutY="185.0" text="Credit / Debit Card Information:" textFill="#399a8f">
+                             <font>
+                                 <Font size="18.0" />
+                             </font></Label>
+                         <Label id="cardNumLabel" layoutX="14.0" layoutY="263.0" text="Card Number:" />
+-                        <TextField id="cardNumTextField" layoutX="115.0" layoutY="258.0" prefHeight="26.0" prefWidth="198.0" text="XXXX-XXXX-XXXX-XXXX" />
+-                        <Label id="ExpDateLabel" layoutX="6.0" layoutY="306.0" text="Exp. Date:" />
+-                        <Label id="CVVLabel" layoutX="210.0" layoutY="306.0" text="CVV: " />
+-                        <TextField id="CVVTextField" layoutX="257.0" layoutY="301.0" prefHeight="27.0" prefWidth="55.0" text="***" />
++                        <TextField id="cardNumTextField" alignment="CENTER" layoutX="163.0" layoutY="259.0" prefHeight="26.0" prefWidth="276.0" text="1111-2222-3333-4444" />
++                        <Label id="ExpDateLabel" layoutX="12.0" layoutY="306.0" text="Exp. Date (MM / YYYY):" />
++                        <Label id="CVVLabel" layoutX="340.0" layoutY="306.0" text="CVV: " />
++                        <TextField id="CVVTextField" alignment="CENTER" layoutX="386.0" layoutY="299.0" prefHeight="27.0" prefWidth="55.0" text="123" />
+                         <Label id="rewardsLabels" layoutX="13.0" layoutY="361.0" text="Rewards/ Coupons:" textFill="#399a8f">
+                             <font>
+                                 <Font size="18.0" />
+                             </font></Label>
+-                        <RadioButton id="tenPercentOffRadioBtn" layoutX="19.0" layoutY="401.0" mnemonicParsing="false" text="10% off " />
+-                        <RadioButton id="fifteenPercentOffRadioBtn" layoutX="106.0" layoutY="401.0" mnemonicParsing="false" text="15 % off" />
+-                        <RadioButton id="twentyPercentOffRadioBtn" layoutX="192.0" layoutY="401.0" mnemonicParsing="false" text="20% off" />
+-                        <Button id="customButton" layoutX="271.0" layoutY="397.0" mnemonicParsing="false" text="Custom" />
+-                        <Button id="saveButton" layoutX="140.0" layoutY="448.0" mnemonicParsing="false" onAction="#SaveBtnAction" styleClass="btn" stylesheets="@CardCashPay.css" text="Save" />
+-                        <TextField id="cardNameTextField" layoutX="115.0" layoutY="217.0" prefHeight="26.0" prefWidth="198.0" />
++                        <RadioButton id="tenPercentOffRadioBtn" fx:id="tenPercentOffRadioBtn" layoutX="19.0" layoutY="399.0" mnemonicParsing="false" onAction="#getDiscount" selected="true" text="10% off ">
++                     <toggleGroup>
++                        <ToggleGroup fx:id="discount10" />
++                     </toggleGroup></RadioButton>
++                        <RadioButton id="fifteenPercentOffRadioBtn" fx:id="fifteenPercentOffRadioBtn" layoutX="110.0" layoutY="399.0" mnemonicParsing="false" onAction="#getDiscount" text="15 % off">
++                     <toggleGroup>
++                        <ToggleGroup fx:id="discount15" />
++                     </toggleGroup></RadioButton>
++                        <RadioButton id="twentyPercentOffRadioBtn" fx:id="twentyPercentOffRadioBtn" layoutX="209.0" layoutY="399.0" mnemonicParsing="false" onAction="#getDiscount" text="20% off">
++                     <toggleGroup>
++                        <ToggleGroup fx:id="discount20" />
++                     </toggleGroup></RadioButton>
++                        <TextField id="cardNameTextField" alignment="CENTER" layoutX="163.0" layoutY="218.0" prefHeight="26.0" prefWidth="276.0" text="John Rogers" />
+                         <Label id="cardNameLabel" layoutX="12.0" layoutY="222.0" text="Name on Card:" />
+-                  <ChoiceBox id="monthCB" layoutX="64.0" layoutY="301.0" prefHeight="27.0" prefWidth="52.0" />
+-                  <Label layoutX="123.0" layoutY="304.0" prefHeight="17.0" prefWidth="7.0" text="/" />
+-                  <ChoiceBox id="yearCB" layoutX="135.0" layoutY="301.0" prefHeight="27.0" prefWidth="67.0" />
+-                    </children>
+-                </AnchorPane>
+-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="298.0">
+-                    <children>
+-                        <Label id="totalLabel" layoutX="20.0" layoutY="402.0" text="Total:" />
+-                        <Button id="processPaymentButton" layoutX="219.0" layoutY="450.0" mnemonicParsing="false" styleClass="btn" stylesheets="@CardCashPay.css" text="Process Payment" />
+-                        <Label id="yourOrderLabel" layoutX="14.0" layoutY="14.0" text="Your Order: " textFill="#399a8f">
+-                            <font>
+-                                <Font size="18.0" />
+-                            </font></Label>
+-                        <Label id="subTotalLabel" layoutX="16.0" layoutY="331.0" text="SubTotal: " />
+-                        <Label id="discountLabel" layoutX="18.0" layoutY="364.0" text="Discount:" />
+-                        <TableView id="yourOrderTableView" layoutX="8.0" layoutY="51.0" prefHeight="253.0" prefWidth="323.0">
+-                            <columns>
+-                                <TableColumn prefWidth="75.0" text="C1" />
+-                                <TableColumn prefWidth="75.0" text="C2" />
+-                            </columns>
+-                        </TableView>
++                  <ChoiceBox id="monthCB" layoutX="166.0" layoutY="299.0" prefHeight="27.0" prefWidth="52.0" />
++                  <Label layoutX="228.0" layoutY="304.0" prefHeight="17.0" prefWidth="11.0" text="/" />
++                  <ChoiceBox id="yearCB" layoutX="246.0" layoutY="299.0" prefHeight="27.0" prefWidth="67.0" />
++                        <Button id="processPaymentButton" layoutX="402.0" layoutY="443.0" mnemonicParsing="false" styleClass="btn" stylesheets="@CardCashPay.css" text="Process Payment" />
++                  <Label layoutX="301.0" layoutY="399.0" text="Custom:" />
++                  <TextField alignment="CENTER" layoutX="356.0" layoutY="395.0" prefHeight="26.0" prefWidth="87.0" />
++                  <Button id="saveButton" layoutX="334.0" layoutY="444.0" mnemonicParsing="false" text="Save" />
+                     </children>
+                 </AnchorPane>
+             </items>
+         </SplitPane>
+-        <Label layoutX="244.0" layoutY="39.0" text="Dave's Burger" textFill="#171717">
++        <Label layoutX="469.0" layoutY="39.0" text="Dave's Burger" textFill="#171717">
+             <font>
+                 <Font size="36.0" />
+             </font></Label>
+Index: src/CardReciept.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/CardReciept.fxml b/src/CardReciept.fxml
+--- a/src/CardReciept.fxml	
++++ b/src/CardReciept.fxml	
+@@ -1,28 +1,30 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
++<?import javafx.scene.control.Button?>
+ <?import javafx.scene.control.Label?>
+ <?import javafx.scene.control.ScrollPane?>
+ <?import javafx.scene.control.TableColumn?>
+ <?import javafx.scene.control.TableView?>
+ <?import javafx.scene.layout.AnchorPane?>
++<?import javafx.scene.shape.Line?>
+ <?import javafx.scene.text.Font?>
+ 
+ <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.CardReciept">
+    <children>
+-      <Label id="DBLabel" layoutX="231.0" layoutY="14.0" text="Dave's Burger">
++      <Label id="DBLabel" layoutX="247.0" layoutY="10.0" text="Receipt Order" textFill="#39918f">
+          <font>
+             <Font size="18.0" />
+          </font>
+       </Label>
+-      <Label id="custRecieptLabel" layoutX="113.0" layoutY="60.0" text="Reciept" />
++      <Label id="custRecieptLabel" layoutX="113.0" layoutY="60.0" text="Customer Name:" />
+       <ScrollPane layoutX="106.0" layoutY="108.0" prefHeight="180.0" prefWidth="409.0">
+         <content>
+           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="412.0">
+                <children>
+                   <TableView id="orderTableView" layoutX="-2.0" prefHeight="180.0" prefWidth="419.0">
+                     <columns>
+-                      <TableColumn prefWidth="75.0" text="C1" />
+-                      <TableColumn prefWidth="75.0" text="C2" />
++                      <TableColumn prefWidth="85.0" text="Qty" />
++                      <TableColumn prefWidth="316.0" text="Order" />
+                     </columns>
+                   </TableView>
+                </children>
+@@ -30,9 +32,19 @@
+         </content>
+       </ScrollPane>
+       <Label id="orderNumLabel" layoutX="113.0" layoutY="37.0" text="Order Number: " />
+-      <Label id="subTotal Label" layoutX="378.0" layoutY="303.0" text="SubTotal:" />
+-      <Label id="discountLabel" layoutX="378.0" layoutY="320.0" text="Discount:" />
+-      <Label id="totalLabel" layoutX="389.0" layoutY="337.0" text="Total:" />
++      <Label id="subTotal Label" layoutX="120.0" layoutY="298.0" text="SubTotal:" />
++      <Label id="discountLabel" layoutX="120.0" layoutY="320.0" text="Discount:" />
++      <Label id="totalLabel" layoutX="120.0" layoutY="342.0" text="Total:" />
+       <Label id="mobNumLabel" layoutX="113.0" layoutY="84.0" text="Mobile Number:" />
++      <Button id="readyOrderButton" layoutX="493.0" layoutY="354.0" mnemonicParsing="false" styleClass="btn" stylesheets="@CardCashPay.css" text="Order Ready" />
++      <Label layoutX="224.0" layoutY="37.0" text="123456" />
++      <Label layoutX="224.0" layoutY="60.0" text="John  Rogers" />
++      <Label layoutX="224.0" layoutY="84.0" text="(215) 731 - 0085" />
++      <Label layoutX="238.0" layoutY="298.0" text="\$30.89" />
++      <Label layoutX="242.0" layoutY="322.0" text="\$3.09" />
++      <Label layoutX="237.0" layoutY="344.0" text="\$27.80" />
++      <Label layoutX="120.0" layoutY="369.0" text="Paid Amount:" />
++      <Label layoutX="236.0" layoutY="369.0" text="\$27.80" />
++      <Line endX="100.0" layoutX="214.0" layoutY="366.0" startX="-100.0" />
+    </children>
+ </AnchorPane>
+Index: src/CardPay.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/CardPay.java b/src/CardPay.java
+--- a/src/CardPay.java	
++++ b/src/CardPay.java	
+@@ -2,71 +2,69 @@
+ 
+ import java.io.IOException;
+ import java.net.URL;
+-import java.time.Duration;
+-import java.time.LocalTime;
+-import java.util.Collections;
+-import java.util.HashMap;
+ import java.util.ResourceBundle;
+-import java.util.Scanner;
+-import javafx.application.Application;
+-import javafx.beans.value.ObservableValue;
++
+ import javafx.event.ActionEvent;
+-import javafx.event.EventHandler;
+ import javafx.fxml.FXML;
+ import javafx.fxml.FXMLLoader;
+ import javafx.fxml.Initializable;
+-import javafx.geometry.Insets;
+-import javafx.geometry.Pos;
+ import javafx.scene.Node;
+ import javafx.scene.Parent;
+ import javafx.scene.Scene;
+ import javafx.scene.control.*;
+-import javafx.scene.layout.AnchorPane;
+-import javafx.scene.layout.GridPane;
+-import javafx.scene.layout.StackPane;
+-import javafx.scene.text.Font;
+-import javafx.scene.text.FontWeight;
+-import javafx.scene.text.Text;
+ import javafx.stage.Stage;
+ 
+-import javax.swing.event.ChangeEvent;
+-import javax.swing.event.ChangeListener;
+-import javax.swing.table.TableColumn;
+-
+ import static javafx.application.Application.launch;
+ //extends application for JavaFX
+ 
+ public class CardPay implements Initializable{
++
++    public ToggleGroup discounts;
+     @FXML
+     private Label nameLabel, PayInfoLabel, mobileNumLabel, cardNumLabel, ExpDateLabel, CVVLabel, rewardsLabels;
+ 
+     @FXML
+     private TextField nameTextField, mobileNumTextField, cardNumTextField, ExpDateTextField, CVVTextField;
+ 
++    @FXML
++    private Label subTotalAmntLabel, discountAmntLabel, totalAmntLabel, customLabel;
++
++    @FXML
++    private  TextField customTextField;
++
+     @FXML
+     private RadioButton tenPercentOffRadioBtn, fifteenPercentOffRadioBtn,twentyPercentOffRadioBtn;
+ 
+     @FXML
+-    private Button customButton, saveButton;
++    private Button editButton;
+ 
+     @FXML
+     private TableView<Item> yourOrderTableView;
+ 
+     @FXML
+-    private TextField subTotalTextField, discountTextField, totalTextField;
++    private ChoiceBox<String> monthCB, yearCB;
++    
++    private String[] month = {"MM","01", "02","03","04","05","06","07","08","09","10","11","12"};
+ 
++    private String[] year = {"YYYY","2023", "2024","2025","2026","2027","2028","2029","2030"};
++    
+     @FXML
+     private Label totalLabel, yourOrderLabel, subTotalLabel, discountLabel;
+ 
+     @FXML
+-    private Button processPaymentButton;
+-
+-    @FXML
+-    private Button backButton;
++    private Button backButton, processPaymentButton;
++
++
+     private Stage stage;
+     private Scene scene;
+     private  Parent root;
+ 
++   // @FXML
++   // private double discount = 1.0;
++
++   // public CardPay() {
++    //}
++
+     // Implemented the back button to return back to the Payment Page
+     public void switchBackToPaymentMethod(ActionEvent event) throws IOException {
+         root = FXMLLoader.load(getClass().getResource("PayMethod.fxml"));
+@@ -75,7 +73,17 @@
+         stage.setScene(scene);
+         stage.show();
+     }
+-    /*
++
++    // Implemented the back button to return back to the Payment Page
++    public void switchBackToMenuPage(ActionEvent event) throws IOException {
++        root = FXMLLoader.load(getClass().getResource("MenuPage.fxml"));
++        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
++        scene = new Scene(root);
++        stage.setScene(scene);
++        stage.show();
++    }
++
++/*
+     // Implemented the proceed payment button to return to the Card Reciept Page
+     // Get receipt when proceed to payment
+     public void getReciept(ActionEvent event) throws IOException {
+@@ -93,18 +101,67 @@
+         stage.setScene(scene);
+         stage.show();
+     }
+-    */
++
++ */
+ 
++/*
+     //validate card inputs when the Save button is pressed
+     public void SaveBtnAction(ActionEvent event){
+         boolean cardNumValidator = DataValidator.cardNumFormat(cardNumTextField, cardNumLabel,"Format must be XXXX-XXXX-XXXX-XXXX from 0-9");
+         boolean cardCVV_Validator = DataValidator.cardCVVFormat(CVVTextField, CVVLabel, "Format must be *** from 0-9");
+     }
++*/
++    public double getSubTotal(){
++        double sub = 30.89;
++        return sub;
++    }
++
++
++
++    // if discount is selected for payment
++    public double getDiscount(ActionEvent event, TextField customTextField){
++        double coupon = 1.0;
++
++        if(tenPercentOffRadioBtn.isSelected()){
++            coupon = 0.1;
++        } else if (fifteenPercentOffRadioBtn.isSelected()) {
++            coupon = 0.15;
++        }
++        else if(twentyPercentOffRadioBtn.isSelected()){
++            coupon = 0.2;
++        }
++
++        return coupon;
++    }
++
++    //public double getTotal
+ 
+     @Override
+     public void initialize(URL location, ResourceBundle resources) {
++/*
++        // geting and setting the exp. date for the card payment
++        monthCB.getItems().addAll(month);
++        monthCB.setOnAction(this::getMonth);
++    
++        yearCB.getItems().addAll(year);
++        yearCB.setOnAction(this::getYear);
+ 
++        // set as default
++        yearCB.setValue("YYYY");
++        monthCB.setValue("MM");
++*/
+     }
++/*
++    private void getYear(ActionEvent actionEvent) {
++       String myYear = yearCB.getValue();
++       System.out.println(myYear);
+ 
++    }
+ 
++    private void getMonth(ActionEvent actionEvent) {
++        String myMonth = monthCB.getValue();
++        System.out.println(myMonth);
++    }
++    */
+ }
++
+Index: src/CashReciept.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/CashReciept.java b/src/CashReciept.java
+new file mode 100644
+--- /dev/null	
++++ b/src/CashReciept.java	
+@@ -0,0 +1,4 @@
++package src;
++
++public class CashReciept {
++}
+Index: src/PayMethod.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/PayMethod.java b/src/PayMethod.java
+--- a/src/PayMethod.java	
++++ b/src/PayMethod.java	
+@@ -50,7 +50,7 @@
+     }
+ 
+     public void switchToCardPay(ActionEvent event) throws IOException{
+-        root = FXMLLoader.load(getClass().getResource("CreditDebitCardPay.fxml"));
++        root = FXMLLoader.load(getClass().getResource("CardPay.fxml"));
+         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+         scene = new Scene(root);
+         stage.setScene(scene);
+Index: src/MenuPage.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/MenuPage.fxml b/src/MenuPage.fxml
+--- a/src/MenuPage.fxml	
++++ b/src/MenuPage.fxml	
+@@ -41,8 +41,8 @@
+             </GridPane>
+          </content>
+       </ScrollPane>
+-      <Button fx:id="checkout" layoutX="450.0" layoutY="288.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#checkout" prefHeight="30.0" prefWidth="80.0" text="Checkout" textAlignment="CENTER" AnchorPane.bottomAnchor="107.0" AnchorPane.rightAnchor="104.0" />
+-      <Button fx:id="backButton" layoutX="469.0" layoutY="338.0" mnemonicParsing="false" onAction="#back" text="Back" AnchorPane.bottomAnchor="62.0" AnchorPane.rightAnchor="124.0" />
++      <Button fx:id="checkout" layoutX="450.0" layoutY="288.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="30.0" minWidth="80.0" mnemonicParsing="false" onAction="#checkout" prefHeight="30.0" prefWidth="80.0" styleClass="btn" stylesheets="@CardCashPay.css" text="Checkout" textAlignment="CENTER" AnchorPane.bottomAnchor="107.0" AnchorPane.rightAnchor="104.0" />
++      <Button fx:id="backButton" layoutX="469.0" layoutY="338.0" mnemonicParsing="false" onAction="#back" styleClass="btn" stylesheets="@CardCashPay.css" text="Back" AnchorPane.bottomAnchor="62.0" AnchorPane.rightAnchor="124.0" />
+       <Label fx:id="checkoutError" layoutX="457.0" layoutY="316.0" prefHeight="25.0" prefWidth="263.0" textAlignment="CENTER" textFill="#f80303" />
+    </children>
+ </AnchorPane>
+Index: src/CashReciept.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/CashReciept.fxml b/src/CashReciept.fxml
+new file mode 100644
+--- /dev/null	
++++ b/src/CashReciept.fxml	
+@@ -0,0 +1,52 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<?import javafx.scene.control.Button?>
++<?import javafx.scene.control.Label?>
++<?import javafx.scene.control.ScrollPane?>
++<?import javafx.scene.control.TableColumn?>
++<?import javafx.scene.control.TableView?>
++<?import javafx.scene.layout.AnchorPane?>
++<?import javafx.scene.shape.Line?>
++<?import javafx.scene.text.Font?>
++
++<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.CashReciept">
++   <children>
++      <Label id="recieptOrderLabel" layoutX="238.0" layoutY="13.0" text=" Receipt Order" textFill="#399a8f">
++         <font>
++            <Font size="18.0" />
++         </font>
++      </Label>
++      <Label id="orderNumLabel" layoutX="82.0" layoutY="42.0" text="Order Number:" />
++      <Label id="CustNameLabel" layoutX="82.0" layoutY="62.0" text="Customer Name:" />
++      <Label id="mobileNumLabel" layoutX="83.0" layoutY="82.0" text="Mobile Number:" />
++      <Label id="ON_Label" layoutX="227.0" layoutY="42.0" text="230487" />
++      <Label id="CN_Label" layoutX="224.0" layoutY="62.0" text="Jane Rogers" />
++      <Label id="MN_Label" layoutX="223.0" layoutY="82.0" text="(123) 456 -7890" />
++      <ScrollPane layoutX="82.0" layoutY="110.0" prefHeight="180.0" prefWidth="412.0">
++        <content>
++          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="183.0" prefWidth="200.0">
++               <children>
++                  <TableView id="orderTableView" prefHeight="180.0" prefWidth="412.0">
++                    <columns>
++                      <TableColumn prefWidth="91.0" text="Qty" />
++                      <TableColumn prefWidth="304.0" text="Order" />
++                    </columns>
++                  </TableView>
++               </children>
++            </AnchorPane>
++        </content>
++      </ScrollPane>
++      <Label id="subTotalLabel" layoutX="82.0" layoutY="298.0" text="SubTotal:" />
++      <Label id="discounttLabel" layoutX="82.0" layoutY="318.0" text="Discount:" />
++      <Label id="totalLabel" layoutX="82.0" layoutY="340.0" text="Total:" />
++      <Label id="subtTotalAmntLabel" layoutX="206.0" layoutY="298.0" text="\$30.89" />
++      <Label id="dscountAmntLabel" layoutX="210.0" layoutY="318.0" text="\$4.63" />
++      <Label id="totalAmntLabel" layoutX="206.0" layoutY="339.0" text="\$26.26" />
++      <Button id="orderReadyButton" layoutX="491.0" layoutY="359.0" mnemonicParsing="false" styleClass="btn" stylesheets="@CardCashPay.css" text="Order Ready" />
++      <Label layoutX="82.0" layoutY="360.0" text="Paid Amount:" />
++      <Label layoutX="206.0" layoutY="359.0" text="\$30.00" />
++      <Label layoutX="82.0" layoutY="378.0" text="Return Amount:" />
++      <Label layoutX="208.0" layoutY="378.0" text="\$3.74" />
++      <Line endX="100.0" layoutX="183.0" layoutY="360.0" startX="-100.0" />
++   </children>
++</AnchorPane>
