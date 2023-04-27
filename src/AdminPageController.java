@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.AreaChart;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -111,7 +108,7 @@ public class AdminPageController implements Initializable {
     private AnchorPane orderVol;
 
     @FXML
-    private BarChart<?, ?> orderVol_bar;
+    private BarChart<String, Integer> orderVol_bar;
 
     @FXML
     private ChoiceBox<String> position_choice;
@@ -636,7 +633,7 @@ public class AdminPageController implements Initializable {
         LocalDate endDate = toDate_txt.getValue();
         showAreaChart(startDate, endDate);
         showPieChart(startDate, endDate);
-
+        showBarChart(startDate, endDate);
         error_label.setText("");
 
         if (startDate != null && endDate != null) {
@@ -648,7 +645,7 @@ public class AdminPageController implements Initializable {
                 // show area chart for the selected date range
                 showAreaChart(startDate, endDate);
                 showPieChart(startDate, endDate);
-
+                showBarChart(startDate, endDate);
 
             }
         } else {
@@ -728,6 +725,49 @@ public class AdminPageController implements Initializable {
         }
     }
 
+    public void showBarChart(LocalDate startDate, LocalDate endDate) {
+        orderVol_bar.getData().clear();
+        String barSql = "SELECT order_date, COUNT(order_id) FROM orders " +
+                "WHERE order_date BETWEEN ? AND ? " +
+                "GROUP BY order_date ORDER BY TIMESTAMP(order_date)";
+
+        connect = Database.connectToDB(false);
+        XYChart.Series<String, Integer> series = new XYChart.Series<>();
+        try {
+            prepare = connect.prepareStatement(barSql);
+            prepare.setString(1, startDate.toString());
+            prepare.setString(2, endDate.toString());
+            result = prepare.executeQuery();
+            boolean hasData = false;
+            while (result.next()) {
+                series.getData().add(new XYChart.Data<>(result.getString(1), result.getInt(2)));
+                hasData = true;
+            }
+            if (!hasData) {
+                error_label.setText("No data found for selected date range");
+                saleAmount_btn.setText("0");
+            } else {
+                orderVol_bar.getData().add(series);
+                error_label.setText("");
+
+                // Set vertical axis to only show integer values
+                Axis yAxis = orderVol_bar.getYAxis();
+                if (yAxis instanceof NumberAxis) {
+                    NumberAxis numberAxis = (NumberAxis) yAxis;
+                    numberAxis.setTickUnit(1);
+                    numberAxis.setForceZeroInRange(false); // Set to false to prevent from forcing the axis to show zero
+                    numberAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(numberAxis) {
+                        @Override
+                        public String toString(Number object) {
+                            return String.format("%d", object.intValue());
+                        }
+                    });
+                }}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //log out button on admin access page
     public void logout_btn() throws IOException {
         Main main = new Main();
@@ -742,7 +782,6 @@ public class AdminPageController implements Initializable {
             team_scene.setVisible(false);
             menuUpdate_scene.setVisible(false);
 
-            showAreaChart(LocalDate.now().minusDays(7), LocalDate.now());
 
         } else if (event.getSource() == menu_btn) {
             report_scene.setVisible(false);
