@@ -670,17 +670,26 @@ public class AdminPageController implements Initializable {
 
         connect = Database.connectToDB(false);
         XYChart.Series chart = new XYChart.Series();
+        double totalSale = 0;
         try {
             prepare = connect.prepareStatement(areaSql);
             prepare.setString(1, startDate.toString());
             prepare.setString(2, endDate.toString());
             result = prepare.executeQuery();
-
+            boolean hasData = false;
             while (result.next()) {
                 chart.getData().add(new XYChart.Data<>(result.getString(1), result.getFloat(2)));
+                totalSale += result.getDouble(2);
+                hasData = true;
             }
-
-            saleData_line.getData().add(chart);
+            if (!hasData) {
+                error_label.setText("No data found for selected date range");
+                saleAmount_btn.setText("0");
+            } else {
+                saleData_line.getData().add(chart);
+                saleAmount_btn.setText(String.format("%.2f $", totalSale));
+                error_label.setText("");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
