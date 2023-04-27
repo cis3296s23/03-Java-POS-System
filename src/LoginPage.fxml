@@ -36,7 +36,7 @@
                   <TextField fx:id="username_txt" layoutX="49.0" layoutY="148.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="textfield" />
                   <PasswordField fx:id="password_txt" layoutX="49.0" layoutY="188.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="textfield"/>
                   <Button fx:id="login_btn" layoutX="49.0" layoutY="242.0" mnemonicParsing="false" onAction="#loginBt" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" text="Login" />
-                  <Button fx:id="dashboardBtn" layoutX="49.0" layoutY="306.0" mnemonicParsing="false" onAction="#dashboardBtn" prefHeight="40.0" prefWidth="220.0" styleClass="dashboard-btn" text="DashBoard" />
+                  <Button fx:id="dashboardBtn" layoutX="49.0" layoutY="306.0" mnemonicParsing="false" onAction="#dashboardBtn" prefHeight="40.0" prefWidth="220.0" styleClass="dashboard-btn" text="Dashboard" />
                </children>
             </AnchorPane>
          </children>

@@ -1,6 +1,7 @@
 package src;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +14,13 @@ public class Main extends Application {
     private static Stage stage;
     public static void main(String[] args) {
 
+
         System.out.println("\tDATABASE CREATION");
 
+        Database db = new Database();
+        Connection conn = db.connectToDB(true);
+
+        db.createInitialTables(conn);
         launch(args);
     }
     @Override

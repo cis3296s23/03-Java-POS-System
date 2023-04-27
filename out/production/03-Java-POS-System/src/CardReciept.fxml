@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.CardReciept">
    <children>
       <Label id="DBLabel" layoutX="231.0" layoutY="14.0" text="Dave's Burger">
@@ -20,7 +19,7 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="412.0">
                <children>
-                  <TableView id="orderTableView" layoutX="-2.0" prefHeight="180.0" prefWidth="463.0">
+                  <TableView id="orderTableView" layoutX="-2.0" prefHeight="180.0" prefWidth="419.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="C1" />
                       <TableColumn prefWidth="75.0" text="C2" />

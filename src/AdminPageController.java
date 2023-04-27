@@ -206,7 +206,7 @@ public class AdminPageController implements Initializable {
             String checkEmp = "SELECT item_id FROM menu WHERE item_id = '"
                     + itemID_txt.getText() + "'";
 
-            connect = Database.connectToDB();
+            connect = Database.connectToDB(false);
 
             try {
 
@@ -266,7 +266,7 @@ public class AdminPageController implements Initializable {
             String checkEmp = "SELECT item_id FROM menu WHERE item_id = '"
                     + itemID_txt.getText() + "'";
 
-            connect = Database.connectToDB();
+            connect = Database.connectToDB(false);
 
             try {
 
@@ -329,7 +329,7 @@ public class AdminPageController implements Initializable {
 
         String sql = "SELECT * FROM menu";
 
-        connect = Database.connectToDB();
+        connect = Database.connectToDB(false);
 
         try {
 
@@ -381,7 +381,7 @@ public class AdminPageController implements Initializable {
         String sql = "SELECT SUM(order_total) FROM orders WHERE order_date = '"
                 + sqlDate + "'";
 
-        connect = Database.connectToDB();
+        connect = Database.connectToDB(false);
 
         try {
             double todaySale = 0;
@@ -407,7 +407,7 @@ public class AdminPageController implements Initializable {
 
         String sql = "SELECT COUNT(order_id) FROM orders WHERE order_date = '"
                 + sqlDate + "'";
-        connect = Database.connectToDB();
+        connect = Database.connectToDB(false);
 
         try {
             int orderNum = 0;
@@ -435,7 +435,7 @@ public class AdminPageController implements Initializable {
                 "GROUP BY order_date " +
                 "ORDER BY TIMESTAMP(order_date)";
 
-            connect = Database.connectToDB();
+            connect = Database.connectToDB(false);
             XYChart.Series chart = new XYChart.Series();
             try {
                 prepare = connect.prepareStatement(sql);
@@ -471,7 +471,7 @@ public class AdminPageController implements Initializable {
             String checkEmp = "SELECT item_id FROM employees WHERE item_id = '"
                     + empID_txt.getText() + "'";
 
-            connect = Database.connectToDB();
+            connect = Database.connectToDB(false);
 
             try {
 
@@ -531,7 +531,7 @@ public class AdminPageController implements Initializable {
                 String checkEmp = "SELECT item_id FROM employees WHERE item_id = '"
                         + empID_txt.getText() + "'";
 
-                connect = Database.connectToDB();
+                connect = Database.connectToDB(false);
 
                 try {
 
@@ -580,7 +580,7 @@ public class AdminPageController implements Initializable {
 
         String sql = "SELECT * FROM employees";
 
-        connect = Database.connectToDB();
+        connect = Database.connectToDB(false);
 
         try {
 
@@ -644,7 +644,7 @@ public class AdminPageController implements Initializable {
                 "WHERE order_date BETWEEN ? AND ? " +
                 "GROUP BY order_date ORDER BY TIMESTAMP(order_date)";
 
-        connect = Database.connectToDB();
+        connect = Database.connectToDB(false);
         XYChart.Series chart = new XYChart.Series();
         try {
             prepare = connect.prepareStatement(areaSql);

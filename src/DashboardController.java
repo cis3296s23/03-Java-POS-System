@@ -110,7 +110,7 @@ public class DashboardController implements Initializable {
 
         String sql = "SELECT * FROM ordereditems WHERE order_id = ?";
 
-        connect = Database.connectToDB();
+        connect = Database.connectToDB(false);
 
         try {
             prepare = connect.prepareStatement(sql);
@@ -155,7 +155,7 @@ public class DashboardController implements Initializable {
 
         String sql = "SELECT * FROM orders";
         //WHERE DATE(order_date) = CURDATE()
-        connect = Database.connectToDB();
+        connect = Database.connectToDB(false);
 
         try {
 
