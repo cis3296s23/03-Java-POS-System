@@ -7,11 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
+    private int order_id;
+    private double order_total;
+    private String payment_type;
+    private String card_ending;
+    private Time time_ordered;
     private String customerName;
     private List<String> items = new ArrayList<>();
     private LocalDateTime orderTime;
     private double totalPrice;
     private String paymentMethod;
+    private String order_name;
 
     public Order(String customerName, List<String> items, double totalPrice, String paymentMethod) {
         this.customerName = customerName;

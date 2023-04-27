@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
@@ -37,6 +36,9 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
+                        <Button fx:id="menu_btn" layoutX="5.0" layoutY="177.0" mnemonicParsing="false" onAction="#menu_btn" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Menu" />
+                        <Button fx:id="clockInOut_btn" layoutX="5.0" layoutY="280.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Clock In/Out" />
+                        <Button fx:id="transaction_btn" layoutX="6.0" layoutY="228.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Transaction" />
                         <Button fx:id="menu_btn" layoutX="5.0" layoutY="177.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Menu" />
                         <Button fx:id="clockInOut_btn" layoutX="5.0" layoutY="280.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Clock In/Out" />
                         <Button fx:id="transaction_btn" layoutX="6.0" layoutY="228.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Transaction" />
@@ -51,8 +53,35 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
+                        <AnchorPane layoutX="292.0" layoutY="200.0" prefHeight="200.0" prefWidth="302.0" stylesheets="@adminDesign.css">
                         <AnchorPane fx:id="transaction_scene" layoutX="25.0" layoutY="24.0" onDragDetected="#switchForm" prefHeight="600.0" prefWidth="886.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
+                              <Label layoutX="93.0" layoutY="30.0" text="Enter your ID:">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <PasswordField fx:id="employeeNumberField" layoutX="59.0" layoutY="67.0" />
+                              <Button fx:id="clockIn_btn" layoutX="46.0" layoutY="127.0" mnemonicParsing="false" onAction="#clockIn_btn" styleClass="btn" stylesheets="@adminDesign.css" text="Clock In">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="clockOut_btn" layoutX="145.0" layoutY="127.0" mnemonicParsing="false" onAction="#clockOut_btn" styleClass="btn" stylesheets="@adminDesign.css" text="Clock Out">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="shadow" />
+                              <String fx:value="radius" />
+                           </styleClass>
+                        </AnchorPane>
+                        <AnchorPane fx:id="transaction_form" layoutX="25.0" layoutY="24.0" prefHeight="600.0" prefWidth="886.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="17.0" layoutY="109.0" prefHeight="477.0" prefWidth="856.0" stylesheets="@adminDesign.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="13.0">
                               <AnchorPane layoutX="21.0" layoutY="14.0" prefHeight="85.0" prefWidth="850.0" AnchorPane.bottomAnchor="501.0">
                                  <children>
                                     <TextField alignment="CENTER" layoutX="284.0" layoutY="30.0" prefHeight="26.0" prefWidth="282.0" promptText="Search" />

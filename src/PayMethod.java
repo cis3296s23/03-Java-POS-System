@@ -41,29 +41,21 @@ public class PayMethod implements Initializable {
     private Stage stage;
     private Scene scene;
     private  Parent root;
-    public void switchToCashPay(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("CashPay.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
+    public void switchToCashPay() throws IOException{
+        Main main = new Main();
+        main.changeScene("CashPay.fxml", "Dave's Burger");
+
     }
 
-    public void switchToCardPay(ActionEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("CreditDebitCardPay.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void switchToCardPay() throws IOException{
+        Main main = new Main();
+        main.changeScene("CardPay.fxml", "Dave's Burger");
     }
 
-    public void goBack(ActionEvent event) throws IOException {
-
-        root = FXMLLoader.load(getClass().getResource("MenuPage.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void goBack() throws IOException {
+        Main main = new Main();
+        main.changeScene("MenuPage.fxml", "Dave's Burger");
     }
 
 }

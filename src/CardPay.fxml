@@ -24,7 +24,7 @@
                                 <Font size="18.0" />
                             </font></Label>
                         <Label id="mobileNumLabel" layoutX="19.0" layoutY="127.0" text="Mobile Number:" />
-                        <TextField id="MobileNumTextField" layoutX="121.0" layoutY="122.0" prefHeight="26.0" prefWidth="191.0" text="(###)" />
+                        <TextField id="MobileNumTextField" layoutX="121.0" layoutY="122.0" prefHeight="26.0" prefWidth="191.0" text="(###) ### - ####" />
                         <Label id="cardInfoLabel" layoutX="13.0" layoutY="185.0" text="Credit / Debit Card Information:" textFill="#399a8f">
                             <font>
                                 <Font size="18.0" />
@@ -75,5 +75,6 @@
                 <Font size="36.0" />
             </font></Label>
         <Button id="backButton" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#switchBackToPaymentMethod" styleClass="btn" stylesheets="@CardCashPay.css" text="Back" />
+      <Label fx:id="processPaymentError" contentDisplay="CENTER" layoutX="44.0" layoutY="99.0" prefHeight="17.0" prefWidth="603.0" />
     </children>
 </AnchorPane>

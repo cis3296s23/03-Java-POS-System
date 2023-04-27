@@ -49,14 +49,14 @@ public class DataValidator {
 
     // card CVV validation
     public static boolean cardCVVFormat(TextField CVVTextField, Label CVVLabel, String validateText){
-        boolean isCardNum = true;
+        boolean isCardCVV = true;
         String validationstring = null;
 
         if (!CVVTextField.getText().matches("\"^[0-9]{3}$\"gm")){
-            isCardNum = false;
+            isCardCVV = false;
             validationstring = validateText;
         }
         CVVLabel.setText(validationstring);
-        return isCardNum;
+        return isCardCVV;
     }
 }
