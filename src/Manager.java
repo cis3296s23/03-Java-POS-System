@@ -1,5 +1,6 @@
-import java.util.*;
-public class Manager extends Account {
+package src;
+
+public class Manager {
     private int managerID;
     private String managerName;
 
@@ -22,10 +23,6 @@ public class Manager extends Account {
     }
 
     public void deleteItem() {
-
-    }
-
-    public void viewOrderHistory() {
 
     }
 }

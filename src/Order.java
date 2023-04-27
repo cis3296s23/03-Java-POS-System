@@ -1,3 +1,7 @@
+package src;
+
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,53 +37,26 @@ public class Order {
     }
 
 
-    public LocalDateTime getOrderTime() {
-        return orderTime;
+    public Order(int order_id, String order_name,
+                 double order_total, String payment_type, String card_ending, Time time_ordered) {
+        this.order_id = order_id;
+        this.order_name = order_name;
+        this.order_total = order_total;
+        this.payment_type = payment_type;
+        this.card_ending = card_ending;
+        this.time_ordered = time_ordered;
     }
 
-    public void setOrderTime(LocalDateTime orderTime) {
-        this.orderTime = orderTime;
+    public Order(int orderId, String customerName, double orderTotal, String position) {
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public int getOrder_id() {
+        return order_id;
     }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-
-
-    public void addItem(String item) {
-        this.items.add(item);
-    }
-
-    public void removeItem(String item) {
-        this.items.remove(item);
-    }
-
-    public void clearItems() {
-        this.items.clear();
-    }
-
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "customerName='" + customerName + '\'' +
-                ", items=" + items +
-                ", orderTime=" + orderTime +
-                ", totalPrice=" + totalPrice +
-                ", paymentMethod='" + paymentMethod + '\'' +
-                '}';
-    }
+    public String getOrder_name(){return order_name;}
+    public double getOrder_total(){return order_total;}
+    public String getPayment_type(){return payment_type;}
+    public String card_ending(){return card_ending;}
+    public Time getTime_ordered(){return time_ordered;}
 }
+

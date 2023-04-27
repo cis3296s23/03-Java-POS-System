@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+        <TableView fx:id="orderTable" prefHeight="200.0" prefWidth="400.0">
+            <columns>
+                <TableColumn fx:id="itemCol" prefWidth="100.0" text="Item"/>
+                <TableColumn fx:id="quantityCol" prefWidth="100.0" text="Quantity"/>
+                <TableColumn fx:id="priceCol" prefWidth="100.0" text="Price"/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>
+
+
