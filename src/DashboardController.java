@@ -80,6 +80,7 @@ public class DashboardController implements Initializable {
     private LocalDateTime clockInTime;
     private LocalDateTime clockOutTime;
     private boolean clockedIn;
+    @FXML
     private AnchorPane transaction_scene;
     @FXML
     private TableView<Order> transaction_table;
@@ -100,7 +101,7 @@ public class DashboardController implements Initializable {
     private PreparedStatement prepare;
     private Statement statement;
     private ResultSet result;
-    private Alert alert;
+
 
     private ObservableList<OrderedItems> orderedItemList;
     // show all ordered items for a given order id
@@ -109,7 +110,7 @@ public class DashboardController implements Initializable {
 
         String sql = "SELECT * FROM ordereditems WHERE order_id = ?";
 
-        connect = Database.connectToDB();
+        connect = Database.connectToDB(false);
 
         try {
             prepare = connect.prepareStatement(sql);
@@ -154,7 +155,7 @@ public class DashboardController implements Initializable {
 
         String sql = "SELECT * FROM orders";
         //WHERE DATE(order_date) = CURDATE()
-        connect = Database.connectToDB();
+        connect = Database.connectToDB(false);
 
         try {
 
@@ -165,12 +166,13 @@ public class DashboardController implements Initializable {
 
             while (result.next()) {
 
-                orderData = new Order(result.getInt("order_id"),
-                        result.getString("customer_name"),
-                        result.getDouble("order_total"),
-                        result.getString("payment_type"),
-                        result.getString("card_ending"),
-                        result.getTime("time_ordered"));
+                orderData = new Order();
+                //orderData.setOrderID(result.getInt("order_id"));
+                orderData.setOrderID(result.getInt("orderID"));
+                orderData.setCustomerName(result.getString("customerName"));
+                orderData.setPaymentMethod(result.getString("paymentMethod"));
+                //result.getString("card_ending");
+                orderData.setOrderTime(LocalDateTime.parse(result.getString("orderTime")));
 
                 listData.add(orderData);
 

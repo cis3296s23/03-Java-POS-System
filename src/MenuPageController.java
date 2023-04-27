@@ -163,13 +163,13 @@ public class MenuPageController implements Initializable {
     }
 
     public void writeOrder() {
-        String makeOrderTable = "CREATE TABLE orders (" +
+        String makeOrderTable = "CREATE TABLE IF NOT EXISTS orders (" +
                                 "orderID int AUTO_INCREMENT," +
                                 "orderTime varchar(100)," +
                                 "customerName varchar(200)," +
                                 "paymentMethod varchar(20)," +
                                 "PRIMARY KEY (orderID));";
-        String makeItemTable = "CREATE TABLE orderedItems (" +
+        String makeItemTable = "CREATE TABLE IF NOT EXISTS orderedItems (" +
                                 "orderID int NOT NULL," +
                                 "itemID int NOT NULL," +
                                 "FOREIGN KEY (orderID) REFERENCES orders (orderID)," +
