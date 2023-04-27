@@ -204,11 +204,9 @@ public class MenuPageController implements Initializable {
                 st.executeUpdate(writeItem);
             }
 
-
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e);
         }
-
     }
 }

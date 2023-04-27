@@ -49,25 +49,25 @@ public class DashboardController implements Initializable {
     private PasswordField employeeNumberField;
 
     @FXML
-    private TableColumn<Order, String> cusName_col;
+    private TableColumn<Customer, String> cusName_col;
 
     @FXML
     private Button menu_btn;
 
     @FXML
-    private TableColumn<Order, Integer> orderId_col;
+    private TableColumn<Customer, Integer> orderId_col;
 
     @FXML
-    private TableColumn<Order, String> payment_col;
+    private TableColumn<Customer, String> payment_col;
 
     @FXML
-    private TableColumn<Order, Time> timeOrdered_col;
+    private TableColumn<Customer, Time> timeOrdered_col;
 
     @FXML
-    private TableColumn<Order, Double> total_col;
+    private TableColumn<Customer, Double> total_col;
 
     @FXML
-    private TableColumn<Order, String> card_ending;
+    private TableColumn<Customer, String> card_ending;
 
     @FXML
     private Button transaction_btn;
@@ -83,7 +83,7 @@ public class DashboardController implements Initializable {
     @FXML
     private AnchorPane transaction_scene;
     @FXML
-    private TableView<Order> transaction_table;
+    private TableView<Customer> transaction_table;
     @FXML
     private TableColumn<OrderedItems, String> itemOrdered_col;
     @FXML
@@ -137,7 +137,7 @@ public class DashboardController implements Initializable {
         for (OrderedItems item : orderedItemList) {
             totalPrice += item.getItem_price() * item.getItem_quantity();
         }
-        Order selectedOrder = orderList.stream().filter(order -> order.getOrder_id() == orderId).findFirst().orElse(null);
+        Customer selectedOrder = orderList.stream().filter(order -> order.getOrder_id() == orderId).findFirst().orElse(null);
         String customerName = selectedOrder != null ? selectedOrder.getOrder_name() : "";
         //store the result in another tableview and show detail of the transaction when mouse is clicked
         orderDetailsLabel.setText(String.format("Order Details for %s: ", customerName));
@@ -149,9 +149,9 @@ public class DashboardController implements Initializable {
 
         orderItem_table.setItems(orderedItemList);
     }
-    public ObservableList<Order> orderDataList() {
+    public ObservableList<Customer> orderDataList() {
 
-        ObservableList<Order> listData = FXCollections.observableArrayList();
+        ObservableList<Customer> listData = FXCollections.observableArrayList();
 
         String sql = "SELECT * FROM orders";
         //WHERE DATE(order_date) = CURDATE()
@@ -162,17 +162,16 @@ public class DashboardController implements Initializable {
             prepare = connect.prepareStatement(sql);
             result = prepare.executeQuery();
 
-            Order orderData;
+            Customer orderData;
 
             while (result.next()) {
 
-                orderData = new Order();
-                //orderData.setOrderID(result.getInt("order_id"));
-                orderData.setOrderID(result.getInt("orderID"));
-                orderData.setCustomerName(result.getString("customerName"));
-                orderData.setPaymentMethod(result.getString("paymentMethod"));
-                //result.getString("card_ending");
-                orderData.setOrderTime(LocalDateTime.parse(result.getString("orderTime")));
+                orderData = new Customer(result.getInt("order_id"),
+                        result.getString("customer_name"),
+                        result.getDouble("order_total"),
+                        result.getString("payment_type"),
+                        result.getString("card_ending"),
+                        result.getTime("time_ordered"));
 
                 listData.add(orderData);
 
@@ -183,7 +182,7 @@ public class DashboardController implements Initializable {
         }
         return listData;
     }
-    private ObservableList<Order> orderList;
+    private ObservableList<Customer> orderList;
     //show all of the order data on the table
     public void orderShowData() {
         orderList = orderDataList();

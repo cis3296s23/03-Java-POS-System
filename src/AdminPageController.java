@@ -170,6 +170,12 @@ public class AdminPageController implements Initializable {
     @FXML
     private ComboBox<String> category_choice;
 
+    @FXML
+    private Label saleAmount_btn;
+
+    @FXML
+    private Label error_label;
+
     private Connection connect;
     private PreparedStatement prepare;
     private Statement statement;
@@ -179,13 +185,6 @@ public class AdminPageController implements Initializable {
     private String[] choice = {"Chef","Cashier","Prep"};
     private String[] category = {"Burger", "Drinks", "Extras", "Wrap and Salads", "Steak", "EggRolls"};
 
-    public void showPieChart(){
-        category_pie.getData().clear();
-    }
-
-    public void showBarChart(){
-
-    }
     //this is a remove button to remove any menu items
     public void removeMenuBtn(){
         if (itemID_txt.getText().isEmpty()) {
@@ -636,7 +635,35 @@ public class AdminPageController implements Initializable {
         LocalDate startDate = fromDate_txt.getValue();
         LocalDate endDate = toDate_txt.getValue();
         showAreaChart(startDate, endDate);
+        showPieChart(startDate, endDate);
+
+        error_label.setText("");
+
+        if (startDate != null && endDate != null) {
+            if (startDate.isAfter(endDate)) {
+                // display error message if start date is after end date
+                showErrorDialog("Invalid date range", "Start date must be before end date.");
+
+            } else {
+                // show area chart for the selected date range
+                showAreaChart(startDate, endDate);
+                showPieChart(startDate, endDate);
+
+
+            }
+        } else {
+            // display error message if date range is not selected
+            showErrorDialog("Missing date range", "Please select a start and end date.");
+        }
     }
+    private void showErrorDialog(String title, String message) {
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     //show area chart within specific data range
     public void showAreaChart(LocalDate startDate, LocalDate endDate){
         saleData_line.getData().clear();
@@ -662,6 +689,45 @@ public class AdminPageController implements Initializable {
             e.printStackTrace();
         }
     }
+    public void showPieChart(LocalDate startDate, LocalDate endDate) {
+        category_pie.getData().clear();
+        String sql = "SELECT oi.category, SUM(oi.item_quantity) AS total_quantity_sold " +
+                "FROM ordereditems oi " +
+                "JOIN orders o ON oi.order_id = o.order_id " +
+                "WHERE o.order_date BETWEEN ? AND ? " +
+                "GROUP BY oi.category";
+
+        connect = Database.connectToDB(false);
+        try {
+            prepare = connect.prepareStatement(sql);
+            prepare.setString(1, startDate.toString());
+            prepare.setString(2, endDate.toString());
+            result = prepare.executeQuery();
+
+            // Create a new pie chart
+            PieChart chart = new PieChart();
+
+            // Add data to the chart
+            while (result.next()) {
+                String category = result.getString("category");
+                int totalQuantitySold = result.getInt("total_quantity_sold");
+                chart.getData().add(new PieChart.Data(category + " (" + totalQuantitySold + ")", totalQuantitySold));
+
+            }
+
+            // Set title and legend for the chart
+            chart.setTitle("Items Sold by Category and Quantity");
+            chart.setLegendVisible(true);
+
+            // Add the chart to the container node and show it
+            category_pie.getData().clear();
+            category_pie.getData().addAll(chart.getData());
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     //log out button on admin access page
     public void logout_btn() throws IOException {
         Main main = new Main();
@@ -706,17 +772,22 @@ public class AdminPageController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         category_choice.getItems().addAll(category);
         position_choice.getItems().addAll(choice);
-        showAreaChart(LocalDate.now().minusDays(7), LocalDate.now());
+
+        saleData_line.getData().clear();
+        orderVol_bar.getData().clear();
+        category_pie.getData().clear();
+
+        saleAmount_btn.setText("0");
+        error_label.setText("");
+
         employeesShowData();
         balanceDisplayDate();
         balanceDisplaySale();
         balanceDisplayOrder();
         balanceDisplayChart();
         menuShowData();
-
     }
 }
 

@@ -40,7 +40,7 @@
                                  </children>
                               </AnchorPane>
                               <Label layoutX="27.0" layoutY="94.0" text="Welcome," textFill="#eeeeee" />
-                              <Label fx:id="name_label" layoutX="96.0" layoutY="94.0" prefHeight="18.0" prefWidth="81.0" text="POS Team" textFill="#f2f4f5">
+                              <Label fx:id="name_label" layoutX="96.0" layoutY="94.0" prefHeight="18.0" prefWidth="81.0" text="POS TEAM" textFill="#f2f4f5">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -58,7 +58,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="balance_scene" layoutX="108.0" layoutY="71.0" prefHeight="600.0" prefWidth="887.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="balance_scene" layoutX="108.0" layoutY="71.0" prefHeight="600.0" prefWidth="887.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="9.0" layoutY="14.0" prefHeight="200.0" prefWidth="869.0" stylesheets="@adminDesign.css" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="0.0">
                                  <styleClass>
@@ -124,12 +124,12 @@
                                        </styleClass>
                                        <children>
                                           <AreaChart fx:id="saleThisWeek_line" layoutX="62.0" layoutY="-4.0" onDragDetected="#balanceDisplayChart" prefHeight="307.0" prefWidth="822.0" title="Sales Last 7 Days" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-4.0">
-                                            <xAxis>
-                                              <CategoryAxis side="BOTTOM" />
-                                            </xAxis>
-                                            <yAxis>
-                                              <NumberAxis side="LEFT" />
-                                            </yAxis>
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
                                           </AreaChart>
                                        </children>
                                     </AnchorPane>
@@ -193,12 +193,12 @@
                                  </styleClass>
                                  <children>
                                     <TableView fx:id="menuData" layoutX="20.0" layoutY="14.0" prefHeight="200.0" prefWidth="804.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="14.0">
-                                      <columns>
-                                        <TableColumn fx:id="itemID_col" prefWidth="87.0" text="Item ID" />
-                                        <TableColumn fx:id="itemName_col" prefWidth="111.0" text="Item Name" />
+                                       <columns>
+                                          <TableColumn fx:id="itemID_col" prefWidth="87.0" text="Item ID" />
+                                          <TableColumn fx:id="itemName_col" prefWidth="111.0" text="Item Name" />
                                           <TableColumn fx:id="itemPrice_col" prefWidth="93.0" text="Item Price" />
                                           <TableColumn fx:id="category_col" prefWidth="113.0" text="Category" />
-                                      </columns>
+                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                        </columnResizePolicy>
@@ -207,7 +207,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="team_scene" layoutY="122.0" prefHeight="600.0" prefWidth="887.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="team_scene" layoutY="122.0" prefHeight="600.0" prefWidth="887.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="24.0" layoutY="25.0" prefHeight="244.0" prefWidth="841.0" stylesheets="@adminDesign.css" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="25.0">
                                  <styleClass>
@@ -217,14 +217,14 @@
                                  </styleClass>
                                  <children>
                                     <TableView fx:id="empData_table" layoutX="23.0" layoutY="22.0" prefHeight="200.0" prefWidth="804.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="22.0">
-                                      <columns>
-                                        <TableColumn fx:id="empID_col" prefWidth="114.0" text="ID" />
-                                        <TableColumn fx:id="empName_col" prefWidth="149.0" text="Name" />
+                                       <columns>
+                                          <TableColumn fx:id="empID_col" prefWidth="114.0" text="ID" />
+                                          <TableColumn fx:id="empName_col" prefWidth="149.0" text="Name" />
                                           <TableColumn fx:id="empPhone_col" prefWidth="149.0" text="Phone" />
                                           <TableColumn fx:id="empPos_col" prefWidth="149.0" text="Position" />
                                           <TableColumn fx:id="empSal_col" prefWidth="149.0" text="Salary" />
                                           <TableColumn fx:id="totalHour_col" prefWidth="149.0" text="Total Hours " />
-                                      </columns>
+                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                        </columnResizePolicy>
@@ -301,18 +301,18 @@
                                     <AnchorPane layoutX="14.0" layoutY="12.0" prefHeight="250.0" prefWidth="439.0">
                                        <children>
                                           <AreaChart fx:id="saleData_line" layoutX="-75.0" layoutY="-112.0" prefHeight="288.0" prefWidth="439.0" title="Sales Data" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <xAxis>
-                                              <CategoryAxis side="BOTTOM" />
-                                            </xAxis>
-                                            <yAxis>
-                                              <NumberAxis side="LEFT" />
-                                            </yAxis>
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
                                           </AreaChart>
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutX="466.0" layoutY="13.0" prefHeight="246.0" prefWidth="352.0">
                                        <children>
-                                          <PieChart fx:id="category_pie" layoutX="-49.0" layoutY="-103.0" prefHeight="297.0" prefWidth="451.0" title="Category Sales" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <PieChart fx:id="category_pie" layoutX="-171.0" layoutY="-179.0" prefHeight="297.0" prefWidth="523.0" title="Category Sales" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -327,26 +327,41 @@
                                     <AnchorPane layoutX="420.0" layoutY="12.0" prefHeight="231.0" prefWidth="407.0">
                                        <children>
                                           <BarChart fx:id="orderVol_bar" layoutX="-209.0" layoutY="-99.0" prefHeight="301.0" prefWidth="407.0" title="Order Volume" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <xAxis>
-                                              <CategoryAxis side="BOTTOM" />
-                                            </xAxis>
-                                            <yAxis>
-                                              <NumberAxis side="LEFT" />
-                                            </yAxis>
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
                                           </BarChart>
                                        </children>
                                     </AnchorPane>
                                     <AnchorPane layoutX="20.0" layoutY="17.0" prefHeight="225.0" prefWidth="389.0">
                                        <children>
-                                          <DatePicker fx:id="fromDate_txt" layoutX="99.0" layoutY="46.0" />
-                                          <DatePicker fx:id="toDate_txt" layoutX="99.0" layoutY="87.0" />
-                                          <Label layoutX="33.0" layoutY="51.0" text="From: " />
-                                          <Label layoutX="33.0" layoutY="92.0" text="To:" />
-                                          <Button fx:id="generate_btn" layoutX="132.0" layoutY="137.0" mnemonicParsing="false" onAction="#handleShowChart" styleClass="btn" stylesheets="@adminDesign.css" text="Generate Data">
+                                          <DatePicker fx:id="fromDate_txt" layoutX="99.0" layoutY="14.0" />
+                                          <DatePicker fx:id="toDate_txt" layoutX="99.0" layoutY="56.0" />
+                                          <Label layoutX="34.0" layoutY="19.0" text="From: " />
+                                          <Label layoutX="44.0" layoutY="60.0" text="To:" />
+                                          <Button fx:id="generate_btn" layoutX="128.0" layoutY="99.0" mnemonicParsing="false" onAction="#handleShowChart" styleClass="btn" stylesheets="@adminDesign.css" text="Generate Data">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Button>
+                                          <Label layoutX="21.0" layoutY="159.0" prefHeight="20.0" prefWidth="143.0" text="Sale This Period:">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="saleAmount_btn" layoutX="164.0" layoutY="158.0" prefHeight="17.0" prefWidth="145.0" text="0" textFill="#0d0d0d">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="error_label" alignment="CENTER" layoutX="22.0" layoutY="194.0" prefHeight="17.0" prefWidth="348.0" textFill="#f20404">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
                                        </children>
                                     </AnchorPane>
                                  </children>
