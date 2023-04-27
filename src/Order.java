@@ -19,7 +19,14 @@ public class Order {
         this.items = items;
         this.totalPrice = totalPrice;
         this.paymentMethod = paymentMethod;
-        this.orderTime = LocalDateTime.now();
+    }
+
+    public Order(String customerName, List<Item> items, double totalPrice, String paymentMethod, LocalDateTime orderTime) {
+        this.customerName = customerName;
+        this.items = items;
+        this.totalPrice = totalPrice;
+        this.paymentMethod = paymentMethod;
+        this.orderTime = orderTime;
     }
 
     public int getOrderID() {
