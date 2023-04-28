@@ -21,6 +21,9 @@ import java.time.format.DateTimeFormatter;
 import java.sql.*;
 import java.util.ResourceBundle;
 
+/**
+ * controller for DashPage.fxml
+ */
 public class DashboardController implements Initializable {
 
     String[][] employees = {{"1111", "John Smith", "john@temple.edu", "16.00", "Cashier"},
@@ -104,7 +107,11 @@ public class DashboardController implements Initializable {
 
 
     private ObservableList<OrderedItems> orderedItemList;
-    // show all ordered items for a given order id
+
+    /**
+     * shows all ordered items for a given order id
+     * @param orderId ID of the order
+     */
     public void orderedItemShowData(int orderId) {
         orderedItemList = FXCollections.observableArrayList();
 
@@ -149,6 +156,11 @@ public class DashboardController implements Initializable {
 
         orderItem_table.setItems(orderedItemList);
     }
+
+    /**
+     * returns an observable list of orders taken from the orders database
+     * @return an observable list of orders for a table
+     */
     public ObservableList<Customer> orderDataList() {
 
         ObservableList<Customer> listData = FXCollections.observableArrayList();
@@ -183,7 +195,10 @@ public class DashboardController implements Initializable {
         return listData;
     }
     private ObservableList<Customer> orderList;
-    //show all of the order data on the table
+
+    /**
+     * shows all order data on the table
+     */
     public void orderShowData() {
         orderList = orderDataList();
 
@@ -205,12 +220,19 @@ public class DashboardController implements Initializable {
 
     });
     }
-    //go to admin page when button is clicked
+
+    /**
+     * goes to the admin page when the adminAccess button button is clicked
+     * @throws IOException
+     */
     public void adminAccess_btn() throws IOException {
         Main main = new Main();
         main.changeScene("LoginPage.fxml", "Dave's Burger");
     }
 
+    /**
+     * clocks in an employee with a given empNum from the employeeNumberField text field
+     */
     public void clockIn_btn() {
         String employeeNumber = employeeNumberField.getText();
         boolean foundEmployee = false;
@@ -240,7 +262,9 @@ public class DashboardController implements Initializable {
     }
 
 
-
+    /**
+     * clocks out the employee after having clocked in when pressing the clock out button
+     */
     public void clockOut_btn() {
         String employeeNumber = employeeNumberField.getText();
         boolean foundEmployee = false;
@@ -269,13 +293,20 @@ public class DashboardController implements Initializable {
         }
     }
 
-
+    /**
+     * returns to the menu page when the menu button is clicked
+     * @throws IOException
+     */
     public void menu_btn() throws IOException {
 
         Main main = new Main();
         main.changeScene("MenuPage.fxml", "Dave's Burger");
     }
 
+    /**
+     * shows date information regarding clock in/out
+     * @param message
+     */
     public void alert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Clock In/Out");
@@ -286,7 +317,10 @@ public class DashboardController implements Initializable {
     }
 
 
-    //switch to any anchorpane accordingly
+    /**
+     * switches to any anchor pane with a given event
+     * @param event
+     */
     public void switchForm(ActionEvent event) {
 
         if (event.getSource() == menu_btn) {
@@ -303,6 +337,13 @@ public class DashboardController implements Initializable {
             clockIn_scene.setVisible(true);
         }
     }
+
+    /**
+     * when the page is initialized, this method is called
+     * uses the orderShowData method
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
             orderShowData();

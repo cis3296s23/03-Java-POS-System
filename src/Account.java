@@ -1,5 +1,11 @@
 package src;
-
+/**
+Holds account information pertaining the user.
+ name: stores the name of the user in a String format
+ pass: stores the pasword of the user in a String format
+ empNum: stores the user's employee number for clocking in
+ empID: stores the user's employee ID
+ */
 public class Account {
     private String name;
     private String pass;
@@ -16,35 +22,66 @@ public Account(String name, String pass, String empNum, Employees empID){
     this.empID = empID;
 }
 
-public String getName(){
+    /**
+     * gets the property: "name" from the object
+     * @return the name property
+     */
+    public String getName(){
     return name;
 }
 
-public void setName(String name){
+    /**
+     * sets the property: "name" to the parameter
+     * @param name name to be stored
+     */
+    public void setName(String name){
     this.name = name;
 }
 
-public String getPass(){
+    /**
+     * gets the property: "pass" from the object
+     * @return the pass property
+     */
+    public String getPass(){
     return pass;
 }
 
-public void setPass(String pass){
+    /**
+     * sets the property: "pass" to the parameter
+     * @param pass password to be stored
+     */
+    public void setPass(String pass){
     this.pass = pass;
 }
 
-public String getEmpNum(){
+    /**
+     * gets the property: "empNum" from the object
+     * @return empNum
+     */
+    public String getEmpNum(){
     return empNum;
 }
 
-public void setEmpNum(String empNum){
+    /**
+     * sets the property: "name" to the parameter
+     * @param empNum employee number to be stored
+     */
+    public void setEmpNum(String empNum){
     this.empNum =empNum;
 }
 
-public Employees getEmpID(){
+    /**
+     * gets the property: "empID" from the object
+     * @return empID
+     */
+    public Employees getEmpID(){
     return empID;
 }
 
-public void createEmpID(){
+    /**
+     * creates a new empID for a user when needed
+     */
+    public void createEmpID(){
 
 }
 }
