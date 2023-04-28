@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.AreaChart;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -20,6 +17,9 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * controller for the use of AdminPage.fxml
+ */
 public class AdminPageController implements Initializable {
     @FXML
     private Button balance_btn;
@@ -111,7 +111,7 @@ public class AdminPageController implements Initializable {
     private AnchorPane orderVol;
 
     @FXML
-    private BarChart<?, ?> orderVol_bar;
+    private BarChart<String, Integer> orderVol_bar;
 
     @FXML
     private ChoiceBox<String> position_choice;
@@ -170,6 +170,12 @@ public class AdminPageController implements Initializable {
     @FXML
     private ComboBox<String> category_choice;
 
+    @FXML
+    private Label saleAmount_btn;
+
+    @FXML
+    private Label error_label;
+
     private Connection connect;
     private PreparedStatement prepare;
     private Statement statement;
@@ -179,14 +185,9 @@ public class AdminPageController implements Initializable {
     private String[] choice = {"Chef","Cashier","Prep"};
     private String[] category = {"Burger", "Drinks", "Extras", "Wrap and Salads", "Steak", "EggRolls"};
 
-    public void showPieChart(){
-        category_pie.getData().clear();
-    }
-
-    public void showBarChart(){
-
-    }
-    //this is a remove button to remove any menu items
+    /**
+     * this is a remove button to remove any menu items
+     */
     public void removeMenuBtn(){
         if (itemID_txt.getText().isEmpty()) {
             alert = new Alert(Alert.AlertType.ERROR);
@@ -247,7 +248,10 @@ public class AdminPageController implements Initializable {
             }
         }
     }
-    //this button will add new menu item to the menu
+
+    /**
+     * this button will add new menu item to the menu
+     */
     public void addMenuBtn() {
 
         if (itemID_txt.getText().isEmpty()
@@ -310,7 +314,10 @@ public class AdminPageController implements Initializable {
         }
     }
     private ObservableList<Menu> menuList;
-    //this show data on the table according to our data on the database
+
+    /**
+     * this show data on the table according to our data on the database
+     */
     public void menuShowData() {
         menuList = menuDataList();
 
@@ -322,7 +329,11 @@ public class AdminPageController implements Initializable {
         menuData.setItems(menuList);
 
     }
-    //this method is to retrieve data from our database
+
+    /**
+     * this method is to retrieve data from our database
+     * @return an observable list of menu items to show on the GUI
+     */
     public ObservableList<Menu> menuDataList() {
 
         ObservableList<Menu> listData = FXCollections.observableArrayList();
@@ -354,7 +365,10 @@ public class AdminPageController implements Initializable {
         }
         return listData;
     }
-    //this method will clear all the textfields when called
+
+    /**
+     * this method will clear all the textfields when called
+     */
     public void menuClearBtn() {
 
         itemID_txt.setText("");
@@ -363,7 +377,10 @@ public class AdminPageController implements Initializable {
         category_choice.getSelectionModel().clearSelection();
 
     }
-    //display current date to the designated label
+
+    /**
+     * display current date to the designated label
+     */
     public void balanceDisplayDate() {
 
         // Get the current date
@@ -372,7 +389,9 @@ public class AdminPageController implements Initializable {
         dateLabel.setText(currentDate.toString());
     }
 
-    //display todays sale to the desginated label
+    /**
+     * displays today's sale to its assigned label
+     */
     public void balanceDisplaySale(){
 
         java.util.Date date = new java.util.Date();
@@ -399,7 +418,9 @@ public class AdminPageController implements Initializable {
         }
     }
 
-    //display today order volume to the desginated label
+    /**
+     * displays today's order volume to its assigned label
+     */
     public void balanceDisplayOrder(){
 
         java.util.Date date = new java.util.Date();
@@ -424,7 +445,9 @@ public class AdminPageController implements Initializable {
 
     }
 
-    //display the sale chart for the last 7 days
+    /**
+     * displays the sale chart for the last 7 days
+     */
     public void balanceDisplayChart(){
             saleThisWeek_line.getData().clear();
 
@@ -451,7 +474,10 @@ public class AdminPageController implements Initializable {
                 e.printStackTrace();
             }
         }
-    //this method will remove any employee from our database and table
+
+    /**
+     * this method will remove any employee from our database and table
+     */
     public void removeEmpBtn() {
         if (empID_txt.getText().isEmpty()) {
             alert = new Alert(Alert.AlertType.ERROR);
@@ -512,7 +538,10 @@ public class AdminPageController implements Initializable {
             }
         }
     }
-    //add employee to our database and table
+
+    /**
+     * adds employees to our database and table
+     */
     public void addEmpBtn() {
 
         if (empID_txt.getText().isEmpty()
@@ -573,7 +602,11 @@ public class AdminPageController implements Initializable {
                 }
             }
         }
-    //retrieve data from table employees on our database
+
+    /**
+     * retrieve data from table employees on our database
+     * @return an observable list of employee data for a table in the GUI
+     */
     public ObservableList<EmployeesData> employeesDataList() {
 
         ObservableList<EmployeesData> listData = FXCollections.observableArrayList();
@@ -608,7 +641,10 @@ public class AdminPageController implements Initializable {
     }
 
     private ObservableList<EmployeesData> employeesList;
-    //show all of our employee data on the table
+
+    /**
+     * shows all of our employee data on the table
+     */
     public void employeesShowData() {
         employeesList = employeesDataList();
 
@@ -621,7 +657,10 @@ public class AdminPageController implements Initializable {
         empData_table.setItems(employeesList);
 
     }
-    //clear all the input textfield when called
+
+    /**
+     * clears all the input text field when called
+     */
     public void empClearBtn() {
 
         empID_txt.setText("");
@@ -631,13 +670,50 @@ public class AdminPageController implements Initializable {
         position_choice.getSelectionModel().clearSelection();
 
     }
+
+    /**
+     * handler for the charts on the GUI
+     * @param event determined AdminPage.fxml
+     */
     @FXML
     public void handleShowChart(ActionEvent event) {
         LocalDate startDate = fromDate_txt.getValue();
         LocalDate endDate = toDate_txt.getValue();
         showAreaChart(startDate, endDate);
+        showPieChart(startDate, endDate);
+        showBarChart(startDate, endDate);
+        error_label.setText("");
+
+        if (startDate != null && endDate != null) {
+            if (startDate.isAfter(endDate)) {
+                // display error message if start date is after end date
+                showErrorDialog("Invalid date range", "Start date must be before end date.");
+
+            } else {
+                // show area chart for the selected date range
+                showAreaChart(startDate, endDate);
+                showPieChart(startDate, endDate);
+                showBarChart(startDate, endDate);
+
+            }
+        } else {
+            // display error message if date range is not selected
+            showErrorDialog("Missing date range", "Please select a start and end date.");
+        }
     }
-    //show area chart within specific data range
+    private void showErrorDialog(String title, String message) {
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    /**
+     * show area chart within specific data range
+     * @param startDate earliest date in range
+     * @param endDate latest date in range
+     */
     public void showAreaChart(LocalDate startDate, LocalDate endDate){
         saleData_line.getData().clear();
         String areaSql = "SELECT order_date, SUM(order_total) FROM orders " +
@@ -646,28 +722,137 @@ public class AdminPageController implements Initializable {
 
         connect = Database.connectToDB(false);
         XYChart.Series chart = new XYChart.Series();
+        double totalSale = 0;
         try {
             prepare = connect.prepareStatement(areaSql);
             prepare.setString(1, startDate.toString());
             prepare.setString(2, endDate.toString());
             result = prepare.executeQuery();
-
+            boolean hasData = false;
             while (result.next()) {
                 chart.getData().add(new XYChart.Data<>(result.getString(1), result.getFloat(2)));
+                totalSale += result.getDouble(2);
+                hasData = true;
             }
-
-            saleData_line.getData().add(chart);
+            if (!hasData) {
+                error_label.setText("No data found for selected date range");
+                saleAmount_btn.setText("0");
+            } else {
+                saleData_line.getData().add(chart);
+                saleAmount_btn.setText(String.format("%.2f $", totalSale));
+                error_label.setText("");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    //log out button on admin access page
+
+    /**
+     * shows a pie chart on the GUI that relates total items sold to the corresponding date
+     * @param startDate earliest date in range
+     * @param endDate latest date in range
+     */
+    public void showPieChart(LocalDate startDate, LocalDate endDate) {
+        category_pie.getData().clear();
+        String sql = "SELECT oi.category, SUM(oi.item_quantity) AS total_quantity_sold " +
+                "FROM ordereditems oi " +
+                "JOIN orders o ON oi.order_id = o.order_id " +
+                "WHERE o.order_date BETWEEN ? AND ? " +
+                "GROUP BY oi.category";
+
+        connect = Database.connectToDB(false);
+        try {
+            prepare = connect.prepareStatement(sql);
+            prepare.setString(1, startDate.toString());
+            prepare.setString(2, endDate.toString());
+            result = prepare.executeQuery();
+
+            // Create a new pie chart
+            PieChart chart = new PieChart();
+
+            // Add data to the chart
+            while (result.next()) {
+                String category = result.getString("category");
+                int totalQuantitySold = result.getInt("total_quantity_sold");
+                chart.getData().add(new PieChart.Data(category + " (" + totalQuantitySold + ")", totalQuantitySold));
+
+            }
+
+            // Set title and legend for the chart
+            chart.setTitle("Items Sold by Category and Quantity");
+            chart.setLegendVisible(true);
+
+            // Add the chart to the container node and show it
+            category_pie.getData().clear();
+            category_pie.getData().addAll(chart.getData());
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * shows a bar chart on the GUI that relates the total orders in a given amount of time
+     * @param startDate earliest time in range
+     * @param endDate latest time in range
+     */
+    public void showBarChart(LocalDate startDate, LocalDate endDate) {
+        orderVol_bar.getData().clear();
+        String barSql = "SELECT order_date, COUNT(order_id) FROM orders " +
+                "WHERE order_date BETWEEN ? AND ? " +
+                "GROUP BY order_date ORDER BY TIMESTAMP(order_date)";
+
+        connect = Database.connectToDB(false);
+        XYChart.Series<String, Integer> series = new XYChart.Series<>();
+        try {
+            prepare = connect.prepareStatement(barSql);
+            prepare.setString(1, startDate.toString());
+            prepare.setString(2, endDate.toString());
+            result = prepare.executeQuery();
+            boolean hasData = false;
+            while (result.next()) {
+                series.getData().add(new XYChart.Data<>(result.getString(1), result.getInt(2)));
+                hasData = true;
+            }
+            if (!hasData) {
+                error_label.setText("No data found for selected date range");
+                saleAmount_btn.setText("0");
+            } else {
+                orderVol_bar.getData().add(series);
+                error_label.setText("");
+
+                // Set vertical axis to only show integer values
+                Axis yAxis = orderVol_bar.getYAxis();
+                if (yAxis instanceof NumberAxis) {
+                    NumberAxis numberAxis = (NumberAxis) yAxis;
+                    numberAxis.setTickUnit(1);
+                    numberAxis.setForceZeroInRange(false); // Set to false to prevent from forcing the axis to show zero
+                    numberAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(numberAxis) {
+                        @Override
+                        public String toString(Number object) {
+                            return String.format("%d", object.intValue());
+                        }
+                    });
+                }}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * log out button on admin access page
+     * @throws IOException
+     */
     public void logout_btn() throws IOException {
         Main main = new Main();
         main.changeScene("Dashpage.fxml", "Dashboard");
     }
-    //this method will swithc multiple anchorpane according to each associated buttons
+
+    /**
+     * this method will switch multiple anchor panes according to a button action event
+     * @param event determined by AdminPage.fxml
+     */
     public void switchForm(ActionEvent event) {
 
         if (event.getSource() == report_btn) {
@@ -676,7 +861,6 @@ public class AdminPageController implements Initializable {
             team_scene.setVisible(false);
             menuUpdate_scene.setVisible(false);
 
-            showAreaChart(LocalDate.now().minusDays(7), LocalDate.now());
 
         } else if (event.getSource() == menu_btn) {
             report_scene.setVisible(false);
@@ -704,12 +888,26 @@ public class AdminPageController implements Initializable {
 
         }
     }
+
+    /**
+     * on launch of the page, this method is called
+     * initializes chart data
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         category_choice.getItems().addAll(category);
         position_choice.getItems().addAll(choice);
-        showAreaChart(LocalDate.now().minusDays(7), LocalDate.now());
+
+        saleData_line.getData().clear();
+        orderVol_bar.getData().clear();
+        category_pie.getData().clear();
+
+        saleAmount_btn.setText("0");
+        error_label.setText("");
+
         employeesShowData();
         balanceDisplayDate();
         balanceDisplaySale();

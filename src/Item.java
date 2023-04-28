@@ -1,22 +1,35 @@
 package src;
 
+/**
+ * holds item data
+ */
 public class Item{
     private int itemID;
     private String itemName;
     private double itemPrice;
     private int itemQty;
+
+    private String category;
     private double amount;
 
 
 public Item(){
 }
 
-public Item(int itemID, String itemName, double itemPrice, int itemQty, double amount){
+    /**
+     * constructor for Item
+     * @param itemID holds the item ID
+     * @param itemName holds the item's name
+     * @param itemPrice holds the item's default price
+     * @param itemQty holds the item quantity in an order
+     * @param category holds the category of the item
+     */
+    public Item(int itemID, String itemName, double itemPrice, int itemQty, String category){
     this.itemID = itemID;
     this.itemName = itemName;
     this.itemPrice = itemPrice;
     this.itemQty = itemQty;
-    this.amount = amount;
+    this.category = category;
 }
 
 public int getItemID(){
@@ -51,8 +64,8 @@ public void setItemQty(int itemQty){
     this.itemQty = itemQty;
 }
 
-public double getAmount(){
-    return amount;
+public String getCategory(){
+    return category;
 }
 
 public void setAmount(double amount){
