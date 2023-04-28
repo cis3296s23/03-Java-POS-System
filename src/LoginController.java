@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * controller for LoginPage.fxml
+ */
 public class LoginController implements Initializable {
 
     @FXML
@@ -29,6 +32,10 @@ public class LoginController implements Initializable {
     private String pass = "admin123";
     private Main main = new Main();
 
+    /**
+     * uses the text in the username and password text fields to attempt to log in
+     * @throws IOException
+     */
     public void loginBt() throws IOException {
 
         if (username_txt.getText().equals(user) && password_txt.getText().equals(pass)){
@@ -43,11 +50,19 @@ public class LoginController implements Initializable {
         }
     }
 
+    /**
+     * changes the scene to the dashboard
+     * @throws IOException
+     */
     public void dashboardBtn() throws IOException {
         main.changeScene("DashPage.fxml", "Dashboard");
     }
 
-
+    /**
+     * when the page is initialized, this method is called
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

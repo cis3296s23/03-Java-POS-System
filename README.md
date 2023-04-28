@@ -19,33 +19,40 @@ ticket through the main computer and send it to each designated station allowing
 - Show restaurant performance within specific time range. 
 
 # Start up Page 
+![startup](screenshot/startup.png)
+-
 
-(Screen Shot 2023-04-25 at 8.52.41 AM.png)
+# UML Diagram
 
-# How to run
-Provide here instructions on how to use your application.   
+![UML](screenshot/JavaPOSUML.png)
+-
+
+# Database Managements
+![Database](screenshot/data.png)
+-
+These are the data table that are using in this program.
+
+# Required resources
+In order to run this program you will need to install a few things:  
 - 
 - Download the latest binary from the Release section on the right on GitHub.  
-- 
-- On the command line uncompress using
-```
-tar -xzf  
-```
-- On the command line run with
-```
-./hello
-```
-- You will see Hello World! on your terminal. 
+- Install [MySQL Community Server](https://dev.mysql.com/downloads/mysql/) in order to establish your local server.
+- Install [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) in order to control your data in the database.
+- Download [MySQL Connector Java](https://dev.mysql.com/downloads/connector/j/) as "Platform Independent" and include that in your library of your preferred IDE.
+
+![MySQL Connector](screenshot/mysqlconnector.png)
+-
+This is how your IDE is able to communicate with the database.
 
 # How to contribute
 Follow this project board to know the latest status of the project: [https://github.com/orgs/cis3296s23/projects/69/views/1](https://github.com/orgs/cis3296s23/projects/69/views/1)  
 
 ### How to build
-- Need to clone this Github repository
-- Configure the database credentials
-- From the database, use SQL to import the data
-- Run the project through InteliJ 11 IDE or the command prompts
+- Use this Github repository.
+- Configure the database credentials.
+- From the database, use SQL to import the data.
+- Run the project through InteliJ 11 IDE or the command prompts.
 - Specify what branch to use for a more stable release or for cutting edge development.  
-- Download JavaFX and SceneBuilder 
-- Compile and run the main.java file
+- Don't forget to add all the required resources.
+- Compile and run the main.java file.
 - After that, the application should start. 

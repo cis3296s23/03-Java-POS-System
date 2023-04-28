@@ -34,7 +34,15 @@ import javax.swing.table.TableColumn;
 import static javafx.application.Application.launch;
 //extends application for JavaFX
 
+/**
+ * controller for CashPay.fxml
+ */
 public class CashPay implements Initializable{
+    /**
+     * when the page is initialized, this message is called
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -43,7 +51,11 @@ public class CashPay implements Initializable{
     private Scene scene;
     private  Parent root;
 
-    // Implemented the back button to return back to the Payment Page
+    /**
+     * returns the stage back to the Payment Page
+     * @param event
+     * @throws IOException
+     */
     public void switchBackToPaymentMethod(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("PayMethod.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
