@@ -34,7 +34,11 @@ import javax.swing.table.TableColumn;
 import static javafx.application.Application.launch;
 //extends application for JavaFX
 
+
 public class CashPay implements Initializable{
+    @FXML
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -46,7 +50,7 @@ public class CashPay implements Initializable{
     private  Parent root;
 
     // Implemented the back button to return back to the Payment Page
-    public void switchBackToPaymentMethod(ActionEvent event) throws IOException {
+    public void switchBackToPaymentMethod() throws IOException {
 
         Main main = new Main();
         main.changeScene("PayMethod.fxml", "Dave's Burger");
@@ -57,9 +61,32 @@ public class CashPay implements Initializable{
     }
 
     // Get receipt when proceed to payment
-    public void getReciept(ActionEvent event) throws IOException {
+    public void getReciept() throws IOException {
         //root = FXMLLoader.load(getClass().getResource("PaymentMethod.fxml"));
-        Main main = new Main();
-        main.changeScene("PayMethod.fxml", "Dave's Burger");
+        //Main main = new Main();
+        //main.changeScene("CashReciept.fxml", "Dave's Burger");
+
+        String custName = nameTextField.getText();
+        String mobNum = mobileNumTextField.getText();
+        //String subTotal = subTotalLabel.getText();
+        //String discount = discountLabel.getText();
+        // String total = totalLabel.getText();
+        // String paidAmnt = totalLabel.getText();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CashReciept.fxml"));
+        root = loader.load();
+
+        CardReciept cardReciept = loader.getController();
+        cardReciept.displayCustName(custName);
+        cardReciept.displayMobNum(mobNum);
+        //cardReciept.displaySubTotal(Float.parseFloat(subTotal));
+        //cardReciept.displayDiscount(Float.parseFloat(discount));
+        //cardReciept.displayTotal(Float.parseFloat(total));
+        //cardReciept.displayPaidAmount(Float.parseFloat(paidAmnt));
+
+        stage =(Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

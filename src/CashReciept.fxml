@@ -16,7 +16,7 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label id="custRecieptLabel" layoutX="113.0" layoutY="60.0" text="Reciept" />
+        <Label id="custRecieptLabel" layoutX="113.0" layoutY="60.0" text="Customer Name:" />
         <ScrollPane layoutX="113.0" layoutY="124.0" prefHeight="231.0" prefWidth="455.0">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="229.0" prefWidth="454.0">
@@ -35,16 +35,19 @@
         <Label id="subTotal Label" layoutX="107.0" layoutY="371.0" text="SubTotal:" />
         <Label id="discountLabel" layoutX="107.0" layoutY="395.0" text="Discount:" />
         <Label id="totalLabel" layoutX="117.0" layoutY="419.0" text="Total:" />
-        <Label id="mobNumLabel" layoutX="113.0" layoutY="84.0" text="Mobile Number:" />
+        <Label id="mobNum2Label" layoutX="113.0" layoutY="84.0" text="Mobile Number:" />
       <Label layoutX="107.0" layoutY="448.0" text="Paid Amount:" />
       <Label layoutX="107.0" layoutY="473.0" text="Return Amount:" />
-      <Label layoutX="216.0" layoutY="371.0" text="\$0.00" />
-      <Label layoutX="216.0" layoutY="395.0" text="\$0.00" />
-      <Label layoutX="216.0" layoutY="419.0" text="\$0.00" />
-      <Label layoutX="216.0" layoutY="445.0" text="\$0.00" />
+      <Label fx:id="subTotalLabel" layoutX="216.0" layoutY="371.0" text="\$0.00" />
+      <Label fx:id="discountLabel" layoutX="216.0" layoutY="395.0" text="\$0.00" />
+      <Label fx:id="totalLabel" layoutX="216.0" layoutY="419.0" text="\$0.00" />
+      <Label fx:id="paidAmountLabel" layoutX="216.0" layoutY="445.0" text="\$0.00" />
       <Label layoutX="218.0" layoutY="473.0" text="\$0.00" />
       <Button layoutX="575.0" layoutY="449.0" mnemonicParsing="false" styleClass="btn" stylesheets="@CardCashPay.css" text="Order Ready" />
       <Line endX="100.0" layoutX="200.0" layoutY="442.0" startX="-100.0" />
+      <Label layoutX="251.0" layoutY="37.0" text="000000" />
+      <Label fx:id="custNameLabel" layoutX="245.0" layoutY="60.0" text="Jane Rogers" />
+      <Label fx:id="mobNumLabel" layoutX="235.0" layoutY="84.0" text="(267) 349 - 7364" />
     </children>
 
 </AnchorPane>
