@@ -1,4 +1,4 @@
-# Point-of-Sale System (PoS)
+# Project Abstract
 A Point-of-Sale System (PoS) is a computer system where the customer makes payment for goods or services that are offered 
 by your company. It is widely used in the restaurant industries, making restaurateurs and employees much easier in 
 sending orders to the kitchen staff and improving the workflow. It is also capable of tracking restaurant inventory as 
@@ -18,10 +18,9 @@ ticket through the main computer and send it to each designated station allowing
 - Allow employees to clock-in 
 - Show restaurant performance within specific time range. 
 
+# Start up Page 
 
-# Screenshot / a mockup of our application in action  
-
-![This is a screenshot.](images.png)
+(Screen Shot 2023-04-25 at 8.52.41 AM.png)
 
 # How to run
 Provide here instructions on how to use your application.   
