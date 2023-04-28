@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.CashReciept">
+    <children>
+        <Label id="DBLabel" layoutX="288.0" layoutY="14.0" text="Reciept Order">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label id="custRecieptLabel" layoutX="113.0" layoutY="60.0" text="Reciept" />
+        <ScrollPane layoutX="113.0" layoutY="124.0" prefHeight="231.0" prefWidth="455.0">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="229.0" prefWidth="454.0">
+                    <children>
+                        <TableView id="orderTableView" layoutX="-2.0" prefHeight="231.0" prefWidth="455.0">
+                            <columns>
+                                <TableColumn prefWidth="75.0" text="C1" />
+                                <TableColumn prefWidth="75.0" text="C2" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+        <Label id="orderNumLabel" layoutX="113.0" layoutY="37.0" text="Order Number: " />
+        <Label id="subTotal Label" layoutX="107.0" layoutY="371.0" text="SubTotal:" />
+        <Label id="discountLabel" layoutX="107.0" layoutY="395.0" text="Discount:" />
+        <Label id="totalLabel" layoutX="117.0" layoutY="419.0" text="Total:" />
+        <Label id="mobNumLabel" layoutX="113.0" layoutY="84.0" text="Mobile Number:" />
+      <Label layoutX="107.0" layoutY="448.0" text="Paid Amount:" />
+      <Label layoutX="107.0" layoutY="473.0" text="Return Amount:" />
+      <Label layoutX="216.0" layoutY="371.0" text="\$0.00" />
+      <Label layoutX="216.0" layoutY="395.0" text="\$0.00" />
+      <Label layoutX="216.0" layoutY="419.0" text="\$0.00" />
+      <Label layoutX="216.0" layoutY="445.0" text="\$0.00" />
+      <Label layoutX="218.0" layoutY="473.0" text="\$0.00" />
+      <Button layoutX="575.0" layoutY="449.0" mnemonicParsing="false" styleClass="btn" stylesheets="@CardCashPay.css" text="Order Ready" />
+      <Line endX="100.0" layoutX="200.0" layoutY="442.0" startX="-100.0" />
+    </children>
+
+</AnchorPane>
