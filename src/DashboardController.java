@@ -14,6 +14,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -104,6 +106,8 @@ public class DashboardController implements Initializable {
     private PreparedStatement prepare;
     private Statement statement;
     private ResultSet result;
+
+    private static final String TIMECARD_FILE = "src/Timecard.txt";
 
 
     private ObservableList<OrderedItems> orderedItemList;
@@ -252,6 +256,14 @@ public class DashboardController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("You have clocked in at " + clockInTime + " as " + employeeName);
             alert.showAndWait();
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(TIMECARD_FILE, true));
+                writer.write("Clock-in: " + clockInTime + " - " + employeeName + "\n");
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         } else {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid employee number");
@@ -284,6 +296,14 @@ public class DashboardController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText(employeeName + ", you have clocked out at " + String.valueOf(clockOutTime));
             alert.showAndWait();
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(TIMECARD_FILE, true));
+                writer.write("Clock-out: " + clockOutTime + " - " + employeeName + "\n");
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         } else {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid employee number");

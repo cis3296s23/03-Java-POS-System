@@ -17,9 +17,6 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-/**
- * controller for the use of AdminPage.fxml
- */
 public class AdminPageController implements Initializable {
     @FXML
     private Button balance_btn;
@@ -185,9 +182,7 @@ public class AdminPageController implements Initializable {
     private String[] choice = {"Chef","Cashier","Prep"};
     private String[] category = {"Burger", "Drinks", "Extras", "Wrap and Salads", "Steak", "EggRolls"};
 
-    /**
-     * this is a remove button to remove any menu items
-     */
+    //this is a remove button to remove any menu items
     public void removeMenuBtn(){
         if (itemID_txt.getText().isEmpty()) {
             alert = new Alert(Alert.AlertType.ERROR);
@@ -248,10 +243,7 @@ public class AdminPageController implements Initializable {
             }
         }
     }
-
-    /**
-     * this button will add new menu item to the menu
-     */
+    //this button will add new menu item to the menu
     public void addMenuBtn() {
 
         if (itemID_txt.getText().isEmpty()
@@ -314,10 +306,7 @@ public class AdminPageController implements Initializable {
         }
     }
     private ObservableList<Menu> menuList;
-
-    /**
-     * this show data on the table according to our data on the database
-     */
+    //this show data on the table according to our data on the database
     public void menuShowData() {
         menuList = menuDataList();
 
@@ -329,11 +318,7 @@ public class AdminPageController implements Initializable {
         menuData.setItems(menuList);
 
     }
-
-    /**
-     * this method is to retrieve data from our database
-     * @return an observable list of menu items to show on the GUI
-     */
+    //this method is to retrieve data from our database
     public ObservableList<Menu> menuDataList() {
 
         ObservableList<Menu> listData = FXCollections.observableArrayList();
@@ -365,10 +350,7 @@ public class AdminPageController implements Initializable {
         }
         return listData;
     }
-
-    /**
-     * this method will clear all the textfields when called
-     */
+    //this method will clear all the textfields when called
     public void menuClearBtn() {
 
         itemID_txt.setText("");
@@ -377,10 +359,7 @@ public class AdminPageController implements Initializable {
         category_choice.getSelectionModel().clearSelection();
 
     }
-
-    /**
-     * display current date to the designated label
-     */
+    //display current date to the designated label
     public void balanceDisplayDate() {
 
         // Get the current date
@@ -389,9 +368,7 @@ public class AdminPageController implements Initializable {
         dateLabel.setText(currentDate.toString());
     }
 
-    /**
-     * displays today's sale to its assigned label
-     */
+    //display todays sale to the desginated label
     public void balanceDisplaySale(){
 
         java.util.Date date = new java.util.Date();
@@ -418,9 +395,7 @@ public class AdminPageController implements Initializable {
         }
     }
 
-    /**
-     * displays today's order volume to its assigned label
-     */
+    //display today order volume to the desginated label
     public void balanceDisplayOrder(){
 
         java.util.Date date = new java.util.Date();
@@ -445,9 +420,7 @@ public class AdminPageController implements Initializable {
 
     }
 
-    /**
-     * displays the sale chart for the last 7 days
-     */
+    //display the sale chart for the last 7 days
     public void balanceDisplayChart(){
             saleThisWeek_line.getData().clear();
 
@@ -474,10 +447,7 @@ public class AdminPageController implements Initializable {
                 e.printStackTrace();
             }
         }
-
-    /**
-     * this method will remove any employee from our database and table
-     */
+    //this method will remove any employee from our database and table
     public void removeEmpBtn() {
         if (empID_txt.getText().isEmpty()) {
             alert = new Alert(Alert.AlertType.ERROR);
@@ -538,10 +508,7 @@ public class AdminPageController implements Initializable {
             }
         }
     }
-
-    /**
-     * adds employees to our database and table
-     */
+    //add employee to our database and table
     public void addEmpBtn() {
 
         if (empID_txt.getText().isEmpty()
@@ -602,11 +569,7 @@ public class AdminPageController implements Initializable {
                 }
             }
         }
-
-    /**
-     * retrieve data from table employees on our database
-     * @return an observable list of employee data for a table in the GUI
-     */
+    //retrieve data from table employees on our database
     public ObservableList<EmployeesData> employeesDataList() {
 
         ObservableList<EmployeesData> listData = FXCollections.observableArrayList();
@@ -641,10 +604,7 @@ public class AdminPageController implements Initializable {
     }
 
     private ObservableList<EmployeesData> employeesList;
-
-    /**
-     * shows all of our employee data on the table
-     */
+    //show all of our employee data on the table
     public void employeesShowData() {
         employeesList = employeesDataList();
 
@@ -657,10 +617,7 @@ public class AdminPageController implements Initializable {
         empData_table.setItems(employeesList);
 
     }
-
-    /**
-     * clears all the input text field when called
-     */
+    //clear all the input textfield when called
     public void empClearBtn() {
 
         empID_txt.setText("");
@@ -670,11 +627,6 @@ public class AdminPageController implements Initializable {
         position_choice.getSelectionModel().clearSelection();
 
     }
-
-    /**
-     * handler for the charts on the GUI
-     * @param event determined AdminPage.fxml
-     */
     @FXML
     public void handleShowChart(ActionEvent event) {
         LocalDate startDate = fromDate_txt.getValue();
@@ -709,11 +661,7 @@ public class AdminPageController implements Initializable {
         alert.showAndWait();
     }
 
-    /**
-     * show area chart within specific data range
-     * @param startDate earliest date in range
-     * @param endDate latest date in range
-     */
+    //show area chart within specific data range
     public void showAreaChart(LocalDate startDate, LocalDate endDate){
         saleData_line.getData().clear();
         String areaSql = "SELECT order_date, SUM(order_total) FROM orders " +
@@ -747,12 +695,6 @@ public class AdminPageController implements Initializable {
             e.printStackTrace();
         }
     }
-
-    /**
-     * shows a pie chart on the GUI that relates total items sold to the corresponding date
-     * @param startDate earliest date in range
-     * @param endDate latest date in range
-     */
     public void showPieChart(LocalDate startDate, LocalDate endDate) {
         category_pie.getData().clear();
         String sql = "SELECT oi.category, SUM(oi.item_quantity) AS total_quantity_sold " +
@@ -792,11 +734,6 @@ public class AdminPageController implements Initializable {
         }
     }
 
-    /**
-     * shows a bar chart on the GUI that relates the total orders in a given amount of time
-     * @param startDate earliest time in range
-     * @param endDate latest time in range
-     */
     public void showBarChart(LocalDate startDate, LocalDate endDate) {
         orderVol_bar.getData().clear();
         String barSql = "SELECT order_date, COUNT(order_id) FROM orders " +
@@ -840,19 +777,12 @@ public class AdminPageController implements Initializable {
         }
     }
 
-    /**
-     * log out button on admin access page
-     * @throws IOException
-     */
+    //log out button on admin access page
     public void logout_btn() throws IOException {
         Main main = new Main();
         main.changeScene("Dashpage.fxml", "Dashboard");
     }
-
-    /**
-     * this method will switch multiple anchor panes according to a button action event
-     * @param event determined by AdminPage.fxml
-     */
+    //this method will swithc multiple anchorpane according to each associated buttons
     public void switchForm(ActionEvent event) {
 
         if (event.getSource() == report_btn) {
@@ -888,13 +818,6 @@ public class AdminPageController implements Initializable {
 
         }
     }
-
-    /**
-     * on launch of the page, this method is called
-     * initializes chart data
-     * @param location
-     * @param resources
-     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

@@ -134,13 +134,13 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <PasswordField layoutX="88.0" layoutY="76.0" />
-                                    <Button fx:id="clockIn_btn" layoutX="63.0" layoutY="158.0" mnemonicParsing="false" styleClass="btn" stylesheets="@adminDesign.css" text="Clock In">
+                                    <PasswordField fx:id="employeeNumberField" layoutX="88.0" layoutY="76.0" />
+                                    <Button fx:id="clockIn_btn" onAction="#clockIn_btn" layoutX="63.0" layoutY="158.0" mnemonicParsing="false" styleClass="btn" stylesheets="@adminDesign.css" text="Clock In">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="clockOut_btn" layoutX="195.0" layoutY="157.0" mnemonicParsing="false" styleClass="btn" stylesheets="@adminDesign.css" text="Clock Out">
+                                    <Button fx:id="clockOut_btn" onAction="#clockOut_btn" layoutX="195.0" layoutY="157.0" mnemonicParsing="false" styleClass="btn" stylesheets="@adminDesign.css" text="Clock Out">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
