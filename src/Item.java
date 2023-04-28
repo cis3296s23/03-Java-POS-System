@@ -5,18 +5,20 @@ public class Item{
     private String itemName;
     private double itemPrice;
     private int itemQty;
+
+    private String category;
     private double amount;
 
 
 public Item(){
 }
 
-public Item(int itemID, String itemName, double itemPrice, int itemQty, double amount){
+public Item(int itemID, String itemName, double itemPrice, int itemQty, String category){
     this.itemID = itemID;
     this.itemName = itemName;
     this.itemPrice = itemPrice;
     this.itemQty = itemQty;
-    this.amount = amount;
+    this.category = category;
 }
 
 public int getItemID(){
@@ -51,8 +53,8 @@ public void setItemQty(int itemQty){
     this.itemQty = itemQty;
 }
 
-public double getAmount(){
-    return amount;
+public String getCategory(){
+    return category;
 }
 
 public void setAmount(double amount){

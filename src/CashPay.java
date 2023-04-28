@@ -39,8 +39,6 @@ public class CashPay implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
-
     private Stage stage;
     private Scene scene;
     private  Parent root;

@@ -87,8 +87,6 @@ public class MenuPageController implements Initializable {
 
                 });
 
-
-
             }
         } catch (SQLException e) {
 
@@ -163,7 +161,7 @@ public class MenuPageController implements Initializable {
     }
 
     public void writeOrder() {
-        String makeOrderTable = "CREATE TABLE IF NOT EXISTS orders (" +
+/*        String makeOrderTable = "CREATE TABLE IF NOT EXISTS orders (" +
                                 "orderID int AUTO_INCREMENT," +
                                 "orderTime varchar(100)," +
                                 "customerName varchar(200)," +
@@ -173,10 +171,9 @@ public class MenuPageController implements Initializable {
                                 "orderID int NOT NULL," +
                                 "itemID int NOT NULL," +
                                 "FOREIGN KEY (orderID) REFERENCES orders (orderID)," +
-                                "FOREIGN KEY (itemID) REFERENCES menu (item_id));";
+                                "FOREIGN KEY (itemID) REFERENCES menu (item_id));";*/
         LocalDateTime curr = LocalDateTime.now();
         String timeString = curr.toString();
-        String writeOrder = "INSERT INTO orders (orderTime) VALUES ('" + timeString + "');";
 
         List <Item> orderItems = order.getItems();
 
@@ -184,30 +181,36 @@ public class MenuPageController implements Initializable {
 
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306" + "/data", "root", "root1234");
-            Statement st, st2, st3, st4;
-            st = conn.createStatement();
-            st.executeUpdate(makeOrderTable);
-            st2 = conn.createStatement();
-            st2.executeUpdate(makeItemTable);
-            st3 = conn.createStatement();
-            st3.executeUpdate(writeOrder);
-            st4 = conn.createStatement();
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/data", "root", "root1234");
+            String insertOrderQuery = "INSERT INTO orders (order_total, order_date) VALUES (?, ?)";
+            PreparedStatement insertOrderStmt = conn.prepareStatement(insertOrderQuery);
+            insertOrderStmt.setDouble(1, order.getTotalPrice());
+            insertOrderStmt.setString(2, timeString);
+            insertOrderStmt.executeUpdate();
 
-            ResultSet rs = st4.executeQuery("SELECT orderID FROM orders WHERE orderTime='" + timeString + "';");
-            rs.next();
-            order.setOrderID(rs.getInt("orderID"));
-            while (iterator.hasNext()) {
-                Item item = iterator.next();
-                String writeItem = "INSERT INTO orderedItems (orderID, itemID) VALUES ("
-                        + order.getOrderID() + ", " + item.getItemID() + ");";
-                st.executeUpdate(writeItem);
+            // Get the last inserted order id
+            int orderId = 0;
+            Statement getLastOrderIdStmt = conn.createStatement();
+            ResultSet rs = getLastOrderIdStmt.executeQuery("SELECT LAST_INSERT_ID()");
+            if (rs.next()) {
+                orderId = rs.getInt(1);
             }
 
+            // Insert ordered items into ordereditems table
+            String insertOrderedItemsQuery = "INSERT INTO ordereditems (order_id, item_name, item_price, item_quantity, category) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement insertOrderedItemsStmt = conn.prepareStatement(insertOrderedItemsQuery);
+            for (Item item : order.getItems()) {
+                insertOrderedItemsStmt.setInt(1, orderId);
+                insertOrderedItemsStmt.setString(2, item.getItemName());
+                insertOrderedItemsStmt.setDouble(3, item.getItemPrice());
+                insertOrderedItemsStmt.setInt(4, item.getItemQty());
+                insertOrderedItemsStmt.setString(5, item.getCategory());
+                insertOrderedItemsStmt.executeUpdate();
+            }
 
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println(e);
         }
 
     }
