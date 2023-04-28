@@ -4,6 +4,9 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * stores database information
+ */
 public class Database {
     private Connection connection;
     private String[][] menuItems;
@@ -11,6 +14,11 @@ public class Database {
     private Statement st;
     private String sql;
 
+    /**
+     * connects to the database
+     * @param firstLaunch user returns whether the database schema exists or not, set to true if not sure
+     * @return connection to the database
+     */
     public static Connection connectToDB(boolean firstLaunch){
         try {
             String url;
@@ -31,9 +39,9 @@ public class Database {
         }
         return null;
     }
-    /*
-    creates and populates necessary tables for the program using a provided connection
-    @param conn: uses this connection to get to the database
+    /**
+    * creates and populates necessary tables for the program using a provided connection
+    * @param conn uses this connection to get to the database
      */
     public void createInitialTables(Connection conn) {
         //an array of string to hold the menu data
@@ -144,6 +152,9 @@ public class Database {
         }
     }
 
+    /**
+     * closes connection
+     */
     public void close() {
         try {
             connection.close();

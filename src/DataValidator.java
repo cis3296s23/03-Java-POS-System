@@ -3,6 +3,9 @@ package src;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+/**
+ * class used to validate the data of payment data
+ */
 public class DataValidator {
     @FXML
     private Label nameLabel, PayInfoLabel, mobileNumLabel, cardNumLabel, ExpDateLabel, CVVLabel, rewardsLabels;
@@ -32,7 +35,13 @@ public class DataValidator {
     private Button backButton;
 
 
-    // card Num validation
+    /**
+     * card Num validation
+     * @param cardNumTextField holds card number data
+     * @param cardNumLabel label to write validation text
+     * @param validateText message to write to the GUI that confirms the data is valid
+     * @return boolean for success
+     */
     public static boolean cardNumFormat(TextField cardNumTextField, Label cardNumLabel, String validateText){
         boolean isCardNum = true;
         String validationstring = null;
@@ -47,7 +56,13 @@ public class DataValidator {
     }
 
 
-    // card CVV validation
+    /**
+     * card CVV validation
+     * @param CVVTextField holds card CVV data
+     * @param CVVLabel label to write validation text
+     * @param validateText message to write to the GUi that confirms the data is valid
+     * @return boolean for success
+     */
     public static boolean cardCVVFormat(TextField CVVTextField, Label CVVLabel, String validateText){
         boolean isCardNum = true;
         String validationstring = null;

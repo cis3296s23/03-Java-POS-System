@@ -16,6 +16,9 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
+/**
+ * controller for MenuPage.fxml
+ */
 public class MenuPageController implements Initializable {
 
     @FXML
@@ -33,6 +36,12 @@ public class MenuPageController implements Initializable {
 
     private Order order = new Order();
 
+    /**
+     * when the page is initialized, this method is called
+     * populates the order and menu tables with data from the database
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         checkoutError.setText("");
@@ -95,6 +104,10 @@ public class MenuPageController implements Initializable {
         }
     }
 
+    /**
+     * stores the data from the order and changes the scene to PayMethod.fxml
+     * @throws IOException
+     */
     public void checkout() throws IOException {
 
         List<Item> itemList = order.getItems();
@@ -109,6 +122,10 @@ public class MenuPageController implements Initializable {
         }
     }
 
+    /**
+     * clears the page and goes back to the dashboard page
+     * @throws IOException
+     */
     public void back() throws IOException {
 
         clearPage();
@@ -117,6 +134,9 @@ public class MenuPageController implements Initializable {
 
     }
 
+    /**
+     * clears and populates the order table with the current items in the order
+     */
     public void refreshOrderList() {
 
         HashMap<String, Integer> removeButtonsToItems = new HashMap<>();
@@ -154,12 +174,18 @@ public class MenuPageController implements Initializable {
         orderGrid.add(oTotal, 2, index);
     }
 
+    /**
+     * clears the orderGrid element and refreshes the error message
+     */
     public void clearPage() {
 
         checkoutError.setText("");
         orderGrid.getChildren().clear();
     }
 
+    /**
+     * writes the order to the database
+     */
     public void writeOrder() {
 /*        String makeOrderTable = "CREATE TABLE IF NOT EXISTS orders (" +
                                 "orderID int AUTO_INCREMENT," +

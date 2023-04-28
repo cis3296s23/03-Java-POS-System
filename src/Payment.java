@@ -1,10 +1,19 @@
 package src;
 
+/**
+ * holds information regarding payments
+ */
 public class Payment {
     private Customer cusName;
     private Order orderTime;
     private String paymentType;
 
+    /**
+     * constructor for payment
+     * @param cusName name of the paying customer
+     * @param orderTime time of the order
+     * @param paymentType type of payment
+     */
     public Payment(Customer cusName, Order orderTime, String paymentType){
         this.cusName =cusName;
         this.orderTime=orderTime;

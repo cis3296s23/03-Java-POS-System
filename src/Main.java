@@ -34,6 +34,12 @@ public class Main extends Application {
     }
     //change scene as needed
 
+    /**
+     * changes the scene on the stage to an fxml file's data
+     * @param fxml fxml file to use
+     * @param title name of the stage to use
+     * @throws IOException
+     */
     public void changeScene(String fxml, String title) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Parent root = loader.load();

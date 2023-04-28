@@ -36,6 +36,9 @@ import javax.swing.table.TableColumn;
 import static javafx.application.Application.launch;
 //extends application for JavaFX
 
+/**
+ * controller for the CardPay page
+ */
 public class CardPay implements Initializable{
     @FXML
     private Label nameLabel, PayInfoLabel, mobileNumLabel, cardNumLabel, ExpDateLabel, CVVLabel, rewardsLabels;
@@ -67,7 +70,11 @@ public class CardPay implements Initializable{
     private Scene scene;
     private  Parent root;
 
-    // Implemented the back button to return back to the Payment Page
+    /**
+     * Implemented the back button to return back to the Payment Page
+     * @param event
+     * @throws IOException
+     */
     public void switchBackToPaymentMethod(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("PayMethod.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -95,12 +102,20 @@ public class CardPay implements Initializable{
     }
     */
 
-    //validate card inputs when the Save button is pressed
+    /**
+     * validate card inputs when the Save button is pressed
+     * @param event
+     */
     public void SaveBtnAction(ActionEvent event){
         boolean cardNumValidator = DataValidator.cardNumFormat(cardNumTextField, cardNumLabel,"Format must be XXXX-XXXX-XXXX-XXXX from 0-9");
         boolean cardCVV_Validator = DataValidator.cardCVVFormat(CVVTextField, CVVLabel, "Format must be *** from 0-9");
     }
 
+    /**
+     * on launch of the page, this method is called
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

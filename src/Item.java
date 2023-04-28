@@ -1,5 +1,8 @@
 package src;
 
+/**
+ * holds item data
+ */
 public class Item{
     private int itemID;
     private String itemName;
@@ -13,7 +16,15 @@ public class Item{
 public Item(){
 }
 
-public Item(int itemID, String itemName, double itemPrice, int itemQty, String category){
+    /**
+     * constructor for Item
+     * @param itemID holds the item ID
+     * @param itemName holds the item's name
+     * @param itemPrice holds the item's default price
+     * @param itemQty holds the item quantity in an order
+     * @param category holds the category of the item
+     */
+    public Item(int itemID, String itemName, double itemPrice, int itemQty, String category){
     this.itemID = itemID;
     this.itemName = itemName;
     this.itemPrice = itemPrice;
