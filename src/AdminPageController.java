@@ -10,6 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -178,6 +180,8 @@ public class AdminPageController implements Initializable {
     private Statement statement;
     private ResultSet result;
     private Alert alert;
+
+    private static final String TIMECARD_FILE = "src/Timecard.txt";
 
     private String[] choice = {"Chef","Cashier","Prep"};
     private String[] category = {"Burger", "Drinks", "Extras", "Wrap and Salads", "Steak", "EggRolls"};
@@ -781,6 +785,29 @@ public class AdminPageController implements Initializable {
     public void logout_btn() throws IOException {
         Main main = new Main();
         main.changeScene("Dashpage.fxml", "Dashboard");
+    }
+
+    public void timecard_btn() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(TIMECARD_FILE));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+            reader.close();
+            String timecardText = sb.toString();
+
+            // Create a new Alert dialog to display the timecard text
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Timecard");
+            alert.setHeaderText(null);
+            alert.setContentText(timecardText);
+            alert.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     //this method will swithc multiple anchorpane according to each associated buttons
     public void switchForm(ActionEvent event) {

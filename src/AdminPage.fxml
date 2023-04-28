@@ -50,6 +50,7 @@
                               <Button fx:id="team_btn" layoutX="3.0" layoutY="300.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="204.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Team" />
                               <Button fx:id="balance_btn" layoutX="3.0" layoutY="361.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Balance" />
                               <Button fx:id="logout_btn" layoutX="74.0" layoutY="560.0" mnemonicParsing="false" onAction="#logout_btn" styleClass="red" stylesheets="@adminDesign.css" text="Log Out" textFill="#fcf6f6" />
+                              <Button fx:id="timecard_btn" layoutX="2.0" layoutY="422.0" mnemonicParsing="false" onAction="#timecard_btn" prefHeight="40.0" prefWidth="205.0" styleClass="nav-btn" stylesheets="@adminDesign.css" text="Timecard" />
                            </children>
                         </AnchorPane>
                      </children>
