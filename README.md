@@ -5,7 +5,21 @@ sending orders to the kitchen staff and improving the workflow. It is also capab
 well as showing how the restaurant is performing over a specific period of time. The servers can easily create an order 
 ticket through the main computer and send it to each designated station allowing the kitchen staff to work efficiently.
 
-Adding an screenshot or a mockup of your application in action would be nice.  
+# Below are some main features for this program: 
+- Add items to customer's order. 
+- Delete items from customer's order. 
+- Update quantities 
+- Take customer's payment. 
+- Create a ticket for the customer’s order and send the information to the kitchen printers or tablets. 
+- Show which menu items have the best conversion rates (best-selling menu items). 
+- Check the total sales at any specific date. 
+- Void a specific ticket 
+- Issuing refund on any order/individual items 
+- Allow employees to clock-in 
+- Show restaurant performance within specific time range. 
+
+
+# Screenshot / a mockup of our application in action  
 
 ![This is a screenshot.](images.png)
 
@@ -13,6 +27,7 @@ Adding an screenshot or a mockup of your application in action would be nice.
 Provide here instructions on how to use your application.   
 - 
 - Download the latest binary from the Release section on the right on GitHub.  
+- 
 - On the command line uncompress using
 ```
 tar -xzf  
@@ -30,10 +45,8 @@ Follow this project board to know the latest status of the project: [https://git
 - Need to clone this Github repository
 - Configure the database credentials
 - From the database, use SQL to import the data
-- Run the project through InteliJ 11 IDE ot the command prompts
+- Run the project through InteliJ 11 IDE or the command prompts
 - Specify what branch to use for a more stable release or for cutting edge development.  
-- Use InteliJ 11
-
-- Specify additional library to download if needed 
-- What file and target to compile and run. 
-- What is expected to happen when the app start. 
+- Download JavaFX and SceneBuilder 
+- Compile and run the main.java file
+- After that, the application should start. 
