@@ -61,10 +61,8 @@ public class CardPay implements Initializable{
 
     @FXML
     private Label subTotalLabel;
-
     @FXML
     private Label totalLabel;
-
     @FXML
     private Label  discountLabel;
 

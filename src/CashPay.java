@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import javafx.application.Application;
+import javafx.collections.transformation.TransformationList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -37,17 +38,28 @@ import static javafx.application.Application.launch;
 
 public class CashPay implements Initializable{
     @FXML
+    private TextField nameTextField;
+    @FXML
+    private TextField mobileNumTextField;
+    @FXML
+    private Label subTotalLabel;
+    @FXML
+    private Label totalLabel;
+    @FXML
+    private Label  discountLabel;
 
+    @FXML
+    private RadioButton tenPercentOffRadioBtn, fifteenPercentOffRadioBtn,twentyPercentOffRadioBtn;
+
+    private Stage stage;
+    private Scene scene;
+    private  Parent root;
+    private TransformationList<Object, Object> event;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
-
-    private Stage stage;
-    private Scene scene;
-    private  Parent root;
 
     // Implemented the back button to return back to the Payment Page
     public void switchBackToPaymentMethod() throws IOException {
@@ -76,14 +88,14 @@ public class CashPay implements Initializable{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CashReciept.fxml"));
         root = loader.load();
 
-        CardReciept cardReciept = loader.getController();
-        cardReciept.displayCustName(custName);
-        cardReciept.displayMobNum(mobNum);
-        //cardReciept.displaySubTotal(Float.parseFloat(subTotal));
-        //cardReciept.displayDiscount(Float.parseFloat(discount));
-        //cardReciept.displayTotal(Float.parseFloat(total));
-        //cardReciept.displayPaidAmount(Float.parseFloat(paidAmnt));
-
+        CashReciept cashReciept = loader.getController();
+        cashReciept.displayCustName(custName);
+        cashReciept.displayMobNum(mobNum);
+        //cashReciept.displaySubTotal(Float.parseFloat(subTotal));
+        //cashReciept.displayDiscount(Float.parseFloat(discount));
+        //cashReciept.displayTotal(Float.parseFloat(total));
+        //cashReciept.displayPaidAmount(Float.parseFloat(paidAmnt));
+        
         stage =(Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

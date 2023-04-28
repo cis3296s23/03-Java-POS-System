@@ -31,19 +31,19 @@ public class CashReciept implements Initializable {
     }
 
     public void displaySubTotal(float subTotal){
-        subTotalLabel.setText(String.valueOf(subTotal));
+        subTotalLabel.setText("SubTotal: $" +String.valueOf(subTotal));
     }
 
     public void displayDiscount(float discount){
-        discountLabel.setText(String.valueOf(discount));
+        discountLabel.setText("Discount:  $"+String.valueOf(discount));
     }
 
     public void displayTotal(float total){
-        totalLabel.setText(String.valueOf(total));
+        totalLabel.setText("Total: $" + String.valueOf(total));
     }
 
     public void displayPaidAmount(float paidAmnt){
-        paidAmountLabel.setText(String.valueOf(paidAmnt));
+        paidAmountLabel.setText("Paid Amount: $"+String.valueOf(paidAmnt));
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

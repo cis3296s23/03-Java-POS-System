@@ -33,12 +33,9 @@
                       <TreeTableColumn id="orderTableView" prefWidth="75.0" text="C2" />
                     </columns>
                   </TreeTableView>
-                  <Label id="subTotalLabel" layoutX="13.0" layoutY="337.0" text="SubTotal: " />
-                  <Label layoutX="14.0" layoutY="377.0" text="Discount:" />
-                  <Label layoutX="25.0" layoutY="411.0" text="Total:" />
-                  <Label layoutX="154.0" layoutY="337.0" text="\$0.00" />
-                  <Label layoutX="154.0" layoutY="377.0" text="\$0.00" />
-                  <Label layoutX="156.0" layoutY="411.0" text="\$0.00" />
+                  <Label id="subTotalLabel" fx:id="subTotalLabel" layoutX="13.0" layoutY="337.0" text="0.00 " />
+                  <Label fx:id="discountLabel" layoutX="14.0" layoutY="377.0" text="0.00" />
+                  <Label fx:id="totalLabel" layoutX="25.0" layoutY="411.0" text="0.00" />
                   <Button layoutX="259.0" layoutY="459.0" mnemonicParsing="false" onAction="#switchToEdit" styleClass="btn" stylesheets="@CardCashPay.css" text="Edit" />
                </children>
             </AnchorPane>
@@ -50,9 +47,9 @@
                      </font>
                   </Label>
                   <Label layoutX="24.0" layoutY="76.0" text="Name:" />
-                  <TextField layoutX="159.0" layoutY="72.0" prefHeight="26.0" prefWidth="293.0" />
+                  <TextField fx:id="nameTextField" layoutX="159.0" layoutY="72.0" prefHeight="26.0" prefWidth="293.0" />
                   <Label layoutX="17.0" layoutY="128.0" text="Mobile Number:" />
-                  <TextField layoutX="168.0" layoutY="123.0" prefHeight="26.0" prefWidth="293.0" />
+                  <TextField fx:id="mobileNumTextField" layoutX="168.0" layoutY="123.0" prefHeight="26.0" prefWidth="293.0" />
                   <Label layoutX="14.0" layoutY="191.0" text="Pay In Cash:" textFill="#399a8f">
                      <font>
                         <Font size="18.0" />
