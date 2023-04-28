@@ -1,15 +1,19 @@
 package src;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -120,6 +124,8 @@ public class AdminPageController implements Initializable {
     @FXML
     private TableColumn<?, ?> totalHour_col;
 
+    private static final String TIMECARD_FILE = "src/Timecard.txt";
+
 
     public void logout_btn() throws IOException {
         Main main = new Main();
@@ -128,5 +134,30 @@ public class AdminPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
+
+    public void timecard_btn() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(TIMECARD_FILE));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+            reader.close();
+            String timecardText = sb.toString();
+
+            // Create a new Alert dialog to display the timecard text
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Timecard");
+            alert.setHeaderText(null);
+            alert.setContentText(timecardText);
+            alert.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
 
