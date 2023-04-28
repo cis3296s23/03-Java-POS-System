@@ -68,13 +68,22 @@ public class CardPay implements Initializable{
     private  Parent root;
 
     // Implemented the back button to return back to the Payment Page
-    public void switchBackToPaymentMethod(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("PayMethod.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void switchBackToPaymentMethod() throws IOException {
+        Main main = new Main();
+        main.changeScene("PayMethod.fxml", "Dave's Burger");
     }
+
+    // Implemented the pro to the Payment Page
+    public void switchToReciept() throws IOException {
+        Main main = new Main();
+        main.changeScene("CardReciept.fxml", "Dave's Burger");
+    }
+
+    public void switchToEdit() throws IOException {
+        Main main = new Main();
+        main.changeScene("MenuPage.fxml", "Dave's Burger");
+    }
+
     /*
     // Implemented the proceed payment button to return to the Card Reciept Page
     // Get receipt when proceed to payment
