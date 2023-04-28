@@ -36,15 +36,19 @@ import javax.swing.table.TableColumn;
 import static javafx.application.Application.launch;
 //extends application for JavaFX
 
-/**
- * controller for the CardPay page
- */
 public class CardPay implements Initializable{
     @FXML
     private Label nameLabel, PayInfoLabel, mobileNumLabel, cardNumLabel, ExpDateLabel, CVVLabel, rewardsLabels;
-
     @FXML
-    private TextField nameTextField, mobileNumTextField, cardNumTextField, ExpDateTextField, CVVTextField;
+    private TextField nameTextField;
+    @FXML
+    private TextField mobileNumTextField;
+    @FXML
+    private TextField cardNumTextField;
+    @FXML
+    private TextField ExpDateTextField;
+    @FXML
+    private TextField CVVTextField;
 
     @FXML
     private RadioButton tenPercentOffRadioBtn, fifteenPercentOffRadioBtn,twentyPercentOffRadioBtn;
@@ -56,13 +60,24 @@ public class CardPay implements Initializable{
     private TableView<Item> yourOrderTableView;
 
     @FXML
-    private TextField subTotalTextField, discountTextField, totalTextField;
-
+    private Label subTotalLabel;
     @FXML
-    private Label totalLabel, yourOrderLabel, subTotalLabel, discountLabel;
+    private Label totalLabel;
+    @FXML
+    private Label  discountLabel;
 
     @FXML
     private Button processPaymentButton;
+
+    @FXML
+    private ChoiceBox<String>  YearNum;
+
+    private String[] years = {"2023", "2024", "2025","2026", "2027", "2028", "2029","2030"};
+
+    @FXML
+    private ChoiceBox<String> MonthNum;
+
+    private String[] months = {"01","02","03","04","05","06","07","08","09","10","11","12"};
 
     @FXML
     private Button backButton;
@@ -70,18 +85,46 @@ public class CardPay implements Initializable{
     private Scene scene;
     private  Parent root;
 
-    /**
-     * Implemented the back button to return back to the Payment Page
-     * @param event
-     * @throws IOException
-     */
-    public void switchBackToPaymentMethod(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("PayMethod.fxml"));
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    // Implemented the back button to return back to the Payment Page
+    public void switchBackToPaymentMethod() throws IOException {
+        Main main = new Main();
+        main.changeScene("PayMethod.fxml", "Dave's Burger");
+    }
+
+    // Implemented the pro to the Payment Page
+    public void switchToReciept(ActionEvent event) throws IOException {
+       // Main main = new Main();
+       // main.changeScene("CardReciept.fxml", "Dave's Burger");
+
+        String custName = nameTextField.getText();
+        String mobNum = mobileNumTextField.getText();
+        //String subTotal = subTotalLabel.getText();
+        //String discount = discountLabel.getText();
+       // String total = totalLabel.getText();
+       // String paidAmnt = totalLabel.getText();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CardReciept.fxml"));
+        root = loader.load();
+
+        CardReciept cardReciept = loader.getController();
+        cardReciept.displayCustName(custName);
+        cardReciept.displayMobNum(mobNum);
+        //cardReciept.displaySubTotal(Float.parseFloat(subTotal));
+        //cardReciept.displayDiscount(Float.parseFloat(discount));
+        //cardReciept.displayTotal(Float.parseFloat(total));
+        //cardReciept.displayPaidAmount(Float.parseFloat(paidAmnt));
+
+        stage =(Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
+    public void switchToEdit() throws IOException {
+        Main main = new Main();
+        main.changeScene("MenuPage.fxml", "Dave's Burger");
+    }
+
     /*
     // Implemented the proceed payment button to return to the Card Reciept Page
     // Get receipt when proceed to payment
@@ -102,23 +145,16 @@ public class CardPay implements Initializable{
     }
     */
 
-    /**
-     * validate card inputs when the Save button is pressed
-     * @param event
-     */
+    //validate card inputs when the Save button is pressed
     public void SaveBtnAction(ActionEvent event){
         boolean cardNumValidator = DataValidator.cardNumFormat(cardNumTextField, cardNumLabel,"Format must be XXXX-XXXX-XXXX-XXXX from 0-9");
         boolean cardCVV_Validator = DataValidator.cardCVVFormat(CVVTextField, CVVLabel, "Format must be *** from 0-9");
     }
 
-    /**
-     * on launch of the page, this method is called
-     * @param location
-     * @param resources
-     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        YearNum.getItems().addAll(years);
+        MonthNum.getItems().addAll(months);
     }
 
 

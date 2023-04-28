@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.CardReciept">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.CashReciept">
     <children>
         <Label id="DBLabel" layoutX="288.0" layoutY="14.0" text="Reciept Order">
             <font>
@@ -36,16 +36,18 @@
         <Label id="discountLabel" layoutX="107.0" layoutY="395.0" text="Discount:" />
         <Label id="totalLabel" layoutX="117.0" layoutY="419.0" text="Total:" />
         <Label id="mobNum2Label" layoutX="113.0" layoutY="84.0" text="Mobile Number:" />
-        <Label layoutX="107.0" layoutY="448.0" text="Paid Amount:" />
-        <Label fx:id="subTotalLabel" layoutX="216.0" layoutY="371.0" text="\$0.00" />
-        <Label fx:id="discountLabel" layoutX="216.0" layoutY="395.0" text="\$0.00" />
-        <Label fx:id="totalLabel" layoutX="216.0" layoutY="419.0" text="\$0.00" />
-        <Label fx:id="paidAmountLabel" layoutX="216.0" layoutY="445.0" text="\$0.00" />
-        <Button layoutX="577.0" layoutY="452.0" mnemonicParsing="false" styleClass="btn" stylesheets="@CardCashPay.css" text="Order Ready" />
-        <Line endX="100.0" layoutX="200.0" layoutY="442.0" startX="-100.0" />
-        <Label layoutX="251.0" layoutY="37.0" text="000000" />
-        <Label fx:id="custNameLabel" layoutX="245.0" layoutY="60.0" text="Jane Rogers" />
-        <Label fx:id="mobNumLabel" layoutX="235.0" layoutY="84.0" text="(267) 349 - 7364" />
+      <Label layoutX="107.0" layoutY="448.0" text="Paid Amount:" />
+      <Label layoutX="107.0" layoutY="473.0" text="Return Amount:" />
+      <Label fx:id="subTotalLabel" layoutX="216.0" layoutY="371.0" text="\$0.00" />
+      <Label fx:id="discountLabel" layoutX="216.0" layoutY="395.0" text="\$0.00" />
+      <Label fx:id="totalLabel" layoutX="216.0" layoutY="419.0" text="\$0.00" />
+      <Label fx:id="paidAmountLabel" layoutX="216.0" layoutY="445.0" text="\$0.00" />
+      <Label layoutX="218.0" layoutY="473.0" text="\$0.00" />
+      <Button layoutX="575.0" layoutY="449.0" mnemonicParsing="false" styleClass="btn" stylesheets="@CardCashPay.css" text="Order Ready" />
+      <Line endX="100.0" layoutX="200.0" layoutY="442.0" startX="-100.0" />
+      <Label layoutX="251.0" layoutY="37.0" text="000000" />
+      <Label fx:id="custNameLabel" layoutX="245.0" layoutY="60.0" text="Jane Rogers" />
+      <Label fx:id="mobNumLabel" layoutX="235.0" layoutY="84.0" text="(267) 349 - 7364" />
     </children>
 
 </AnchorPane>

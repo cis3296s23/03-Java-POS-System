@@ -8,7 +8,7 @@ import javax.swing.text.TableView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CardReciept implements Initializable {
+public class CashReciept implements Initializable {
     @FXML
     Label DBLabel, orderNumLabel, custRecieptLabel, mobNumLabel;
     @FXML
@@ -18,7 +18,7 @@ public class CardReciept implements Initializable {
     @FXML
     Label subTotalLabel;
     @FXML
-    Label  discountLabel;
+    Label discountLabel;
     @FXML
     Label totalLabel;
 
@@ -31,21 +31,20 @@ public class CardReciept implements Initializable {
     }
 
     public void displaySubTotal(float subTotal){
-        subTotalLabel.setText(String.valueOf(subTotal));
+        subTotalLabel.setText("SubTotal: $" +String.valueOf(subTotal));
     }
 
     public void displayDiscount(float discount){
-        discountLabel.setText(String.valueOf(discount));
+        discountLabel.setText("Discount:  $"+String.valueOf(discount));
     }
 
     public void displayTotal(float total){
-        totalLabel.setText(String.valueOf(total));
+        totalLabel.setText("Total: $" + String.valueOf(total));
     }
 
     public void displayPaidAmount(float paidAmnt){
-        paidAmountLabel.setText(String.valueOf(paidAmnt));
+        paidAmountLabel.setText("Paid Amount: $"+String.valueOf(paidAmnt));
     }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
