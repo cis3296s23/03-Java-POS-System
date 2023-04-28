@@ -820,6 +820,7 @@ public class AdminPageController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         category_choice.getItems().addAll(category);
         position_choice.getItems().addAll(choice);
 
@@ -836,6 +837,7 @@ public class AdminPageController implements Initializable {
         balanceDisplayOrder();
         balanceDisplayChart();
         menuShowData();
+
     }
 }
 

@@ -91,8 +91,14 @@ public class Order {
     }
 
     public void addItem(Item item) {
-
-        this.items.add(item);
+        for (Item existingItem : items) {
+            if (existingItem.getItemID() == item.getItemID()) {
+                existingItem.setItemQty(existingItem.getItemQty() + 1);
+                return;
+            }
+        }
+        item.setItemQty(1);
+        items.add(item);
     }
 
     public void removeItem(String item) {
