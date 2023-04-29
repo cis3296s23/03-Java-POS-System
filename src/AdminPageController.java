@@ -186,7 +186,7 @@ public class AdminPageController implements Initializable {
     private String[] category = {"Burger", "Drinks", "Extras", "Wrap and Salads", "Steak", "EggRolls"};
 
     /**
-     * this is a remove button to remove any menu items
+     * removes a menu item from the database
      */
     public void removeMenuBtn(){
         if (itemID_txt.getText().isEmpty()) {
@@ -476,7 +476,7 @@ public class AdminPageController implements Initializable {
         }
 
     /**
-     * this method will remove any employee from our database and table
+     * removes an employee from the database and updates the table
      */
     public void removeEmpBtn() {
         if (empID_txt.getText().isEmpty()) {
@@ -540,7 +540,7 @@ public class AdminPageController implements Initializable {
     }
 
     /**
-     * adds employees to our database and table
+     * adds an employee to the database and updates the table
      */
     public void addEmpBtn() {
 
@@ -604,7 +604,7 @@ public class AdminPageController implements Initializable {
         }
 
     /**
-     * retrieve data from table employees on our database
+     * retrieves data from the employee table in the database
      * @return an observable list of employee data for a table in the GUI
      */
     public ObservableList<EmployeesData> employeesDataList() {
@@ -659,7 +659,7 @@ public class AdminPageController implements Initializable {
     }
 
     /**
-     * clears all the input text field when called
+     * clears every input text field on the page
      */
     public void empClearBtn() {
 
@@ -673,7 +673,7 @@ public class AdminPageController implements Initializable {
 
     /**
      * handler for the charts on the GUI
-     * @param event determined AdminPage.fxml
+     * @param event button press
      */
     @FXML
     public void handleShowChart(ActionEvent event) {
@@ -842,7 +842,7 @@ public class AdminPageController implements Initializable {
 
     /**
      * log out button on admin access page
-     * @throws IOException
+     * @throws IOException if the given page's fxml file cannot be found, an exception is thrown
      */
     public void logout_btn() throws IOException {
         Main main = new Main();
@@ -892,8 +892,8 @@ public class AdminPageController implements Initializable {
     /**
      * on launch of the page, this method is called
      * initializes chart data
-     * @param location
-     * @param resources
+     * @param location refer to the Initializable interface from the JavaFX fxml library
+     * @param resources refer to the Initializable interface from the JavaFX fxml library
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {

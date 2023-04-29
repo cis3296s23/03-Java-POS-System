@@ -110,7 +110,8 @@ public class DashboardController implements Initializable {
     private static final String TIMECARD_FILE = "src/Timecard.txt";
 
 
-    private ObservableList<OrderedItems> orderedItemList;
+    private ObservableList<OrderedItems> orderedItemList; // holds a list items in an order for the table in
+                                                          // the GUI to reference
 
     /**
      * shows all ordered items for a given order id
@@ -227,7 +228,7 @@ public class DashboardController implements Initializable {
 
     /**
      * goes to the admin page when the adminAccess button button is clicked
-     * @throws IOException
+     * @throws IOException if the given page's fxml file cannot be found, an exception is thrown
      */
     public void adminAccess_btn() throws IOException {
         Main main = new Main();
@@ -315,7 +316,7 @@ public class DashboardController implements Initializable {
 
     /**
      * returns to the menu page when the menu button is clicked
-     * @throws IOException
+     * @throws IOException if the given page's fxml file cannot be found, an exception is thrown
      */
     public void menu_btn() throws IOException {
 
@@ -324,8 +325,8 @@ public class DashboardController implements Initializable {
     }
 
     /**
-     * shows date information regarding clock in/out
-     * @param message
+     * shows date information regarding clock in/out in an alert
+     * @param message message to display in the alert
      */
     public void alert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -339,7 +340,7 @@ public class DashboardController implements Initializable {
 
     /**
      * switches to any anchor pane with a given event
-     * @param event
+     * @param event button press
      */
     public void switchForm(ActionEvent event) {
 
@@ -361,8 +362,8 @@ public class DashboardController implements Initializable {
     /**
      * when the page is initialized, this method is called
      * uses the orderShowData method
-     * @param location
-     * @param resources
+     * @param location refer to the Initializable interface from the JavaFX fxml library
+     * @param resources refer to the Initializable interface from the JavaFX fxml library
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {

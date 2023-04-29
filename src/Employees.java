@@ -30,23 +30,43 @@ public Employees(){
     this.empRole = empRole;
 }
 
-public int getEmpID(){
+    /**
+     * returns the empID property
+     * @return empID
+     */
+    public int getEmpID(){
     return empID;
 }
 
-public String getEmpName(){
+    /**
+     * returns the empName property
+     * @return empName
+     */
+    public String getEmpName(){
     return empName;
 }
 
-public double getEmpSal(){
+    /**
+     * returns the empSal property
+     * @return empSal
+     */
+    public double getEmpSal(){
     return empSal;
 }
 
-public double getEmpHour(){
+    /**
+     * returns the empHour property
+     * @return empHour
+     */
+    public double getEmpHour(){
     return empHour;
 }
 
-public String  getEmpRole(){
+    /**
+     * returns the empRole property
+     * @return empRole
+     */
+    public String  getEmpRole(){
     return empRole;
 }
 }

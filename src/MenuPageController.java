@@ -39,8 +39,8 @@ public class MenuPageController implements Initializable {
     /**
      * when the page is initialized, this method is called
      * populates the order and menu tables with data from the database
-     * @param location
-     * @param resources
+     * @param location refer to the Initializable interface from the JavaFX fxml library
+     * @param resources refer to the Initializable interface from the JavaFX fxml library
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -106,7 +106,7 @@ public class MenuPageController implements Initializable {
 
     /**
      * stores the data from the order and changes the scene to PayMethod.fxml
-     * @throws IOException
+     * @throws IOException if the given page's fxml file cannot be found, an exception is thrown
      */
     public void checkout() throws IOException {
 
@@ -124,7 +124,7 @@ public class MenuPageController implements Initializable {
 
     /**
      * clears the page and goes back to the dashboard page
-     * @throws IOException
+     * @throws IOException if the given page's fxml file cannot be found, an exception is thrown
      */
     public void back() throws IOException {
 

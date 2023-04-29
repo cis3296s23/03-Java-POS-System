@@ -34,7 +34,7 @@ public class LoginController implements Initializable {
 
     /**
      * uses the text in the username and password text fields to attempt to log in
-     * @throws IOException
+     * @throws IOException if the given page's fxml file cannot be found, an exception is thrown
      */
     public void loginBt() throws IOException {
 
@@ -52,7 +52,7 @@ public class LoginController implements Initializable {
 
     /**
      * changes the scene to the dashboard
-     * @throws IOException
+     * @throws IOException if the given page's fxml file cannot be found, an exception is thrown
      */
     public void dashboardBtn() throws IOException {
         main.changeScene("DashPage.fxml", "Dashboard");
@@ -60,8 +60,8 @@ public class LoginController implements Initializable {
 
     /**
      * when the page is initialized, this method is called
-     * @param url
-     * @param rb
+     * @param url refer to the Initializable interface from the JavaFX fxml library
+     * @param rb refer to the Initializable interface from the JavaFX fxml library
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

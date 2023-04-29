@@ -35,7 +35,9 @@ import javax.swing.table.TableColumn;
 
 import static javafx.application.Application.launch;
 //extends application for JavaFX
-
+/**
+ * controller for the CardPay page
+ */
 public class CardPay implements Initializable{
     @FXML
     private Label nameLabel, PayInfoLabel, mobileNumLabel, cardNumLabel, ExpDateLabel, CVVLabel, rewardsLabels;
@@ -85,13 +87,20 @@ public class CardPay implements Initializable{
     private Scene scene;
     private  Parent root;
 
-    // Implemented the back button to return back to the Payment Page
+    /**
+     * changes the scene to the PayMethod page
+     * @throws IOException if the given page's fxml file cannot be found, an exception is thrown
+     */
     public void switchBackToPaymentMethod() throws IOException {
         Main main = new Main();
         main.changeScene("PayMethod.fxml", "Dave's Burger");
     }
 
-    // Implemented the pro to the Payment Page
+    /**
+     * changes the scene to the Receipt page
+     * @param event button press
+     * @throws IOException if the given page's fxml file cannot be found, an exception is thrown
+     */
     public void switchToReciept(ActionEvent event) throws IOException {
        // Main main = new Main();
        // main.changeScene("CardReciept.fxml", "Dave's Burger");

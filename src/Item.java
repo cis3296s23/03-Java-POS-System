@@ -32,43 +32,83 @@ public Item(){
     this.category = category;
 }
 
-public int getItemID(){
+    /**
+     * returns the itemID property
+     * @return itemID
+     */
+    public int getItemID(){
     return itemID;
 }
 
-public void setItemID(int itemID){
+    /**
+     * sets the itemID property to the parameter
+     * @param itemID integer containing the ID of the item
+     */
+    public void setItemID(int itemID){
     this.itemID = itemID;
 }
 
-public String getItemName(){
+    /**
+     * returns the itemName property
+     * @return itemName
+     */
+    public String getItemName(){
     return itemName;
 }
 
-public void setItemName(String itemName){
+    /**
+     * sets the itemName property to the parameter
+     * @param itemName string containing the name of the item
+     */
+    public void setItemName(String itemName){
     this.itemName = itemName;
 }
 
-public double getItemPrice(){
+    /**
+     * returns the itemPrice property
+     * @return itemPrice
+     */
+    public double getItemPrice(){
     return itemPrice;
 }
 
-public void setItemPrice(double itemPrice){
+    /**
+     * sets the itemPrice property to the parameter
+     * @param itemPrice double containing the price of the item
+     */
+    public void setItemPrice(double itemPrice){
     this.itemPrice = itemPrice;
 }
 
-public int getItemQty(){
+    /**
+     * returns the itemQty property
+     * @return itemQty
+     */
+    public int getItemQty(){
     return itemQty;
 }
 
-public void setItemQty(int itemQty){
+    /**
+     * sets the itemQty property to the parameter
+     * @param itemQty integer containing the number of the items with the context of items in an order
+     */
+    public void setItemQty(int itemQty){
     this.itemQty = itemQty;
 }
 
-public String getCategory(){
+    /**
+     * returns the category property
+     * @return category
+     */
+    public String getCategory(){
     return category;
 }
 
-public void setAmount(double amount){
+    /**
+     * sets the amount property to the parameter
+     * @param amount double
+     */
+    public void setAmount(double amount){
     this.amount = amount;
 }
 

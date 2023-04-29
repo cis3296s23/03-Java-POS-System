@@ -35,7 +35,9 @@ import javax.swing.table.TableColumn;
 import static javafx.application.Application.launch;
 //extends application for JavaFX
 
-
+/**
+ * controller for CashPay.fxml
+ */
 public class CashPay implements Initializable{
     @FXML
     private TextField nameTextField;
@@ -56,23 +58,38 @@ public class CashPay implements Initializable{
     private  Parent root;
     private TransformationList<Object, Object> event;
 
+    /**
+     * when the page is initialized, this method is called
+     * @param location refer to the Initializable interface from the JavaFX fxml library
+     * @param resources refer to the Initializable interface from the JavaFX fxml library
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
-    // Implemented the back button to return back to the Payment Page
+    /**
+     * sets the scene to the Payment page
+     */
     public void switchBackToPaymentMethod() throws IOException {
 
         Main main = new Main();
         main.changeScene("PayMethod.fxml", "Dave's Burger");
     }
+
+    /**
+     * sets the scene to the Menu page
+     * @throws IOException if the given page's fxml file cannot be found, an exception is thrown
+     */
     public void switchToEdit() throws IOException {
         Main main = new Main();
         main.changeScene("MenuPage.fxml", "Dave's Burger");
     }
 
-    // Get receipt when proceed to payment
+    /**
+     * sets the scene to the Receipt page
+     * @throws IOException if the given page's fxml file cannot be found, an exception is thrown
+     */
     public void getReciept() throws IOException {
         //root = FXMLLoader.load(getClass().getResource("PaymentMethod.fxml"));
         //Main main = new Main();
