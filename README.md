@@ -56,3 +56,14 @@ Follow this project board to know the latest status of the project: [https://git
 - Don't forget to add all the required resources.
 - Compile and run the main.java file.
 - After that, the application should start. 
+
+### Documentation
+- This project supports JavaDoc documentation generation.
+- To generate the document in the IntelliJ IDE,
+  1) Open the project in IntelliJ
+  2) In the navigation bar, navigate to: Tools > Generate JavaDoc...
+  3) Select a directory to write the document to in the "Output Directory:" text field
+  4) (Optional) Select "Open generated documentation in browser" to immediately open the document upon generation
+  5) Select "Generate"
+  
+  Once the generation is complete, the document should be in the directory that you specified in Step 3. If you followed Step 4, the document will have     opened your default browser. If not, navigate to the directory that holds the generated JavaDoc and open the "index.html" file.
