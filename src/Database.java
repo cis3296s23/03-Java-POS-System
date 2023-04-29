@@ -8,11 +8,11 @@ import java.time.format.DateTimeFormatter;
  * stores database information
  */
 public class Database {
-    private Connection connection;
-    private String[][] menuItems;
-    private String[][] employees;
-    private Statement st;
-    private String sql;
+    private Connection connection; // connection of the database
+    private String[][] menuItems; // list of menu item names
+    private String[][] employees; // list of employee names
+    private Statement st; // holds SQL statements in Statement format
+    private String sql; // holds SQL query strings
 
     /**
      * connects to the database

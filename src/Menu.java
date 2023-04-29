@@ -28,18 +28,34 @@ public class Menu {
         this.price = price;
     }
 
+    /**
+     * returns the itemID property
+     * @return itemID
+     */
     public int getItemID() {
         return itemID;
     }
 
+    /**
+     * returns the itemName property
+     * @return itemName
+     */
     public String getItemName() {
         return itemName;
     }
 
+    /**
+     * returns the category property
+     * @return category
+     */
     public String getCategory() {
         return category;
     }
 
+    /**
+     * returns the price property
+     * @return price
+     */
     public double getPrice() {
         return price;
     }

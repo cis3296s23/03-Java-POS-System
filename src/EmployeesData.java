@@ -28,22 +28,42 @@ public class EmployeesData {
         this.position = position;
     }
 
+    /**
+     * returns the ID property
+     * @return ID
+     */
     public String getId() {
         return ID;
     }
 
+    /**
+     * returns the Name property
+     * @return Name
+     */
     public String getEmpName() {
         return Name;
     }
 
+    /**
+     * returns the phone property
+     * @return phone
+     */
     public String getPhone() {
         return phone;
     }
 
+    /**
+     * returns the salary property
+     * @return salary
+     */
     public Double getSalary() {
         return salary;
     }
 
+    /**
+     * returns the position property
+     * @return position
+     */
     public String getPosition() {
         return position;
     }

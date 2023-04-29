@@ -9,7 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-//extends application for JavaFX
+/**
+ * main class of the program, extends application for JavaFX
+ */
 public class Main extends Application {
     private static Stage stage;
     public static void main(String[] args) {
@@ -23,6 +25,12 @@ public class Main extends Application {
         db.createInitialTables(conn);
         launch(args);
     }
+
+    /**
+     * when launch() is called, the first page is initialized
+     * @param primaryStage the stage to host the elements of the application
+     * @throws Exception if the given page's fxml file cannot be found, an exception is thrown
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
@@ -38,7 +46,7 @@ public class Main extends Application {
      * changes the scene on the stage to an fxml file's data
      * @param fxml fxml file to use
      * @param title name of the stage to use
-     * @throws IOException
+     * @throws IOException if the given page's fxml file cannot be found, an exception is thrown
      */
     public void changeScene(String fxml, String title) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));

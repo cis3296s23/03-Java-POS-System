@@ -9,7 +9,15 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
+/**
+ * tests a scene transition
+ */
 public class MainExTester extends Application {
+    /**
+     * called when the main ex tester starts to run
+     * @param stage stage to set the scene to
+     * @throws Exception if the given page's fxml file cannot be found, an exception is thrown
+     */
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("PayMethod.fxml"));

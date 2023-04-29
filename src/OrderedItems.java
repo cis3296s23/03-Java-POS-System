@@ -14,8 +14,8 @@ public class OrderedItems {
 
     /**
      * constructor for orderedItems
-     * @param item_id item ID
-     * @param order_id order ID
+     * @param item_id unique ID of the item
+     * @param order_id unique ID of the order
      * @param item_name name of the item
      * @param item_price price of the item
      * @param item_quantity quantity of the item in the order
@@ -28,18 +28,32 @@ public class OrderedItems {
         this.item_quantity = item_quantity;
     }
 
+    /**
+     * returns the item_id property
+     * @return item_id
+     */
     public int getItem_id(){return item_id;}
+
+    /**
+     * returns the order_id property
+     * @return order_id
+     */
     public int getOrder_id(){return order_id;}
+
+    /**
+     * returns the item_name property
+     * @return item_name
+     */
     public String getItem_name(){return item_name;}
 
     /**
-     * gets item_price
+     * returns the item_price property
      * @return item_price
      */
     public double getItem_price(){return item_price;}
 
     /**
-     * gets item_quantity
+     * returns the item_quantity property
      * @return item_quantity
      */
     public int getItem_quantity(){return item_quantity;}
