@@ -6,8 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * holds method used to display the menu page
+ */
 public class MenuPage {
-
+    /**
+     * sets the scene to the menu page
+     * @param primaryStage current stage of the application
+     */
     public void display(Stage primaryStage) {
 
         try {
